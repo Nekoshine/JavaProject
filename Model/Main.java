@@ -1,33 +1,249 @@
-
-
-import java.awt.*;
-import java.io.*;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
-import java.util.Date;
-import javax.swing.*;
-import javax.swing.text.Document;
-import javax.xml.parsers.*;
-import org.w3c.dom.*;
+import java.io.File;
+import java.util.ArrayList;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
-import java.util.Date;
-import java.io.*;
-import java.util.*;
-
+import java.text.ParseException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.swing.text.Document;
-import org.w3c.dom.*;
-
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
+import java.util.Date;
 
 public class Main{
   
   
   public static void main(String[] args) {
-    readXMLVoiture();
-    readXMLMoto();
-    readXMLAvion();
-    readXMLClient();
+    Voiture v = new Voiture("Renault","Zoe",0,false,140,10000,4,60);
+    Moto m = new Moto("Kawa","jsp",0,false,140,10000,60);
+    Avion a = new Avion("Airbus","a320",0,false,800,100,4);
+    try{
+      Date dateD= new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2019");
+      Date dateF= new SimpleDateFormat("dd/MM/yyyy").parse("09/05/2019");
+      Client c = new Client("Paul",684758125,dateD,dateF,50,0,false);
+      addVoiture(v);
+      addMoto(m);
+      addAvion(a);
+      addClient(c);
+      readXMLVoiture();
+      readXMLMoto();
+      readXMLAvion();
+      readXMLClient();
+    }catch(ParseException e){
+      e.printStackTrace();
+    }
+  }
+  
+  public static void addVoiture(Voiture v){
+    try{
+      DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
+      DocumentBuilder docb = docbf.newDocumentBuilder();
+      org.w3c.dom.Document doc = docb.parse(new File("dataVoiture.xml"));
+      Node racine = doc.getFirstChild(); //On récupère la racine
+      Element voiture = doc.createElement("element"); // On crée une nouvelle voiture
+      Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle voiture
+      etat.appendChild(doc.createTextNode(Boolean.toString(v.getEtat()))); // On ajoute a la spec sa valeur
+      voiture.appendChild(etat); //On ajoute chaque champ a la voiture
+      Element km = doc.createElement("km");
+      km.appendChild(doc.createTextNode(Integer.toString(v.getKm())));
+      voiture.appendChild(km);
+      Element marque = doc.createElement("marque");
+      marque.appendChild(doc.createTextNode(v.getMarque()));
+      voiture.appendChild(marque);
+      Element modele = doc.createElement("modele");
+      modele.appendChild(doc.createTextNode(v.getModele()));
+      voiture.appendChild(modele);
+      Element nbPlace = doc.createElement("nbPlace");
+      nbPlace.appendChild(doc.createTextNode(Integer.toString(v.getNbPlace())));
+      voiture.appendChild(nbPlace);
+      Element prixLocation = doc.createElement("prixLocation");
+      prixLocation.appendChild(doc.createTextNode(Integer.toString(v.getPrixLocation())));
+      voiture.appendChild(prixLocation);
+      Element puissance = doc.createElement("puissance");
+      puissance.appendChild(doc.createTextNode(Double.toString(v.getPuissance())));
+      voiture.appendChild(puissance);
+      Element vitesseMax = doc.createElement("vitesseMax");
+      vitesseMax.appendChild(doc.createTextNode(Integer.toString(v.getVitesseMax())));
+      voiture.appendChild(vitesseMax);
+      racine.appendChild(voiture); // On ajoute la voiture a la racine
+      DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
+      Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
+      optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
+      StreamResult gentil = new StreamResult("dataVoiture.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+      optimus.transform(robot, gentil);// On transforme la source avec les informations données.
+      
+    }catch (TransformerConfigurationException e){
+      e.printStackTrace();
+    }catch (TransformerException e){
+      e.printStackTrace();
+      
+    }catch(ParserConfigurationException e){
+      e.printStackTrace();
+    }catch(SAXException e){
+      e.printStackTrace();
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+  }
+  public static void addMoto(Moto m){
+    try{
+      DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
+      DocumentBuilder docb = docbf.newDocumentBuilder();
+      org.w3c.dom.Document doc = docb.parse(new File("dataMoto.xml"));
+      Node racine = doc.getFirstChild(); //On récupère la racine
+      Element moto = doc.createElement("element"); // On crée une nouvelle voiture
+      Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle voiture
+      etat.appendChild(doc.createTextNode(Boolean.toString(m.getEtat()))); // On ajoute a la spec sa valeur
+      moto.appendChild(etat); //On ajoute chaque champ a la voiture
+      Element km = doc.createElement("km");
+      km.appendChild(doc.createTextNode(Integer.toString(m.getKm())));
+      moto.appendChild(km);
+      Element marque = doc.createElement("marque");
+      marque.appendChild(doc.createTextNode(m.getMarque()));
+      moto.appendChild(marque);
+      Element modele = doc.createElement("modele");
+      modele.appendChild(doc.createTextNode(m.getModele()));
+      moto.appendChild(modele);
+      Element prixLocation = doc.createElement("prixLocation");
+      prixLocation.appendChild(doc.createTextNode(Integer.toString(m.getPrixLocation())));
+      moto.appendChild(prixLocation);
+      Element puissance = doc.createElement("puissance");
+      puissance.appendChild(doc.createTextNode(Double.toString(m.getPuissance())));
+      moto.appendChild(puissance);
+      Element vitesseMax = doc.createElement("vitesseMax");
+      vitesseMax.appendChild(doc.createTextNode(Integer.toString(m.getVitesseMax())));
+      moto.appendChild(vitesseMax);
+      racine.appendChild(moto); // On ajoute la voiture a la racine
+      DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
+      Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
+      optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
+      StreamResult gentil = new StreamResult("dataMoto.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+      optimus.transform(robot, gentil);// On transforme la source avec les informations données.
+      
+    }catch (TransformerConfigurationException e){
+      e.printStackTrace();
+    }catch (TransformerException e){
+      e.printStackTrace();
+      
+    }catch(ParserConfigurationException e){
+      e.printStackTrace();
+    }catch(SAXException e){
+      e.printStackTrace();
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+  }
+  
+  public static void addAvion(Avion a){
+    try{
+      DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
+      DocumentBuilder docb = docbf.newDocumentBuilder();
+      org.w3c.dom.Document doc = docb.parse(new File("dataAvion.xml"));
+      Node racine = doc.getFirstChild(); //On récupère la racine
+      Element avion = doc.createElement("element"); // On crée une nouvelle voiture
+      Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle voiture
+      etat.appendChild(doc.createTextNode(Boolean.toString(a.getEtat()))); // On ajoute a la spec sa valeur
+      avion.appendChild(etat); //On ajoute chaque champ a la voiture
+      Element nbMoteurs = doc.createElement("nbMoteurs");
+      nbMoteurs.appendChild(doc.createTextNode(Integer.toString(a.getNbMoteurs())));
+      avion.appendChild(nbMoteurs);
+      Element marque = doc.createElement("marque");
+      marque.appendChild(doc.createTextNode(a.getMarque()));
+      avion.appendChild(marque);
+      Element modele = doc.createElement("modele");
+      modele.appendChild(doc.createTextNode(a.getModele()));
+      avion.appendChild(modele);
+      Element nbHeures = doc.createElement("nbHeures");
+      nbHeures.appendChild(doc.createTextNode(Integer.toString(a.getNbHeures())));
+      avion.appendChild(nbHeures);
+      Element prixLocation = doc.createElement("prixLocation");
+      prixLocation.appendChild(doc.createTextNode(Integer.toString(a.getPrixLocation())));
+      avion.appendChild(prixLocation);
+      Element vitesseMax = doc.createElement("vitesseMax");
+      vitesseMax.appendChild(doc.createTextNode(Integer.toString(a.getVitesseMax())));
+      avion.appendChild(vitesseMax);
+      racine.appendChild(avion); // On ajoute la voiture a la racine
+      DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
+      Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
+      optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
+      StreamResult gentil = new StreamResult("dataAvion.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+      optimus.transform(robot, gentil);// On transforme la source avec les informations données.
+      
+    }catch (TransformerConfigurationException e){
+      e.printStackTrace();
+    }catch (TransformerException e){
+      e.printStackTrace();
+      
+    }catch(ParserConfigurationException e){
+      e.printStackTrace();
+    }catch(SAXException e){
+      e.printStackTrace();
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+  }
+  
+  public static void addClient(Client c){
+    try{
+      DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
+      DocumentBuilder docb = docbf.newDocumentBuilder();
+      org.w3c.dom.Document doc = docb.parse(new File("dataClient.xml"));
+      Node racine = doc.getFirstChild(); //On récupère la racine
+      Element client = doc.createElement("element"); // On crée une nouvelle voiture
+      Element nom = doc.createElement("nom"); //On crée une spécification de la nouvelle voiture
+      nom.appendChild(doc.createTextNode(c.getNom())); // On ajoute a la spec sa valeur
+      client.appendChild(nom); //On ajoute chaque champ a la voiture
+      Element numTel = doc.createElement("numTel");
+      numTel.appendChild(doc.createTextNode(Integer.toString(c.getNumTel())));
+      client.appendChild(numTel);
+      Element dateDebut = doc.createElement("dateDebut");
+      DateFormat date= new SimpleDateFormat("dd/MM/yyyy");
+      String dateD = date.format(c.getDateDebut());
+      dateDebut.appendChild(doc.createTextNode(dateD));
+      client.appendChild(dateDebut);
+      Element dateFin = doc.createElement("dateFin");
+      String dateF = date.format(c.getDateFin());
+      dateFin.appendChild(doc.createTextNode(dateF));
+      client.appendChild(dateFin);
+      Element nbKm = doc.createElement("nbKm");
+      nbKm.appendChild(doc.createTextNode(Integer.toString(c.getNbKm())));
+      client.appendChild(nbKm);
+      Element prixPrev = doc.createElement("prixPrev");
+      prixPrev.appendChild(doc.createTextNode(Integer.toString(c.getPrixPrev())));
+      client.appendChild(prixPrev);
+      Element reduction = doc.createElement("reduction");
+      reduction.appendChild(doc.createTextNode(Boolean.toString(c.getReduction())));
+      client.appendChild(reduction);
+      racine.appendChild(client); // On ajoute la voiture a la racine
+      DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
+      Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
+      optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
+      StreamResult gentil = new StreamResult("dataClient.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+      optimus.transform(robot, gentil);// On transforme la source avec les informations données.
+      
+    }catch (TransformerConfigurationException e){
+      e.printStackTrace();
+    }catch (TransformerException e){
+      e.printStackTrace();
+      
+    }catch(ParserConfigurationException e){
+      e.printStackTrace();
+    }catch(SAXException e){
+      e.printStackTrace();
+    }catch(IOException e){
+      e.printStackTrace();
+    }
   }
   
   public static ArrayList<Voiture> readXMLVoiture(){
@@ -36,7 +252,6 @@ public class Main{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
       org.w3c.dom.Document doc = docb.parse(new File("dataVoiture.xml"));
-      //document.getDocumentElement().normalize();
       NodeList listeV = doc.getElementsByTagName("element"); //On récupère chaque noeud
       for (int i=0;i<listeV.getLength() ;i++ ) {
         if(listeV.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
@@ -69,7 +284,6 @@ public class Main{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
       org.w3c.dom.Document doc = docb.parse(new File("dataMoto.xml"));
-      //document.getDocumentElement().normalize();
       NodeList listeM = doc.getElementsByTagName("element"); //On récupère chaque noeud
       for (int i=0;i<listeM.getLength() ;i++ ) {
         if(listeM.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
@@ -101,7 +315,6 @@ public class Main{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
       org.w3c.dom.Document doc = docb.parse(new File("dataAvion.xml"));
-      //document.getDocumentElement().normalize();
       NodeList listeA = doc.getElementsByTagName("element"); //On récupère chaque noeud
       for (int i=0;i<listeA.getLength() ;i++ ) {
         if(listeA.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
@@ -133,7 +346,6 @@ public class Main{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
       org.w3c.dom.Document doc = docb.parse(new File("dataClient.xml"));
-      //document.getDocumentElement().normalize();
       NodeList listeC = doc.getElementsByTagName("element"); //On récupère chaque noeud
       for (int i=0;i<listeC.getLength() ;i++ ) {
         if(listeC.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments

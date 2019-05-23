@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
   <element>
     <etat>false</etat>
@@ -70,4 +70,14 @@
     <puissance>125</puissance>
     <vitesseMax>170</vitesseMax>
   </element>
+<element>
+<etat>false</etat>
+<km>10000</km>
+<marque>Renault</marque>
+<modele>Zoe</modele>
+<nbPlace>4</nbPlace>
+<prixLocation>0</prixLocation>
+<puissance>60.0</puissance>
+<vitesseMax>140</vitesseMax>
+</element>
 </root>

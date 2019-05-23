@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
   <element>
     <etat>false</etat>
@@ -51,7 +51,16 @@
     <modele>Rafale</modele>
     <nbHeures>100</nbHeures>
     <nbMoteurs>2</nbMoteurs>
-    <prixLocation>0</prixLocation> 
+    <prixLocation>0</prixLocation>
     <vitesseMax>2203</vitesseMax>
   </element>
+<element>
+<etat>false</etat>
+<nbMoteurs>4</nbMoteurs>
+<marque>Airbus</marque>
+<modele>a320</modele>
+<nbHeures>100</nbHeures>
+<prixLocation>0</prixLocation>
+<vitesseMax>800</vitesseMax>
+</element>
 </root>
