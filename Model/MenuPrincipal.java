@@ -1,24 +1,23 @@
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.io.DataInputStream;
-import java.io.File;
+import java.awt.event.MouseListener;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.SourceDataLine;
-import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 
 public class MenuPrincipal extends JFrame implements ActionListener{
@@ -120,11 +119,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				System.out.println("Bonjour");
-				//sound.play(stream);
-				System.out.println("Bonjour");/*
-				this.sound("dejavu.WAV");
-				InputStream stream = new ByteArrayInputStream(this.getSamples());
-				this.play(stream);	*/
+				//sound.play(stream);	
 				
 			}
 

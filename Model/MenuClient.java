@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -14,9 +15,11 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
 
-public class MenuClient extends JFrame implements ActionListener{
+public class MenuClient extends JFrame implements ActionListener, ListSelectionListener{
 
 	private static final long serialVersionUID = 1L;
 	public JButton ok;
@@ -28,7 +31,9 @@ public class MenuClient extends JFrame implements ActionListener{
 	public JTextField treduc;
 	public JButton badd;
 	public JButton bsupp;
-	
+	public JList<Client> list;
+	public ArrayList<Client> tab;
+
 	public MenuClient() {
 		super("VOITOVION");
 
@@ -62,8 +67,14 @@ public class MenuClient extends JFrame implements ActionListener{
 
 		JPanel infos = new JPanel();
 		infos.setLayout(new GridLayout(1,3));
-		String[] tab = {"Euros","Livres","Dollar US","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien","Dollar Canadien"};
-		JList<String> list = new JList<String>(tab);
+		tab= new ArrayList<Client>();
+		tab=GestionXML.readXMLClient();
+		Client[] listc= new Client[tab.size()];
+		for (int i = 0; i < tab.size(); i++) {
+			listc[i]=tab.get(i);
+		}
+		list = new JList<Client>(listc);
+		list.addListSelectionListener(this);
 		JScrollPane scroll = new JScrollPane(list);
 		JPanel scrollp = new JPanel();
 		scroll.setPreferredSize(new Dimension(400, 400));
@@ -133,12 +144,19 @@ public class MenuClient extends JFrame implements ActionListener{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
-			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), Integer.parseInt(this.tnbKm.getText()), Integer.parseInt(this.tprixPrev.getText()), Boolean.parseBoolean(this.treduc.getText()));
-			System.out.println(c.toString());
+			for (int i = 0; i < tab.size(); i++) {
+				if(list.getSelectedValue().equals(tab.get(i))) {
+					tab.get(i).setNom(tnom.getText());
+					tab.get(i).setNumTel(Integer.parseInt(this.tnumTel.getText()));
+					tab.get(i).setNbKm(Integer.parseInt(this.tnbKm.getText()));
+					tab.get(i).setPrixPrev(Integer.parseInt(this.tprixPrev.getText()));
+					tab.get(i).setReduction(Boolean.parseBoolean(this.treduc.getText()));
+				}
+			}
 		}
 		else if (source==retour) {
 			this.setVisible(false);
@@ -147,6 +165,22 @@ public class MenuClient extends JFrame implements ActionListener{
 		else if (source==badd) {
 			System.out.println("aurevoir");
 			AddClient addc = new AddClient();
+		}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		Object source = e.getSource();	
+		if (source==list) {
+			for (int i = 0; i < tab.size(); i++) {
+				if(list.getSelectedValue().equals(tab.get(i))) {
+					tnom.setText(tab.get(i).getNom());
+					tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
+					tnbKm.setText(Integer.toString(tab.get(i).getNbKm()));
+					tprixPrev.setText(Integer.toString(tab.get(i).getPrixPrev()));
+					treduc.setText(Boolean.toString(tab.get(i).getReduction()));
+				}
+			}
 		}
 	}
 }
