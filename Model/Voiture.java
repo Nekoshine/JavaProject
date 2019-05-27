@@ -19,6 +19,7 @@ public class Voiture extends Terrestre {
     this.nbPlace = nbPlace;
   }
   
+  
   @Override
   public String toString() {
     return "Voiture: "+super.toString();

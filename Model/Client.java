@@ -13,7 +13,6 @@ public class Client {
   */
   private int numTel;
   
-  
   /**
   *
   */
@@ -29,13 +28,12 @@ public class Client {
   */
   private Boolean reduction;
   
-  
-  
   public Client() {
     super();
   }
   
-  public Client(String nom, int numTel, int nbKm, int prixPrev, Boolean reduction) {
+  public Client(String nom, int numTel,  int nbKm, int prixPrev, Boolean reduction) {
+
     super();
     this.nom = nom;
     this.numTel = numTel;
@@ -60,7 +58,6 @@ public class Client {
     this.numTel = numTel;
   }
   
-  
   public int getNbKm() {
     return nbKm;
   }
@@ -84,6 +81,7 @@ public class Client {
   public void setReduction(Boolean reduction) {
     this.reduction = reduction;
   }
+  
   
   @Override
   public String toString() {

@@ -1,23 +1,24 @@
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 
 public class MenuPrincipal extends JFrame implements ActionListener{
@@ -27,6 +28,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 
 	public MenuPrincipal() {
 		super("VOITOVION");
+	
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
 		JLabel t=new JLabel();
@@ -91,6 +93,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 			InputStream stream = new ByteArrayInputStream(sound.getSamples()); 
 
 
+			
+			
 			@Override
 			public void mouseReleased(MouseEvent e) {
 				// TODO Auto-generated method stub
@@ -117,7 +121,11 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 			public void mouseEntered(MouseEvent e) {
 				System.out.println("Bonjour");
 				//sound.play(stream);
-
+				System.out.println("Bonjour");/*
+				this.sound("dejavu.WAV");
+				InputStream stream = new ByteArrayInputStream(this.getSamples());
+				this.play(stream);	*/
+				
 			}
 
 			@Override
@@ -132,7 +140,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		label3.setPreferredSize(new Dimension(550,550));
 		JPanel pani3 = new JPanel();
 		pani3.add(label3);
-		pani3.setBackground(Color.white);;
+		pani3.setBackground(Color.white);
 		this.add(pani3,BorderLayout.WEST);
 
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -148,8 +156,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		}
 	}
 
+	
 	public static void main(String[] args) {
 		MenuPrincipal menu = new MenuPrincipal();
-		//System.out.println(Arrays.toString(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()));
 	}
 }

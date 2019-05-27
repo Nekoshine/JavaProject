@@ -71,7 +71,7 @@ public abstract class Vehicule {
     return etat;
   }
   
-  public void getEtat(Boolean etat) {
+  public void setEtat(Boolean etat) {
     this.etat = etat;
   }
   
