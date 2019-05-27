@@ -13,15 +13,6 @@ public class Client {
   */
   private int numTel;
   
-  /**
-  *
-  */
-  private Date dateDebut;
-  
-  /**
-  *
-  */
-  private Date dateFin;
   
   /**
   *
@@ -44,12 +35,10 @@ public class Client {
     super();
   }
   
-  public Client(String nom, int numTel, Date dateDebut, Date dateFin, int nbKm, int prixPrev, Boolean reduction) {
+  public Client(String nom, int numTel, int nbKm, int prixPrev, Boolean reduction) {
     super();
     this.nom = nom;
     this.numTel = numTel;
-    this.dateDebut = dateDebut;
-    this.dateFin = dateFin;
     this.nbKm = nbKm;
     this.prixPrev = prixPrev;
     this.reduction = reduction;
@@ -71,21 +60,6 @@ public class Client {
     this.numTel = numTel;
   }
   
-  public Date getDateDebut() {
-    return dateDebut;
-  }
-  
-  public void setDateDebut(Date dateDebut) {
-    this.dateDebut = dateDebut;
-  }
-  
-  public Date getDateFin() {
-    return dateFin;
-  }
-  
-  public void setDateFin(Date dateFin) {
-    this.dateFin = dateFin;
-  }
   
   public int getNbKm() {
     return nbKm;
@@ -113,6 +87,6 @@ public class Client {
   
   @Override
   public String toString() {
-    return "Client [nom=" + nom + ", numTel=" + numTel + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", nbKm=" + nbKm + ", prixPrev=" + prixPrev + ", reduction=" + reduction + "]";
+    return "Client [nom=" + nom + ", numTel=" + numTel + ", nbKm=" + nbKm + ", prixPrev=" + prixPrev + ", reduction=" + reduction + "]";
   }
 }
