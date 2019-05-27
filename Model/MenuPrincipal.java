@@ -29,12 +29,12 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 
-public class MenuPrincipal /*extends JFrame implements ActionListener*/{
+public class MenuPrincipal /*extends JFrame implements ActionListener*/ {
 	
 	
-
+	
 	public MenuPrincipal() {
-
+		
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
 		JLabel t=new JLabel();
@@ -84,80 +84,80 @@ public class MenuPrincipal /*extends JFrame implements ActionListener*/{
 		
 		
 		Icon icon1 = new ImageIcon("giphy.gif");
-        JLabel label1 = new JLabel(icon1);
-        label1.setPreferredSize(new Dimension(550,550));
-        JPanel pani1 = new JPanel();
-        pani1.add(label1);
-        pani1.setBackground(Color.white);
-        fenetre.add(pani1,BorderLayout.EAST);
-        Icon icon2 = new ImageIcon("voiture.gif");
-        JLabel label2 = new JLabel(icon2);
-        JPanel pani2 = new JPanel();
-        pani2.add(label2);
-        pani2.setBackground(Color.white);
-        pani2.addMouseListener(new MouseListener() {
-        	private AudioFormat format;
-            private byte[] samples;
-            /**
-             * 
-             * @param filename le lien vers le fichier song (URL ou absolute path)
-             */
-            public void sound(String filename){
-             try{
-              AudioInputStream stream = AudioSystem.getAudioInputStream(new File(filename));
-              format = stream.getFormat();
-              samples = getSamples(stream);
-             }
-             catch (UnsupportedAudioFileException e){
-              e.printStackTrace();
-             }
-             catch (IOException e){
-              e.printStackTrace();
-             }
-            }
-            public byte[] getSamples(){
-             return samples;
-            }
-            public byte[] getSamples(AudioInputStream stream){
-             int length = (int)(stream.getFrameLength() * format.getFrameSize());
-             byte[] samples = new byte[length];
-             DataInputStream in = new DataInputStream(stream);
-             try{
-              in.readFully(samples);
-             }
-             catch (IOException e){
-              e.printStackTrace();
-             }
-             return samples;
-            }
-            public void play(InputStream source) {
-             int bufferSize = format.getFrameSize() * Math.round(format.getSampleRate() / 10);
-             byte[] buffer = new byte[bufferSize];
-             SourceDataLine line;
-             try{
-              DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
-              line = (SourceDataLine)AudioSystem.getLine(info);
-              line.open(format, bufferSize);
-             }
-             catch (LineUnavailableException e){
-              e.printStackTrace();
-              return;
-             }
-             line.start();
-             try{
-              int numBytesRead = 0;
-              while (numBytesRead != -1){
-               numBytesRead = source.read(buffer, 0, buffer.length);
-               if (numBytesRead != -1)
-                line.write(buffer, 0, numBytesRead);
-              }
-             }
-             catch (IOException e){
-             e.printStackTrace();
-             }
-             line.drain();
-             line.close();
-            }
+		JLabel label1 = new JLabel(icon1);
+		label1.setPreferredSize(new Dimension(550,550));
+		JPanel pani1 = new JPanel();
+		pani1.add(label1);
+		pani1.setBackground(Color.white);
+		fenetre.add(pani1,BorderLayout.EAST);
+		Icon icon2 = new ImageIcon("voiture.gif");
+		JLabel label2 = new JLabel(icon2);
+		JPanel pani2 = new JPanel();
+		pani2.add(label2);
+		pani2.setBackground(Color.white);
+		pani2.addMouseListener(new MouseListener() {
+			private AudioFormat format;
+			private byte[] samples;
+			/**
+			*
+			* @param filename le lien vers le fichier song (URL ou absolute path)
+			*/
+			public void sound(String filename){
+				try{
+					AudioInputStream stream = AudioSystem.getAudioInputStream(new File(filename));
+					format = stream.getFormat();
+					samples = getSamples(stream);
+				}
+				catch (UnsupportedAudioFileException e){
+					e.printStackTrace();
+				}
+				catch (IOException e){
+					e.printStackTrace();
+				}
+			}
+			public byte[] getSamples(){
+				return samples;
+			}
+			public byte[] getSamples(AudioInputStream stream){
+				int length = (int)(stream.getFrameLength() * format.getFrameSize());
+				byte[] samples = new byte[length];
+				DataInputStream in = new DataInputStream(stream);
+				try{
+					in.readFully(samples);
+				}
+				catch (IOException e){
+					e.printStackTrace();
+				}
+				return samples;
+			}
+			public void play(InputStream source) {
+				int bufferSize = format.getFrameSize() * Math.round(format.getSampleRate() / 10);
+				byte[] buffer = new byte[bufferSize];
+				SourceDataLine line;
+				try{
+					DataLine.Info info = new DataLine.Info(SourceDataLine.class, format);
+					line = (SourceDataLine)AudioSystem.getLine(info);
+					line.open(format, bufferSize);
+				}
+				catch (LineUnavailableException e){
+					e.printStackTrace();
+					return;
+				}
+				line.start();
+				try{
+					int numBytesRead = 0;
+					while (numBytesRead != -1){
+						numBytesRead = source.read(buffer, 0, buffer.length);
+						if (numBytesRead != -1)
+						line.write(buffer, 0, numBytesRead);
+					}
+				}
+				catch (IOException e){
+					e.printStackTrace();
+				}
+				line.drain();
+				line.close();
+			}
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
@@ -179,10 +179,10 @@ public class MenuPrincipal /*extends JFrame implements ActionListener*/{
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				System.out.println("Bonjour");
-				/*this.sound("dejavu.WAV");
-			    InputStream stream = new ByteArrayInputStream(this.getSamples()); 
-			    this.play(stream);*/
+				System.out.println("Bonjour");/*
+				this.sound("dejavu.WAV");
+				InputStream stream = new ByteArrayInputStream(this.getSamples());
+				this.play(stream);	*/
 				
 			}
 			
@@ -192,24 +192,23 @@ public class MenuPrincipal /*extends JFrame implements ActionListener*/{
 				
 			}
 		});
-        fenetre.add(pani2,BorderLayout.SOUTH);
-        Icon icon3 = new ImageIcon("moto.gif");
-        JLabel label3 = new JLabel(icon3);
-        label3.setPreferredSize(new Dimension(550,550));
-        JPanel pani3 = new JPanel();
-        pani3.add(label3);
-        pani3.setBackground(Color.white);;
-        fenetre.add(pani3,BorderLayout.WEST);
+		fenetre.add(pani2,BorderLayout.SOUTH);
+		Icon icon3 = new ImageIcon("moto.gif");
+		JLabel label3 = new JLabel(icon3);
+		label3.setPreferredSize(new Dimension(550,550));
+		JPanel pani3 = new JPanel();
+		pani3.add(label3);
+		pani3.setBackground(Color.white);;
+		fenetre.add(pani3,BorderLayout.WEST);
 		
 		fenetre.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		fenetre.setVisible(true);
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	
 	
 	
 	public static void main(String[] args) {
 		MenuPrincipal menu = new MenuPrincipal();
-		System.out.println(Arrays.toString(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()));
 	}
 }
