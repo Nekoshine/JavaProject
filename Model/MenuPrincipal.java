@@ -24,6 +24,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 
 	private static final long serialVersionUID = 1L;
 	public JButton bclient;
+	public JButton bloc;
 
 	public MenuPrincipal() {
 		super("VOITOVION");
@@ -48,7 +49,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		bclient.setPreferredSize(new Dimension(150,100));
 		JPanel tc = new JPanel();
 		tc.add(bclient);
-		JButton bloc = new JButton("Locations");
+		bloc = new JButton("Locations");
+		bloc.addActionListener(this);
 		bloc.setFont(f);
 		bloc.setPreferredSize(new Dimension(150,100));
 		JPanel tl = new JPanel();
@@ -148,6 +150,10 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		if (source==bclient) {
 			this.setVisible(false);
 			MenuClient mc = new MenuClient();
+		}
+		else if (source==bloc) {
+			this.setVisible(false);
+			MenuLocation ml = new MenuLocation();
 		}
 	}
 
