@@ -23,7 +23,7 @@ import java.util.Date;
 
 public class GestionXML{
   
-  public static ArrayList<Vehicule> readXMLVehicule(Vehicule v){
+  /*public static ArrayList<Vehicule> readXMLVehicule(Vehicule v){
     
     if (v.getClass().getName().equals("Moto")){
       return  readXMLMoto();
@@ -33,7 +33,7 @@ public class GestionXML{
       return readXMLVoiture();
     }
     return null;
-  }
+  }*/
   
   public static void addVehicules(Vehicule v){
     if (v instanceof Moto) addMoto((Moto)v);
@@ -405,8 +405,8 @@ public class GestionXML{
     }
   }
   
-  private static ArrayList<Vehicule> readXMLVoiture(){
-    ArrayList<Vehicule>  voitures=new ArrayList<Vehicule>();
+  public static ArrayList<Voiture> readXMLVoiture(){
+    ArrayList<Voiture>  voitures=new ArrayList<Voiture>();
     try{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
@@ -437,8 +437,8 @@ public class GestionXML{
     return voitures;
   }
   
-  private static ArrayList<Vehicule> readXMLMoto(){
-    ArrayList<Vehicule> motos=new ArrayList<Vehicule>();
+  public static ArrayList<Moto> readXMLMoto(){
+    ArrayList<Moto> motos=new ArrayList<Moto>();
     try{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
@@ -468,8 +468,8 @@ public class GestionXML{
     return motos;
   }
   
-  private static ArrayList<Vehicule> readXMLAvion(){
-    ArrayList<Vehicule>  avions=new ArrayList<Vehicule>();
+  public static ArrayList<Avion> readXMLAvion(){
+    ArrayList<Avion>  avions=new ArrayList<Avion>();
     try{
       DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
       DocumentBuilder docb = docbf.newDocumentBuilder();
