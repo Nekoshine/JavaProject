@@ -22,7 +22,47 @@ import org.w3c.dom.Document;
 import java.util.Date;
 
 public class GestionXML{
+  /**
+  * Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
+  * @param c Client qui doit etre supprimé
+  */
+  public static void deleteClient(Client c){
+    int id=c.getId();
+    try{
+      DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
+      DocumentBuilder docb = docbf.newDocumentBuilder();
+      Document doc = docb.parse(new File("dataClient.xml"));
+      NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
+      for (int i=0;i<listeL.getLength() ;i++ ) {
+        if(listeL.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
+          Element client = (Element)listeL.item(i);
+          if(id==Integer.parseInt(client.getElementsByTagName("id").item(0).getTextContent())){
+            client.getParentNode().removeChild(client);
+          }
+        }
+      }
+      DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
+      Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
+      optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
+      StreamResult gentil = new StreamResult("dataClient.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+      optimus.transform(robot, gentil);// On transforme la source avec les informations données.
+    }catch (TransformerConfigurationException e){
+      e.printStackTrace();
+    }catch (TransformerException e){
+      e.printStackTrace();
+    }catch(ParserConfigurationException e){
+      e.printStackTrace();
+    }catch(SAXException e){
+      e.printStackTrace();
+    }catch(IOException e){
+      e.printStackTrace();
+    }
+  }
   
+  /**
+  * Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
+  * @param v Véhicule qui doit etre supprimé
+  */
   public static void deleteVehicule(Vehicule v){
     int id = v.getId();
     try{
@@ -84,7 +124,6 @@ public class GestionXML{
         StreamResult gentil = new StreamResult("dataVoiture.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
         optimus.transform(robot, gentil);// On transforme la source avec les informations données.
       }
-      
     }catch (TransformerConfigurationException e){
       e.printStackTrace();
     }catch (TransformerException e){
@@ -100,7 +139,10 @@ public class GestionXML{
   
   
   
-  
+  /**
+  * Cette fonction retourne le prochain ID du client qui va etre ajouté lors du prochain ajout.
+  * @return le prochain id
+  */
   public static int getLastIDClient(){
     int id=0;
     try{
@@ -108,7 +150,10 @@ public class GestionXML{
       DocumentBuilder docb = docbf.newDocumentBuilder();
       Document doc = docb.parse(new File("dataClient.xml"));
       NodeList listeC = doc.getElementsByTagName("element"); //On récupère chaque noeud
-      id=listeC.getLength();
+      
+      Element node = (Element) listeC.item(listeC.getLength()-1);
+      id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
+      
     }catch(ParserConfigurationException e){
       e.printStackTrace();
     }catch(SAXException e){
@@ -119,6 +164,10 @@ public class GestionXML{
     return id;
   }
   
+  /**
+  * Cette fonction retourne le prochain ID de la location qui va etre ajoutée lors du prochain ajout.
+  * @return le prochain id
+  */
   public static int getLastIDLoc(){
     int id=0;
     try{
@@ -126,7 +175,9 @@ public class GestionXML{
       DocumentBuilder docb = docbf.newDocumentBuilder();
       Document doc = docb.parse(new File("dataLocation.xml"));
       NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-      id=listeL.getLength();
+      
+      Element node = (Element) listeL.item(listeL.getLength()-1);
+      id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
     }catch(ParserConfigurationException e){
       e.printStackTrace();
     }catch(SAXException e){
@@ -136,6 +187,11 @@ public class GestionXML{
     }
     return id;
   }
+  
+  /**
+  * Cette fonction retourne le prochain ID du véhicule qui va etre ajoutée lors du prochain ajout.
+  * @return le prochain id
+  */
   public static int getLastID(Vehicule v){ // récupère le dernier id de la liste de véhicule en fonction du type de ce dernier
     int id=0;
     try{
@@ -144,21 +200,27 @@ public class GestionXML{
         DocumentBuilder docb = docbf.newDocumentBuilder();
         Document doc = docb.parse(new File("dataMoto.xml"));
         NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-        id=listeL.getLength();
+        
+        Element node = (Element) listeL.item(listeL.getLength()-1);
+        id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
       }
       else  if (v instanceof Avion){
         DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder docb = docbf.newDocumentBuilder();
         Document doc = docb.parse(new File("dataAvion.xml"));
         NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-        id=listeL.getLength();
+        
+        Element node = (Element) listeL.item(listeL.getLength()-1);
+        id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
       }
       else if (v instanceof Voiture) {
         DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
         DocumentBuilder docb = docbf.newDocumentBuilder();
         Document doc = docb.parse(new File("dataVoiture.xml"));
         NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-        id=listeL.getLength();
+        
+        Element node = (Element) listeL.item(listeL.getLength()-1);
+        id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
       }
     }
     catch(ParserConfigurationException e){
@@ -170,7 +232,10 @@ public class GestionXML{
     }
     return id;
   }
-  
+  /**
+  * Cette procédure va appeler les procédures d'ajout de véhicule en fonction du type de celui qui est donné en paramètre
+  * @param v Véhicule à ajouter
+  */
   public static void addVehicules(Vehicule v){
     if (v instanceof Moto) addMoto((Moto)v);
     else  if (v instanceof Avion) addAvion((Avion)v);
@@ -178,7 +243,10 @@ public class GestionXML{
     
   }
   
-  
+  /**
+  * Cette fonction va lire dans le fichier XML les informations sur les locations
+  * @return Arraylist de Location
+  */
   public static ArrayList<Location> readXMLLocation(){
     ArrayList<Location>  location =new ArrayList<Location>();
     try{
@@ -282,7 +350,10 @@ public class GestionXML{
   }
   
   
-  
+  /**
+  * Cette procédure va écrire dans le fichier XML les informations sur une location
+  * @param l Location à ajouter dans le fichier
+  */
   public static void addLocation(Location l){
     int last=getLastIDLoc();
     Vehicule a = null;
@@ -361,6 +432,10 @@ public class GestionXML{
     }
   }
   
+  /**
+  * Cette fonction va écrire dans le fichier XML les informations sur une voiture
+  * @param v Voiture à ajouter dans le fichier
+  */
   private static void addVoiture(Voiture v){
     int last=getLastID(v);
     try{
@@ -418,6 +493,10 @@ public class GestionXML{
     }
   }
   
+  /**
+  * Cette procédure va écrire dans le fichier XML les informations sur une moto
+  * @param m Moto à ajouter dans le fichier
+  */
   private static void addMoto(Moto m){
     int last=getLastID(m);
     try{
@@ -471,6 +550,10 @@ public class GestionXML{
     }
   }
   
+  /**
+  * Cette procédure va écrire dans le fichier XML les informations sur un avion
+  * @param a Avion à ajouter dans le fichier
+  */
   private static void addAvion(Avion a){
     int last=getLastID(a);
     try{
@@ -524,6 +607,10 @@ public class GestionXML{
     }
   }
   
+  /**
+  * Cette procédure va écrire dans le fichier XML les informations sur un client
+  * @param c Client à ajouter dans le fichier
+  */
   public static void addClient(Client c){
     int last=getLastIDClient();
     try{
@@ -571,6 +658,10 @@ public class GestionXML{
     }
   }
   
+  /**
+  * Cette fonction va lire dans le fichier XML les informations sur les voitures
+  * @return Arraylist de voitures
+  */
   public static ArrayList<Voiture> readXMLVoiture(){
     ArrayList<Voiture>  voitures=new ArrayList<Voiture>();
     try{
