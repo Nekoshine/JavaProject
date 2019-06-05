@@ -20,7 +20,9 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 import java.util.Date;
-
+/**
+* Cette classe permet de gérer les fichiers XML, que cela soit en écriture ou en lecture.
+*/
 public class GestionXML{
   /**
   * Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
@@ -245,7 +247,7 @@ public class GestionXML{
   
   /**
   * Cette fonction va lire dans le fichier XML les informations sur les locations
-  * @return Arraylist de Location
+  * @return Arraylist de locations
   */
   public static ArrayList<Location> readXMLLocation(){
     ArrayList<Location>  location =new ArrayList<Location>();
@@ -694,7 +696,10 @@ public class GestionXML{
     }
     return voitures;
   }
-  
+  /**
+  * Cette fonction va lire dans le fichier XML les informations sur les motos
+  * @return Arraylist de motos
+  */
   public static ArrayList<Moto> readXMLMoto(){
     ArrayList<Moto> motos=new ArrayList<Moto>();
     try{
@@ -726,7 +731,10 @@ public class GestionXML{
     }
     return motos;
   }
-  
+  /**
+  * Cette fonction va lire dans le fichier XML les informations sur les avions
+  * @return Arraylist de avions
+  */
   public static ArrayList<Avion> readXMLAvion(){
     ArrayList<Avion>  avions=new ArrayList<Avion>();
     try{
@@ -759,6 +767,10 @@ public class GestionXML{
     return avions;
   }
   
+  /**
+  * Cette fonction va lire dans le fichier XML les informations sur les clients
+  * @return Arraylist de clients
+  */
   public static ArrayList<Client> readXMLClient(){
     ArrayList<Client>  clients=new ArrayList<Client>();
     try{
