@@ -22,7 +22,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
 
 public class MenuLocation extends JFrame implements ActionListener/*, ListSelectionListener*/{
-
+	
 	private static final long serialVersionUID = 1L;
 	public JButton ok;
 	public JButton retour;
@@ -34,12 +34,12 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 	public JButton bvoit;
 	public JButton bmoto;
 	public JButton bavion;
-	public JList<Vehicule> vlist;
-	public JList<Vehicule> mlist;
-	public JList<Vehicule> alist;
-	public ArrayList<Vehicule> vtab;
-	public ArrayList<Vehicule> mtab;
-	public ArrayList<Vehicule> atab;
+	public JList<Voiture> vlist;
+	public JList<Moto> mlist;
+	public JList<Avion> alist;
+	public ArrayList<Voiture> vtab;
+	public ArrayList<Moto> mtab;
+	public ArrayList<Avion> atab;
 	public JPanel list;
 	public JPanel scrollvp;
 	public JPanel scrollmp;
@@ -49,7 +49,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 	
 	public MenuLocation() {
 		super("VOITOVION");
-
+		
 		JPanel t = new JPanel();
 		t.setLayout(new GridLayout(2, 1));
 		Icon titre= new ImageIcon("VOITOVION.png");
@@ -85,17 +85,17 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		choix.add(avionp);
 		t.add(choix);
 		this.add(t,BorderLayout.NORTH);
-
+		
 		list = new JPanel();
 		cl = new CardLayout();
 		list.setLayout(cl);
-		vtab= new ArrayList<Vehicule>();
-		vtab=GestionXML.readXMLVehicule(new Voiture());
-		Vehicule[] listv= new Vehicule[vtab.size()];
+		vtab= new ArrayList<Voiture>();
+		vtab=GestionXML.readXMLVoiture();
+		Voiture[] listv= new Voiture[vtab.size()];
 		for (int i = 0; i < vtab.size(); i++) {
 			listv[i]=vtab.get(i);
 		}
-		vlist = new JList<Vehicule>(listv);
+		vlist = new JList<Voiture>(listv);
 		//vlist.addListSelectionListener(this);
 		JScrollPane scrollv = new JScrollPane(vlist);
 		scrollvp = new JPanel();
@@ -103,13 +103,13 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		scrollvp.add(scrollv);
 		scrollvp.setBackground(Color.white);
 		
-		mtab= new ArrayList<Vehicule>();
-		mtab=GestionXML.readXMLVehicule(new Moto());
-		Vehicule[] listm= new Vehicule[mtab.size()];
+		mtab= new ArrayList<Moto>();
+		mtab=GestionXML.readXMLMoto();
+		Moto[] listm= new Moto[mtab.size()];
 		for (int i = 0; i < mtab.size(); i++) {
 			listm[i]=mtab.get(i);
 		}
-		mlist = new JList<Vehicule>(listm);
+		mlist = new JList<Moto>(listm);
 		//vlist.addListSelectionListener(this);
 		JScrollPane scrollm = new JScrollPane(mlist);
 		scrollmp = new JPanel();
@@ -117,13 +117,13 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		scrollmp.add(scrollm);
 		scrollmp.setBackground(Color.white);
 		
-		atab= new ArrayList<Vehicule>();
-		atab=GestionXML.readXMLVehicule(new Avion());
-		Vehicule[] lista= new Vehicule[atab.size()];
+		atab= new ArrayList<Avion>();
+		atab=GestionXML.readXMLAvion();
+		Avion[] lista= new Avion[atab.size()];
 		for (int i = 0; i < atab.size(); i++) {
 			lista[i]=atab.get(i);
 		}
-		alist = new JList<Vehicule>(lista);
+		alist = new JList<Avion>(lista);
 		//vlist.addListSelectionListener(this);
 		JScrollPane scrolla = new JScrollPane(alist);
 		scrollap = new JPanel();
@@ -137,7 +137,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		list.setBackground(Color.white);
 		this.add(list,BorderLayout.WEST);
 		
-
+		
 		Icon fleche= new ImageIcon("fleche.png");
 		JPanel panf=new JPanel();
 		JLabel tf=new JLabel();
@@ -148,7 +148,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		panf.setBackground(Color.white);
 		this.add(panf,BorderLayout.CENTER);
 		//infos.add(panf);
-
+		
 		JPanel fields = new JPanel();
 		fields.setLayout(new GridLayout(5,2));
 		JLabel nom = new JLabel("Client:");
@@ -161,7 +161,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		}
 		cbclient = new JComboBox<Client>(listc);
 		fields.add(cbclient);
-		JLabel dateDeb = new JLabel("Date de début");
+		JLabel dateDeb = new JLabel("Date de dï¿½but");
 		fields.add(dateDeb);
 		dateDebut = new JTextField();
 		fields.add(dateDebut);
@@ -169,11 +169,11 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		fields.add(dateF);
 		dateFin = new JTextField();
 		fields.add(dateFin);
-		JLabel prixPrev = new JLabel("Prix prévisonnel:");
+		JLabel prixPrev = new JLabel("Prix prï¿½visonnel:");
 		fields.add(prixPrev);
 		tprixPrev = new JTextField();
 		fields.add(tprixPrev);
-		JLabel kmP = new JLabel("Kilomètres prévisionnels:");
+		JLabel kmP = new JLabel("Kilomï¿½tres prï¿½visionnels:");
 		fields.add(kmP);
 		kmPrev = new JTextField();
 		fields.add(kmPrev);
@@ -185,7 +185,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		this.add(fieldsp,BorderLayout.EAST);
 		//infos.add(fieldsp);
 		//this.add(infos,BorderLayout.CENTER);
-
+		
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
 		JPanel retp= new JPanel();
@@ -203,56 +203,56 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		okp.setBackground(Color.white);
 		retp.setBackground(Color.white);
 		this.add(boutret,BorderLayout.SOUTH);
-
+		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		/*if (source==ok) {
-			for (int i = 0; i < tab.size(); i++) {
-				if(list.getSelectedValue().equals(tab.get(i))) {
-					tab.get(i).setNom(tnom.getText());
-					tab.get(i).setNumTel(Integer.parseInt(this.tnumTel.getText()));
-					tab.get(i).setNbKm(Integer.parseInt(this.tnbKm.getText()));
-					tab.get(i).setPrixPrev(Integer.parseInt(this.tprixPrev.getText()));
-					tab.get(i).setReduction(Boolean.parseBoolean(this.treduc.getText()));
-				}
-			}
-		}
-		else*/ if (source==retour) {
-			this.setVisible(false);
-			MenuPrincipal mp = new MenuPrincipal();
-		}
-		else if (source==bvoit) {
-			cl.show(list, "Voiture");
-			this.setVisible(true);
-		}
-		else if (source==bmoto) {
-			cl.show(list, "Moto");
-			this.setVisible(true);
-		}
-		else if (source==bavion) {
-			cl.show(list, "Avion");
-			this.setVisible(true);
-		}
+		for (int i = 0; i < tab.size(); i++) {
+		if(list.getSelectedValue().equals(tab.get(i))) {
+		tab.get(i).setNom(tnom.getText());
+		tab.get(i).setNumTel(Integer.parseInt(this.tnumTel.getText()));
+		tab.get(i).setNbKm(Integer.parseInt(this.tnbKm.getText()));
+		tab.get(i).setPrixPrev(Integer.parseInt(this.tprixPrev.getText()));
+		tab.get(i).setReduction(Boolean.parseBoolean(this.treduc.getText()));
 	}
+}
+}
+else*/ if (source==retour) {
+this.setVisible(false);
+MenuPrincipal mp = new MenuPrincipal();
+}
+else if (source==bvoit) {
+	cl.show(list, "Voiture");
+	this.setVisible(true);
+}
+else if (source==bmoto) {
+	cl.show(list, "Moto");
+	this.setVisible(true);
+}
+else if (source==bavion) {
+	cl.show(list, "Avion");
+	this.setVisible(true);
+}
+}
 
-	/*@Override
-	public void valueChanged(ListSelectionEvent e) {
-		Object source = e.getSource();	
-		if (source==list) {
-			for (int i = 0; i < tab.size(); i++) {
-				if(list.getSelectedValue().equals(tab.get(i))) {
-					tnom.setText(tab.get(i).getNom());
-					tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
-					tnbKm.setText(Integer.toString(tab.get(i).getNbKm()));
-					tprixPrev.setText(Integer.toString(tab.get(i).getPrixPrev()));
-					treduc.setText(Boolean.toString(tab.get(i).getReduction()));
-				}
-			}
-		}
-	}*/
+/*@Override
+public void valueChanged(ListSelectionEvent e) {
+Object source = e.getSource();
+if (source==list) {
+for (int i = 0; i < tab.size(); i++) {
+if(list.getSelectedValue().equals(tab.get(i))) {
+tnom.setText(tab.get(i).getNom());
+tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
+tnbKm.setText(Integer.toString(tab.get(i).getNbKm()));
+tprixPrev.setText(Integer.toString(tab.get(i).getPrixPrev()));
+treduc.setText(Boolean.toString(tab.get(i).getReduction()));
+}
+}
+}
+}*/
 }

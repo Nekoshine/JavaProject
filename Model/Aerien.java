@@ -30,8 +30,8 @@ public abstract class Aerien extends Vehicule {
   }
   
   
-  public Aerien(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int nbHeures, int nbMoteurs) {
-    super(marque,  modele,  prixLocation,  etat,  vitesseMax);
+  public Aerien(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int nbHeures, int nbMoteurs,int id) {
+    super(marque,  modele,  prixLocation,  etat,  vitesseMax,id);
     this.nbHeures=nbHeures;
     this.nbMoteurs=nbMoteurs;
   }

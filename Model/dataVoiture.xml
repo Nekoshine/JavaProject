@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
   <element>
+    <id>0</id>
     <etat>false</etat>
     <km>100000</km>
-    <marque>Peugoet</marque>
+    <marque>Peugeot</marque>
     <modele>206</modele>
     <nbPlace>5</nbPlace>
     <prixLocation>0</prixLocation>
@@ -11,6 +12,7 @@
     <vitesseMax>155</vitesseMax>
   </element>
   <element>
+    <id>1</id>
     <etat>false</etat>
     <km>100000</km>
     <marque>Renault</marque>
@@ -21,6 +23,7 @@
     <vitesseMax>160</vitesseMax>
   </element>
   <element>
+    <id>2</id>
     <etat>false</etat>
     <km>100000</km>
     <marque>Citroen</marque>
@@ -31,6 +34,7 @@
     <vitesseMax>180</vitesseMax>
   </element>
   <element>
+    <id>3</id>
     <etat>false</etat>
     <km>100000</km>
     <marque>Dodge</marque>
@@ -41,6 +45,7 @@
     <vitesseMax>275</vitesseMax>
   </element>
   <element>
+    <id>4</id>
     <etat>false</etat>
     <km>100000</km>
     <marque>Ford</marque>
@@ -51,6 +56,7 @@
     <vitesseMax>290</vitesseMax>
   </element>
   <element>
+    <id>5</id>
     <etat>false</etat>
     <km>100000</km>
     <marque>Bugatti</marque>
@@ -61,6 +67,7 @@
     <vitesseMax>407</vitesseMax>
   </element>
   <element>
+    <id>6</id>
     <etat>false</etat>
     <km>320000</km>
     <marque>Opel</marque>
@@ -70,34 +77,5 @@
     <puissance>125</puissance>
     <vitesseMax>170</vitesseMax>
   </element>
-<element>
-<etat>false</etat>
-<km>10000</km>
-<marque>Renault</marque>
-<modele>Zoe</modele>
-<nbPlace>4</nbPlace>
-<prixLocation>0</prixLocation>
-<puissance>60.0</puissance>
-<vitesseMax>140</vitesseMax>
-</element>
-<element>
-<etat>false</etat>
-<km>10000</km>
-<marque>Renault</marque>
-<modele>Zoe</modele>
-<nbPlace>4</nbPlace>
-<prixLocation>0</prixLocation>
-<puissance>60.0</puissance>
-<vitesseMax>140</vitesseMax>
-</element>
-<element>
-<etat>false</etat>
-<km>10000</km>
-<marque>Renault</marque>
-<modele>Zoe</modele>
-<nbPlace>4</nbPlace>
-<prixLocation>0</prixLocation>
-<puissance>60.0</puissance>
-<vitesseMax>140</vitesseMax>
-</element>
+
 </root>

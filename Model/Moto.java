@@ -10,8 +10,8 @@ public class Moto extends Terrestre {
     super();
   }
   
-  public Moto(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int km, double puissance) {
-    super(marque,  modele,  prixLocation,  etat,  vitesseMax,km,puissance);
+  public Moto(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int km, double puissance,int id) {
+    super(marque,  modele,  prixLocation,  etat,  vitesseMax,km,puissance,id);
   }
   
   

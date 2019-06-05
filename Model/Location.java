@@ -10,12 +10,12 @@ public class Location {
   private Vehicule vehicule;
   private int prixPrev;
   private int kmPrev;
-  //UN VEHICULE
+  private int id;
   public Location() {
     super();
   }
   
-  public Location(Date dateDebut, Date dateFin, Client client, Vehicule vehicule,int prixPrev, int kmPrev) {
+  public Location(Date dateDebut, Date dateFin, Client client, Vehicule vehicule,int prixPrev, int kmPrev,int id) {
     super();
     this.dateDebut = dateDebut;
     this.dateFin = dateFin;
@@ -23,8 +23,14 @@ public class Location {
     this.vehicule = vehicule;
     this.prixPrev = prixPrev;
     this.kmPrev = kmPrev;
+    this.id=id;
   }
-  
+  public int getId(){
+    return this.id;
+  }
+  public void setId(int id){
+    this.id=id;
+  }
   public Date getDateDebut() {
     return dateDebut;
   }

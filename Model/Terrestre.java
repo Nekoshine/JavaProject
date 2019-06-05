@@ -18,8 +18,8 @@ public abstract class Terrestre extends Vehicule {
     super();
   }
   
-  public Terrestre(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int km ,double puissance) {
-    super(marque,  modele,  prixLocation,  etat,  vitesseMax);
+  public Terrestre(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int km ,double puissance,int id) {
+    super(marque,  modele,  prixLocation,  etat,  vitesseMax,id);
     this.km = km;
     this.puissance = puissance;
   }

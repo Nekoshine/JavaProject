@@ -14,9 +14,10 @@ public class Voiture extends Terrestre {
     super();
   }
   
-  public Voiture(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int km, int nbPlace, double puissance) {
-    super( marque,  modele,  prixLocation,  etat,  vitesseMax,km,puissance);
+  public Voiture(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int km, int nbPlace, double puissance,int id) {
+    super( marque,  modele,  prixLocation,  etat,  vitesseMax,km,puissance,id);
     this.nbPlace = nbPlace;
+    
   }
   
   

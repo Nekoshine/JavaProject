@@ -8,8 +8,8 @@ public class Avion extends Aerien {
     super();
   }
   
-  public Avion(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int nbHeures, int nbMoteurs) {
-    super(marque,  modele,  prixLocation,  etat,  vitesseMax,nbHeures,nbMoteurs);
+  public Avion(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int nbHeures, int nbMoteurs,int id) {
+    super(marque,  modele,  prixLocation,  etat,  vitesseMax,nbHeures,nbMoteurs,id);
   }
   
   

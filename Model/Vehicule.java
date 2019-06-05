@@ -28,21 +28,27 @@ public abstract class Vehicule {
   */
   private int vitesseMax;
   
-  
+  private int id;
   
   public Vehicule() {
     super();
   }
   
-  public Vehicule(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax) {
+  public Vehicule(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int id) {
     super();
     this.marque = marque;
     this.modele = modele;
     this.prixLocation = prixLocation;
     this.etat = etat;
     this.vitesseMax = vitesseMax;
+    this.id = id;
   }
-  
+  public int getId(){
+    return id;
+  }
+  public void setId(int id){
+    this.id=id;
+  }
   public String getMarque() {
     return marque;
   }
