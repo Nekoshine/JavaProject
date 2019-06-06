@@ -26,6 +26,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	public JButton bclient;
 	public JButton bloc;
 	public JButton bgestion;
+	public JButton bres;
 
 	public MenuPrincipal() {
 		super("VOITOVION");
@@ -56,7 +57,8 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		bloc.setPreferredSize(new Dimension(150,100));
 		JPanel tl = new JPanel();
 		tl.add(bloc);
-		JButton bres = new JButton("Restitutions");
+		bres = new JButton("Restitutions");
+		bres.addActionListener(this);
 		bres.setFont(f);
 		bres.setPreferredSize(new Dimension(150,100));
 		JPanel tr = new JPanel();
@@ -91,7 +93,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		JPanel pani2 = new JPanel();
 		pani2.add(label2);
 		pani2.setBackground(Color.white);
-		pani2.addMouseListener(new MouseListener() {
+		/*pani2.addMouseListener(new MouseListener() {
 			Sound sound = new Sound("dejavu.WAV");
 			InputStream stream = new ByteArrayInputStream(sound.getSamples()); 
 
@@ -132,7 +134,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 				// TODO Auto-generated method stub
 
 			}
-		});
+		});*/
 		this.add(pani2,BorderLayout.SOUTH);
 		Icon icon3 = new ImageIcon("moto.gif");
 		JLabel label3 = new JLabel(icon3);
@@ -161,10 +163,15 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 			this.setVisible(false);
 			MenuGestion mg = new MenuGestion();
 		}
+		else if (source==bres) {
+			this.setVisible(false);
+			MenuRest mg = new MenuRest();
+		}
 	}
 
 	
 	public static void main(String[] args) {
-		MenuPrincipal menu = new MenuPrincipal();
+		MenuRest m = new MenuRest(); 
+		//MenuPrincipal menu = new MenuPrincipal(); 
 	}
 }

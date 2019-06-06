@@ -8,7 +8,7 @@ public class Location {
   private Date dateFin;
   private Client client;
   private Vehicule vehicule;
-  private int prixPrev;
+  private float prixPrev;
   private int kmPrev;
   private int id;
   public Location() {
@@ -39,11 +39,11 @@ public class Location {
     this.dateDebut = dateDebut;
   }
   
-  public int getPrixPrev() {
+  public float getPrixPrev() {
     return prixPrev;
   }
   
-  public void setPrixPrev(int prixPrev) {
+  public void setPrixPrev(float prixPrev) {
     this.prixPrev = prixPrev;
   }
   public int getKmPrev() {

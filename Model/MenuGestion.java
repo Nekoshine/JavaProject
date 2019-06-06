@@ -23,7 +23,6 @@ import javax.swing.plaf.DimensionUIResource;
 
 public class MenuGestion extends JFrame implements ActionListener, ListSelectionListener{
 
-	private static final long serialVersionUID = 1L;
 	public JButton ok;
 	public JButton retour;
 	public JTextField tmarqueMoto;
@@ -58,6 +57,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 	public JPanel scrollvp;
 	public CardLayout cl;
 	public JPanel infos;
+	private JButton bact;
 
 	public MenuGestion() {
 		super("VOITOVION");
@@ -78,7 +78,14 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		badd.addActionListener(this);
 		badd.setPreferredSize(new Dimension(100, 100));
 		bsupp = new JButton("Supprimer");
+		bsupp.addActionListener(this);
 		bsupp.setPreferredSize(new Dimension(100, 100));
+		bact = new JButton("Actualiser");
+		bact.addActionListener(this);
+		bact.setPreferredSize(new Dimension(100, 100));
+		JPanel actp = new JPanel();
+		actp.add(bact);
+		actp.setBackground(Color.white);
 		JPanel addp = new JPanel();
 		addp.add(badd);
 		JPanel suppp = new JPanel();
@@ -86,6 +93,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		suppp.setBackground(Color.white);
 		suppp.add(bsupp);
 		addsupp.add(addp);
+		addsupp.add(actp);
 		addsupp.add(suppp);
 		t.add(addsupp);
 		this.add(t,BorderLayout.NORTH);
@@ -179,7 +187,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsmoto.setLayout(new GridLayout(7,2));
 		JLabel marqueMoto = new JLabel("Marque:");
 		fieldsmoto.add(marqueMoto);
-		tmarqueMoto = new JTextField();
+		tmarqueMoto = new JTextField();  
 		fieldsmoto.add(tmarqueMoto);
 		JLabel modeleMoto = new JLabel("Modèle:");
 		fieldsmoto.add(modeleMoto);
@@ -235,7 +243,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsavion.add(nbHeures);
 		tnbHeures = new JTextField();
 		fieldsavion.add(tnbHeures);
-		JLabel nbMoteurs = new JLabel("Nombre d'heures:");
+		JLabel nbMoteurs = new JLabel("Nombre de moteurs:");
 		fieldsavion.add(nbMoteurs);
 		tnbMoteurs = new JTextField();
 		fieldsavion.add(tnbMoteurs);
@@ -271,30 +279,73 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		/*if (source==ok) {
-			for (int i = 0; i < tab.size(); i++) {
-				if(list.getSelectedValue().equals(tab.get(i))) {
-					tab.get(i).setNom(tnom.getText());
-					tab.get(i).setNumTel(Integer.parseInt(this.tnumTel.getText()));
-					tab.get(i).setNbKm(Integer.parseInt(this.tnbKm.getText()));
-					tab.get(i).setPrixPrev(Integer.parseInt(this.tprixPrev.getText()));
-					tab.get(i).setReduction(Boolean.parseBoolean(this.treduc.getText()));
-				}
+		if (source==ok) {
+			System.out.println(vlist.getSelectedValue().getClass().toString());
+			switch (vlist.getSelectedValue().getClass().toString()) {
+			case "class Voiture":
+				Voiture v = (Voiture)vlist.getSelectedValue();
+				GestionXML.deleteVehicule(v);
+				v.setEtat(Boolean.parseBoolean(tetatVoit.getText()));
+				v.setId(GestionXML.getLastID(v));
+				v.setKm(Integer.parseInt(tKmVoit.getText()));
+				v.setMarque(tmarqueVoit.getText());
+				v.setModele(tmodeleVoit.getText());
+				v.setNbPlace(Integer.parseInt(tnbPlace.getText()));
+				v.setPrixLocation(Integer.parseInt(tprixLocVoit.getText()));
+				v.setPuissance(Double.parseDouble(tpuissanceVoit.getText()));
+				v.setVitesseMax(Integer.parseInt(tpuissanceVoit.getText()));
+				GestionXML.addVoiture(v);
+				break;
+			case "class Moto":
+				Moto m = (Moto)vlist.getSelectedValue();
+				GestionXML.deleteVehicule(m);
+				m.setEtat(Boolean.parseBoolean(tetatMoto.getText()));
+				m.setId(GestionXML.getLastID(m));
+				m.setKm(Integer.parseInt(tKmMoto.getText()));
+				m.setMarque(tmarqueMoto.getText());
+				m.setModele(tmodeleMoto.getText());
+				m.setPrixLocation(Integer.parseInt(tprixLocMoto.getText()));
+				m.setPuissance(Double.parseDouble(tpuissanceMoto.getText()));
+				m.setVitesseMax(Integer.parseInt(tvitesseMaxMoto.getText()));
+				GestionXML.addMoto(m);
+				break;
+			case "class Avion":
+				Avion a = (Avion)vlist.getSelectedValue();
+				GestionXML.deleteVehicule(a);
+				a.setEtat(Boolean.parseBoolean(tetatAvion.getText()));
+				a.setId(GestionXML.getLastID(a));
+				a.setMarque(tmarqueAvion.getText());
+				a.setModele(tmodeleAvion.getText());
+				a.setNbHeures(Integer.parseInt(tnbHeures.getText()));
+				a.setNbMoteurs(Integer.parseInt(tnbMoteurs.getText()));
+				a.setPrixLocation(Integer.parseInt(tprixLocAvion.getText()));
+				a.setVitesseMax(Integer.parseInt(tvitesseMaxAvion.getText()));
+				GestionXML.addAvion(a);
+				break;
+
+			default:
+				break;
 			}
 		}
-		else*/ if (source==retour) {
+		else if (source==retour) {
 			this.setVisible(false);
 			MenuPrincipal mp = new MenuPrincipal();
 		}
 		else if (source==badd) {
+			AddVehicule mg = new AddVehicule();
 		}
 		else if (source==bsupp) {
+			GestionXML.deleteVehicule(vlist.getSelectedValue());
+		}
+		else if (source==bact) {
+			this.setVisible(false);
+			MenuGestion mg = new MenuGestion();
 		}
 	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		Object source = e.getSource();	
+		Object source = e.getSource(); 
 		if (source==vlist) {
 			if (vlist.getSelectedValue().getClass().getName().equals("Voiture")) {
 				cl.show(infos, "Voiture");

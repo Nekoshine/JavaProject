@@ -1,43 +1,477 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-  <element>
-    <id>0</id>
-    <nbKm>50</nbKm>
-    <nom>Cormier</nom>
-    <numTel>645954638</numTel>
-    <prixPrev>0</prixPrev>
-    <reduction>false</reduction>
-  </element>
-  <element>
-    <id>1</id>
-    <nbKm>50</nbKm>
-    <nom>Laumonnier</nom>
-    <numTel>698775462</numTel>
-    <prixPrev>0</prixPrev>
-    <reduction>false</reduction>
-  </element>
-  <element>
-    <id>2</id>
-    <nbKm>50</nbKm>
-    <nom>Dupond</nom>
-    <numTel>640186750</numTel>
-    <prixPrev>0</prixPrev>
-    <reduction>false</reduction>
-  </element>
-  <element>
-    <id>3</id>
-    <nbKm>50</nbKm>
-    <nom>Marquais</nom>
-    <numTel>658702128</numTel>
-    <prixPrev>0</prixPrev>
-    <reduction>false</reduction>
-  </element>
-  <element>
-    <id>4</id>
-    <nbKm>50</nbKm>
-    <nom>Poiro</nom>
-    <numTel>675874128</numTel>
-    <prixPrev>0</prixPrev>
-    <reduction>false</reduction>
-  </element>
+                                                      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <element>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <id>0</id>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nbKm>50</nbKm>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nom>Cormier</nom>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <numTel>645954638</numTel>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <prixPrev>0</prixPrev>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <reduction>false</reduction>
+                                                                                                          
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </element>
+                                                      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <element>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <id>1</id>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nbKm>50</nbKm>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nom>Laumonnier</nom>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <numTel>698775462</numTel>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <prixPrev>0</prixPrev>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <reduction>false</reduction>
+                                                                                                          
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </element>
+                                                      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <element>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <id>2</id>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nbKm>50</nbKm>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nom>Dupond</nom>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <numTel>640186750</numTel>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <prixPrev>0</prixPrev>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <reduction>false</reduction>
+                                                                                                          
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </element>
+                                                      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <element>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <id>3</id>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nbKm>50</nbKm>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <nom>Marquais</nom>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <numTel>658702128</numTel>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <prixPrev>0</prixPrev>
+                                                                                                            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <reduction>false</reduction>
+                                                                                                          
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </element>
+                                                      
+    
+    
+    
+    
+    
+    
+                        
+    
+
+
+    
+
+
+    
+
+
+
+    
+
+
+    
+
+
+    
+
 </root>

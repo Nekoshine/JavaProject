@@ -5,7 +5,10 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -22,7 +25,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
 
 public class MenuLocation extends JFrame implements ActionListener/*, ListSelectionListener*/{
-	
+
 	private static final long serialVersionUID = 1L;
 	public JButton ok;
 	public JButton retour;
@@ -46,10 +49,11 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 	public JPanel scrollap;
 	public CardLayout cl;
 	public ArrayList<Client> tab;
-	
+	public String vehicule;
+
 	public MenuLocation() {
 		super("VOITOVION");
-		
+
 		JPanel t = new JPanel();
 		t.setLayout(new GridLayout(2, 1));
 		Icon titre= new ImageIcon("VOITOVION.png");
@@ -85,7 +89,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		choix.add(avionp);
 		t.add(choix);
 		this.add(t,BorderLayout.NORTH);
-		
+
 		list = new JPanel();
 		cl = new CardLayout();
 		list.setLayout(cl);
@@ -102,7 +106,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		scrollv.setPreferredSize(new Dimension(400, 400));
 		scrollvp.add(scrollv);
 		scrollvp.setBackground(Color.white);
-		
+
 		mtab= new ArrayList<Moto>();
 		mtab=GestionXML.readXMLMoto();
 		Moto[] listm= new Moto[mtab.size()];
@@ -116,7 +120,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		scrollm.setPreferredSize(new Dimension(400, 400));
 		scrollmp.add(scrollm);
 		scrollmp.setBackground(Color.white);
-		
+
 		atab= new ArrayList<Avion>();
 		atab=GestionXML.readXMLAvion();
 		Avion[] lista= new Avion[atab.size()];
@@ -130,14 +134,14 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		scrolla.setPreferredSize(new Dimension(400, 400));
 		scrollap.add(scrolla);
 		scrollap.setBackground(Color.white);
-		
+
 		list.add("Voiture", scrollvp);
 		list.add("Moto", scrollmp);
 		list.add("Avion", scrollap);
 		list.setBackground(Color.white);
 		this.add(list,BorderLayout.WEST);
-		
-		
+
+
 		Icon fleche= new ImageIcon("fleche.png");
 		JPanel panf=new JPanel();
 		JLabel tf=new JLabel();
@@ -148,7 +152,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		panf.setBackground(Color.white);
 		this.add(panf,BorderLayout.CENTER);
 		//infos.add(panf);
-		
+
 		JPanel fields = new JPanel();
 		fields.setLayout(new GridLayout(5,2));
 		JLabel nom = new JLabel("Client:");
@@ -185,7 +189,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		this.add(fieldsp,BorderLayout.EAST);
 		//infos.add(fieldsp);
 		//this.add(infos,BorderLayout.CENTER);
-		
+
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
 		JPanel retp= new JPanel();
@@ -203,56 +207,70 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		okp.setBackground(Color.white);
 		retp.setBackground(Color.white);
 		this.add(boutret,BorderLayout.SOUTH);
-		
+
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		vehicule="";
 	}
-	
+
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		/*if (source==ok) {
-		for (int i = 0; i < tab.size(); i++) {
-		if(list.getSelectedValue().equals(tab.get(i))) {
-		tab.get(i).setNom(tnom.getText());
-		tab.get(i).setNumTel(Integer.parseInt(this.tnumTel.getText()));
-		tab.get(i).setNbKm(Integer.parseInt(this.tnbKm.getText()));
-		tab.get(i).setPrixPrev(Integer.parseInt(this.tprixPrev.getText()));
-		tab.get(i).setReduction(Boolean.parseBoolean(this.treduc.getText()));
+		if (source==ok) {
+			Location loc = new Location();
+			loc.setClient((Client) cbclient.getSelectedItem());
+			try {
+				loc.setDateDebut(new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut.getText()));
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			try {
+				loc.setDateFin(new SimpleDateFormat("dd/MM/yyyy").parse(dateFin.getText()));
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			loc.setId(GestionXML.getLastIDLoc());
+			loc.setKmPrev(Integer.parseInt(kmPrev.getText()));
+			loc.setPrixPrev(Float.parseFloat(tprixPrev.getText()));
+			switch (vehicule) {
+			case "Voiture":
+				loc.setVehicule(vlist.getSelectedValue());
+				vlist.getSelectedValue().setEtat(true);
+				break;
+			case "Moto":
+				loc.setVehicule(mlist.getSelectedValue());
+				mlist.getSelectedValue().setEtat(true);
+				break;
+			case "Avion":
+				loc.setVehicule(alist.getSelectedValue());
+				alist.getSelectedValue().setEtat(true);
+				break;
+			default:
+				break;
+			}
+			GestionXML.addLocation(loc);
+		}
+		else if (source==retour) {
+			this.setVisible(false);
+			MenuPrincipal mp = new MenuPrincipal();
+		}
+		else if (source==bvoit) {
+			cl.show(list, "Voiture");
+			vehicule="Voiture";
+			this.setVisible(true);
+		}
+		else if (source==bmoto) {
+			cl.show(list, "Moto");
+			vehicule="Moto";
+			this.setVisible(true);
+		}
+		else if (source==bavion) {
+			cl.show(list, "Avion");
+			vehicule="Avion";
+			this.setVisible(true);
+		}
 	}
-}
-}
-else*/ if (source==retour) {
-this.setVisible(false);
-MenuPrincipal mp = new MenuPrincipal();
-}
-else if (source==bvoit) {
-	cl.show(list, "Voiture");
-	this.setVisible(true);
-}
-else if (source==bmoto) {
-	cl.show(list, "Moto");
-	this.setVisible(true);
-}
-else if (source==bavion) {
-	cl.show(list, "Avion");
-	this.setVisible(true);
-}
-}
 
-/*@Override
-public void valueChanged(ListSelectionEvent e) {
-Object source = e.getSource();
-if (source==list) {
-for (int i = 0; i < tab.size(); i++) {
-if(list.getSelectedValue().equals(tab.get(i))) {
-tnom.setText(tab.get(i).getNom());
-tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
-tnbKm.setText(Integer.toString(tab.get(i).getNbKm()));
-tprixPrev.setText(Integer.toString(tab.get(i).getPrixPrev()));
-treduc.setText(Boolean.toString(tab.get(i).getReduction()));
-}
-}
-}
-}*/
 }

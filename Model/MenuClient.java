@@ -31,6 +31,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 	public JTextField treduc;
 	public JButton badd;
 	public JButton bsupp;
+	public JButton bact;
 	public JList<Client> list;
 	public ArrayList<Client> tab;
 
@@ -38,7 +39,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		super("VOITOVION");
 
 		JPanel t = new JPanel();
-		t.setLayout(new GridLayout(2, 1));
+		t.setLayout(new GridLayout(2, 1)); 
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
 		JLabel tl=new JLabel();
@@ -48,12 +49,19 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		pan.setBackground(Color.white);
 		t.add(pan);
 		JPanel addsupp = new JPanel();
-		addsupp.setLayout(new GridLayout(1, 2));
+		addsupp.setLayout(new GridLayout(1, 3));
 		badd = new JButton("Ajouter");
 		badd.addActionListener(this);
 		badd.setPreferredSize(new Dimension(100, 100));
 		bsupp = new JButton("Supprimer");
+		bsupp.addActionListener(this);
 		bsupp.setPreferredSize(new Dimension(100, 100));
+		bact = new JButton("Actualiser");
+		bact.addActionListener(this);
+		bact.setPreferredSize(new Dimension(100, 100));
+		JPanel actp = new JPanel();
+		actp.add(bact);
+		actp.setBackground(Color.white);
 		JPanel addp = new JPanel();
 		addp.add(badd);
 		JPanel suppp = new JPanel();
@@ -61,6 +69,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		suppp.setBackground(Color.white);
 		suppp.add(bsupp);
 		addsupp.add(addp);
+		addsupp.add(actp);
 		addsupp.add(suppp);
 		t.add(addsupp);
 		this.add(t,BorderLayout.NORTH);
@@ -148,36 +157,42 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
-			for (int i = 0; i < tab.size(); i++) {
-				if(list.getSelectedValue().equals(tab.get(i))) {
-					tab.get(i).setNom(tnom.getText());
-					tab.get(i).setNumTel(Integer.parseInt(this.tnumTel.getText()));
-					tab.get(i).setNbKm(Integer.parseInt(this.tnbKm.getText()));
-					tab.get(i).setPrixPrev(Integer.parseInt(this.tprixPrev.getText()));
-					tab.get(i).setReduction(Boolean.parseBoolean(this.treduc.getText()));
-				}
-			}
+			Client c = list.getSelectedValue();
+			GestionXML.deleteClient(c);
+			c.setNbKm(Integer.parseInt(tnbKm.getText()));
+			c.setNom(tnom.getText());
+			c.setNumTel(Integer.parseInt(tnumTel.getText()));
+			c.setPrixPrev(Integer.parseInt(tprixPrev.getText()));
+			c.setReduction(Boolean.parseBoolean(treduc.getText()));
+			GestionXML.addClient(c);
+			
 		}
 		else if (source==retour) {
 			this.setVisible(false);
 			MenuPrincipal mp = new MenuPrincipal();
 		}
 		else if (source==badd) {
-			System.out.println("aurevoir");
-			AddClient addc = new AddClient();
+			AddClient addc = new AddClient(); 
+		}
+		else if (source==bsupp) {
+			GestionXML.deleteClient(list.getSelectedValue());
+		}
+		else if (source==bact) {
+			this.setVisible(false);
+			MenuClient mc = new MenuClient();
 		}
 	}
 
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		Object source = e.getSource();	
+		Object source = e.getSource();
 		if (source==list) {
 			for (int i = 0; i < tab.size(); i++) {
 				if(list.getSelectedValue().equals(tab.get(i))) {
 					tnom.setText(tab.get(i).getNom());
 					tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
 					tnbKm.setText(Integer.toString(tab.get(i).getNbKm()));
-					tprixPrev.setText(Integer.toString(tab.get(i).getPrixPrev()));
+					tprixPrev.setText(Float.toString(tab.get(i).getPrixPrev()));
 					treduc.setText(Boolean.toString(tab.get(i).getReduction()));
 				}
 			}

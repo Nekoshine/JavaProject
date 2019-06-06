@@ -77,18 +77,16 @@ public class AddClient extends JFrame implements ActionListener{
 		pok.setBackground(Color.white);
 		this.add(boutons,BorderLayout.SOUTH);
 		
-		this.add(infos);
+		this.add(infos); 
 		this.setBounds(100, 100, 500, 500);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
-			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), Integer.parseInt(this.tnbKm.getText()), Integer.parseInt(this.tprixPrev.getText()), Boolean.parseBoolean(this.treduc.getText()));
-			System.out.println(c.toString());
-			
+			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), Integer.parseInt(this.tnbKm.getText()), Integer.parseInt(this.tprixPrev.getText()), Boolean.parseBoolean(this.treduc.getText()),GestionXML.getLastIDClient());
+			GestionXML.addClient(c);
 			this.setVisible(false);
 		}
 		else if (source==retour) {

@@ -21,7 +21,7 @@ public class Client {
 	/**
 	*
 	*/
-	private int prixPrev;
+	private float prixPrev;
 	
 	/**
 	*
@@ -72,7 +72,7 @@ public class Client {
 		this.nbKm = nbKm;
 	}
 	
-	public int getPrixPrev() {
+	public float getPrixPrev() {
 		return prixPrev;
 	}
 	
@@ -101,7 +101,7 @@ public class Client {
 		result = prime * result + nbKm;
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		result = prime * result + numTel;
-		result = prime * result + prixPrev;
+		result = (int) (prime * result + prixPrev);
 		result = prime * result + ((reduction == null) ? 0 : reduction.hashCode());
 		return result;
 	}

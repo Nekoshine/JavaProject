@@ -1,63 +1,186 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-  <element>
-    <id>0</id>
-    <etat>false</etat>
-    <km>20000</km>
-    <marque>Kawasaki</marque>
-    <modele>z650</modele>
-    <prixLocation>0</prixLocation>
-    <puissance>68</puissance>
-    <vitesseMax>200</vitesseMax>
-  </element>
-  <element>
-    <id>1</id>
-    <etat>false</etat>
-    <km>20000</km>
-    <marque>Harley</marque>
-    <modele>street 750</modele>
-    <prixLocation>0</prixLocation>
-    <puissance>57</puissance>
-    <vitesseMax>190</vitesseMax>
-  </element>
-  <element>
-    <id>2</id>
-    <etat>false</etat>
-    <km>1000</km>
-    <marque>Vespa</marque>
-    <modele>Primavera 125</modele>
-    <prixLocation>0</prixLocation>
-    <puissance>11</puissance>
-    <vitesseMax>98</vitesseMax>
-  </element>
-  <element>
-    <id>3</id>
-    <etat>false</etat>
-    <km>500</km>
-    <marque>Solex</marque>
-    <modele>S3800</modele>
-    <prixLocation>0</prixLocation>
-    <puissance>0.795</puissance>
-    <vitesseMax>35</vitesseMax>
-  </element>
-  <element>
-    <id>4</id>
-    <etat>false</etat>
-    <km>5000</km>
-    <marque>Peugeot</marque>
-    <modele>R 1200 GS</modele>
-    <prixLocation>0</prixLocation>
-    <puissance>125</puissance>
-    <vitesseMax>210</vitesseMax>
-  </element>
-  <element>
-    <id>5</id>
-    <etat>false</etat>
-    <km>10000</km>
-    <marque>Kawa</marque>
-    <modele>jsp</modele>
-    <prixLocation>0</prixLocation>
-    <puissance>60.0</puissance>
-    <vitesseMax>140</vitesseMax>
-  </element>
+          
+    
+    <element>
+                    
+        
+        <id>0</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <km>20000</km>
+                    
+        
+        <marque>Kawasaki</marque>
+                    
+        
+        <modele>z650</modele>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <puissance>68</puissance>
+                    
+        
+        <vitesseMax>200</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>1</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <km>20000</km>
+                    
+        
+        <marque>Harley</marque>
+                    
+        
+        <modele>street 750</modele>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <puissance>57</puissance>
+                    
+        
+        <vitesseMax>190</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>2</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <km>1000</km>
+                    
+        
+        <marque>Vespa</marque>
+                    
+        
+        <modele>Primavera 125</modele>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <puissance>11</puissance>
+                    
+        
+        <vitesseMax>98</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>3</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <km>500</km>
+                    
+        
+        <marque>Solex</marque>
+                    
+        
+        <modele>S3800</modele>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <puissance>0.795</puissance>
+                    
+        
+        <vitesseMax>35</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>4</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <km>5000</km>
+                    
+        
+        <marque>Peugeot</marque>
+                    
+        
+        <modele>R 1200 GS</modele>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <puissance>125</puissance>
+                    
+        
+        <vitesseMax>210</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>5</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <km>10000</km>
+                    
+        
+        <marque>Kawa</marque>
+                    
+        
+        <modele>jsp</modele>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <puissance>60.0</puissance>
+                    
+        
+        <vitesseMax>140</vitesseMax>
+                  
+    
+    </element>
+        
+    
+
 </root>

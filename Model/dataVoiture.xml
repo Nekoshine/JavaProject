@@ -1,81 +1,411 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-  <element>
-    <id>0</id>
-    <etat>false</etat>
-    <km>100000</km>
-    <marque>Peugeot</marque>
-    <modele>206</modele>
-    <nbPlace>5</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>60</puissance>
-    <vitesseMax>155</vitesseMax>
-  </element>
-  <element>
-    <id>1</id>
-    <etat>false</etat>
-    <km>100000</km>
-    <marque>Renault</marque>
-    <modele>Clio 2</modele>
-    <nbPlace>5</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>60</puissance>
-    <vitesseMax>160</vitesseMax>
-  </element>
-  <element>
-    <id>2</id>
-    <etat>false</etat>
-    <km>100000</km>
-    <marque>Citroen</marque>
-    <modele>C4</modele>
-    <nbPlace>5</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>90</puissance>
-    <vitesseMax>180</vitesseMax>
-  </element>
-  <element>
-    <id>3</id>
-    <etat>false</etat>
-    <km>100000</km>
-    <marque>Dodge</marque>
-    <modele>Viper</modele>
-    <nbPlace>2</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>394</puissance>
-    <vitesseMax>275</vitesseMax>
-  </element>
-  <element>
-    <id>4</id>
-    <etat>false</etat>
-    <km>100000</km>
-    <marque>Ford</marque>
-    <modele>Mustang</modele>
-    <nbPlace>4</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>290</puissance>
-    <vitesseMax>290</vitesseMax>
-  </element>
-  <element>
-    <id>5</id>
-    <etat>false</etat>
-    <km>100000</km>
-    <marque>Bugatti</marque>
-    <modele>Veyron</modele>
-    <nbPlace>2</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>1001</puissance>
-    <vitesseMax>407</vitesseMax>
-  </element>
-  <element>
-    <id>6</id>
-    <etat>false</etat>
-    <km>320000</km>
-    <marque>Opel</marque>
-    <modele>Vectra</modele>
-    <nbPlace>5</nbPlace>
-    <prixLocation>0</prixLocation>
-    <puissance>125</puissance>
-    <vitesseMax>170</vitesseMax>
-  </element>
+                      
+    
+    
+    
+    
+                  
+    
+    
+    
+    
+    <element>
+                                            
+        
+        
+        
+        
+        <id>1</id>
+                                            
+        
+        
+        
+        
+        <etat>false</etat>
+                                            
+        
+        
+        
+        
+        <km>100000</km>
+                                            
+        
+        
+        
+        
+        <marque>Renault</marque>
+                                            
+        
+        
+        
+        
+        <modele>Clio 2</modele>
+                                            
+        
+        
+        
+        
+        <nbPlace>5</nbPlace>
+                                            
+        
+        
+        
+        
+        <prixLocation>0</prixLocation>
+                                            
+        
+        
+        
+        
+        <puissance>60</puissance>
+                                            
+        
+        
+        
+        
+        <vitesseMax>160</vitesseMax>
+                                          
+    
+    
+    
+    
+    </element>
+                      
+    
+    
+    
+    
+    <element>
+                                            
+        
+        
+        
+        
+        <id>2</id>
+                                            
+        
+        
+        
+        
+        <etat>false</etat>
+                                            
+        
+        
+        
+        
+        <km>100000</km>
+                                            
+        
+        
+        
+        
+        <marque>Citroen</marque>
+                                            
+        
+        
+        
+        
+        <modele>C4</modele>
+                                            
+        
+        
+        
+        
+        <nbPlace>5</nbPlace>
+                                            
+        
+        
+        
+        
+        <prixLocation>0</prixLocation>
+                                            
+        
+        
+        
+        
+        <puissance>90</puissance>
+                                            
+        
+        
+        
+        
+        <vitesseMax>180</vitesseMax>
+                                          
+    
+    
+    
+    
+    </element>
+                      
+    
+    
+    
+    
+    <element>
+                                            
+        
+        
+        
+        
+        <id>3</id>
+                                            
+        
+        
+        
+        
+        <etat>false</etat>
+                                            
+        
+        
+        
+        
+        <km>100000</km>
+                                            
+        
+        
+        
+        
+        <marque>Dodge</marque>
+                                            
+        
+        
+        
+        
+        <modele>Viper</modele>
+                                            
+        
+        
+        
+        
+        <nbPlace>2</nbPlace>
+                                            
+        
+        
+        
+        
+        <prixLocation>0</prixLocation>
+                                            
+        
+        
+        
+        
+        <puissance>394</puissance>
+                                            
+        
+        
+        
+        
+        <vitesseMax>275</vitesseMax>
+                                          
+    
+    
+    
+    
+    </element>
+                      
+    
+    
+    
+    
+    <element>
+                                            
+        
+        
+        
+        
+        <id>4</id>
+                                            
+        
+        
+        
+        
+        <etat>false</etat>
+                                            
+        
+        
+        
+        
+        <km>100000</km>
+                                            
+        
+        
+        
+        
+        <marque>Ford</marque>
+                                            
+        
+        
+        
+        
+        <modele>Mustang</modele>
+                                            
+        
+        
+        
+        
+        <nbPlace>4</nbPlace>
+                                            
+        
+        
+        
+        
+        <prixLocation>0</prixLocation>
+                                            
+        
+        
+        
+        
+        <puissance>290</puissance>
+                                            
+        
+        
+        
+        
+        <vitesseMax>290</vitesseMax>
+                                          
+    
+    
+    
+    
+    </element>
+                      
+    
+    
+    
+    
+    <element>
+                                            
+        
+        
+        
+        
+        <id>5</id>
+                                            
+        
+        
+        
+        
+        <etat>false</etat>
+                                            
+        
+        
+        
+        
+        <km>100000</km>
+                                            
+        
+        
+        
+        
+        <marque>Bugatti</marque>
+                                            
+        
+        
+        
+        
+        <modele>Veyron</modele>
+                                            
+        
+        
+        
+        
+        <nbPlace>2</nbPlace>
+                                            
+        
+        
+        
+        
+        <prixLocation>0</prixLocation>
+                                            
+        
+        
+        
+        
+        <puissance>1001</puissance>
+                                            
+        
+        
+        
+        
+        <vitesseMax>407</vitesseMax>
+                                          
+    
+    
+    
+    
+    </element>
+                      
+    
+    
+    
+    
+    <element>
+                                            
+        
+        
+        
+        
+        <id>6</id>
+                                            
+        
+        
+        
+        
+        <etat>false</etat>
+                                            
+        
+        
+        
+        
+        <km>320000</km>
+                                            
+        
+        
+        
+        
+        <marque>Opel</marque>
+                                            
+        
+        
+        
+        
+        <modele>Vectra</modele>
+                                            
+        
+        
+        
+        
+        <nbPlace>5</nbPlace>
+                                            
+        
+        
+        
+        
+        <prixLocation>0</prixLocation>
+                                            
+        
+        
+        
+        
+        <puissance>125</puissance>
+                                            
+        
+        
+        
+        
+        <vitesseMax>170</vitesseMax>
+                                          
+    
+    
+    
+    
+    </element>
+                    
+    
+
+
+    
+
 
 </root>

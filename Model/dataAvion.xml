@@ -1,73 +1,216 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-  <element>
-    <id>0</id>
-    <etat>false</etat>
-    <marque>Boieng</marque>
-    <modele>747</modele>
-    <nbHeures>100</nbHeures>
-    <nbMoteurs>4</nbMoteurs>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>988</vitesseMax>
-  </element>
-  <element>
-    <id>1</id>
-    <etat>false</etat>
-    <marque>Airbus</marque>
-    <modele>A380</modele>
-    <nbHeures>100</nbHeures>
-    <nbMoteurs>4</nbMoteurs>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>1020</vitesseMax>
-  </element>
-  <element>
-    <id>2</id>
-    <etat>false</etat>
-    <marque>Air Tractor</marque>
-    <modele>AT-300</modele>
-    <nbHeures>100</nbHeures>
-    <nbMoteurs>1</nbMoteurs>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>250</vitesseMax>
-  </element>
-  <element>
-    <id>3</id>
-    <etat>false</etat>
-    <marque>Canadair</marque>
-    <modele>CL-84</modele>
-    <nbHeures>100</nbHeures>
-    <nbMoteurs>2</nbMoteurs>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>615</vitesseMax>
-  </element>
-  <element>
-    <id>4</id>
-    <etat>false</etat>
-    <marque>Lockheed</marque>
-    <modele>AC-130</modele>
-    <nbHeures>100</nbHeures>
-    <nbMoteurs>4</nbMoteurs>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>480</vitesseMax>
-  </element>
-  <element>
-    <id>5</id>
-    <etat>false</etat>
-    <marque>Dassault</marque>
-    <modele>Rafale</modele>
-    <nbHeures>100</nbHeures>
-    <nbMoteurs>2</nbMoteurs>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>2203</vitesseMax>
-  </element>
-  <element>
-    <id>5</id>
-    <etat>false</etat>
-    <nbMoteurs>4</nbMoteurs>
-    <marque>Airbus</marque>
-    <modele>a320</modele>
-    <nbHeures>100</nbHeures>
-    <prixLocation>0</prixLocation>
-    <vitesseMax>800</vitesseMax>
-  </element>
+          
+    
+    <element>
+                    
+        
+        <id>0</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <marque>Boieng</marque>
+                    
+        
+        <modele>747</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <nbMoteurs>4</nbMoteurs>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>988</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>1</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <marque>Airbus</marque>
+                    
+        
+        <modele>A380</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <nbMoteurs>4</nbMoteurs>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>1020</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>2</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <marque>Air Tractor</marque>
+                    
+        
+        <modele>AT-300</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <nbMoteurs>1</nbMoteurs>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>250</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>3</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <marque>Canadair</marque>
+                    
+        
+        <modele>CL-84</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <nbMoteurs>2</nbMoteurs>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>615</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>4</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <marque>Lockheed</marque>
+                    
+        
+        <modele>AC-130</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <nbMoteurs>4</nbMoteurs>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>480</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>5</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <marque>Dassault</marque>
+                    
+        
+        <modele>Rafale</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <nbMoteurs>2</nbMoteurs>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>2203</vitesseMax>
+                  
+    
+    </element>
+          
+    
+    <element>
+                    
+        
+        <id>5</id>
+                    
+        
+        <etat>false</etat>
+                    
+        
+        <nbMoteurs>4</nbMoteurs>
+                    
+        
+        <marque>Airbus</marque>
+                    
+        
+        <modele>a320</modele>
+                    
+        
+        <nbHeures>100</nbHeures>
+                    
+        
+        <prixLocation>0</prixLocation>
+                    
+        
+        <vitesseMax>800</vitesseMax>
+                  
+    
+    </element>
+        
+    
+
 </root>
