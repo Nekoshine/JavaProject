@@ -21,13 +21,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Document;
 import java.util.Date;
 /**
- * Cette classe permet de gérer les fichiers XML, que cela soit en écriture ou en lecture.
- */
+* Cette classe permet de gérer les fichiers XML, que cela soit en écriture ou en lecture.
+*/
 public class GestionXML{
 	/**
-	 * Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
-	 * @param c Client qui doit etre supprimé
-	 */
+	* Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
+	* @param c Client qui doit etre supprimé
+	*/
 	public static void deleteClient(Client c){
 		int id=c.getId();
 		try{
@@ -60,11 +60,11 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
-	 * Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
-	 * @param v Véhicule qui doit etre supprimé
-	 */
+	* Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
+	* @param v Véhicule qui doit etre supprimé
+	*/
 	public static void deleteVehicule(Vehicule v){
 		int id = v.getId();
 		try{
@@ -138,13 +138,13 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
-
-
+	
+	
+	
 	/**
-	 * Cette fonction retourne le prochain ID du client qui va etre ajouté lors du prochain ajout.
-	 * @return le prochain id
-	 */
+	* Cette fonction retourne le prochain ID du client qui va etre ajouté lors du prochain ajout.
+	* @return le prochain id
+	*/
 	public static int getLastIDClient(){
 		int id=0;
 		try{
@@ -152,10 +152,10 @@ public class GestionXML{
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataClient.xml"));
 			NodeList listeC = doc.getElementsByTagName("element"); //On récupère chaque noeud
-
+			
 			Element node = (Element) listeC.item(listeC.getLength()-1);
 			id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -165,11 +165,11 @@ public class GestionXML{
 		}
 		return id;
 	}
-
+	
 	/**
-	 * Cette fonction retourne le prochain ID de la location qui va etre ajoutée lors du prochain ajout.
-	 * @return le prochain id
-	 */
+	* Cette fonction retourne le prochain ID de la location qui va etre ajoutée lors du prochain ajout.
+	* @return le prochain id
+	*/
 	public static int getLastIDLoc(){
 		int id=0;
 		try{
@@ -177,7 +177,7 @@ public class GestionXML{
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataLocation.xml"));
 			NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-
+			
 			Element node = (Element) listeL.item(listeL.getLength()-1);
 			id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
 		}catch(ParserConfigurationException e){
@@ -189,11 +189,11 @@ public class GestionXML{
 		}
 		return id;
 	}
-
+	
 	/**
-	 * Cette fonction retourne le prochain ID du véhicule qui va etre ajoutée lors du prochain ajout.
-	 * @return le prochain id
-	 */
+	* Cette fonction retourne le prochain ID du véhicule qui va etre ajoutée lors du prochain ajout.
+	* @return le prochain id
+	*/
 	public static int getLastID(Vehicule v){ // récupère le dernier id de la liste de véhicule en fonction du type de ce dernier
 		int id=0;
 		try{
@@ -202,7 +202,7 @@ public class GestionXML{
 				DocumentBuilder docb = docbf.newDocumentBuilder();
 				Document doc = docb.parse(new File("dataMoto.xml"));
 				NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-
+				
 				Element node = (Element) listeL.item(listeL.getLength()-1);
 				id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
 			}
@@ -211,7 +211,7 @@ public class GestionXML{
 				DocumentBuilder docb = docbf.newDocumentBuilder();
 				Document doc = docb.parse(new File("dataAvion.xml"));
 				NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-
+				
 				Element node = (Element) listeL.item(listeL.getLength()-1);
 				id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
 			}
@@ -220,7 +220,7 @@ public class GestionXML{
 				DocumentBuilder docb = docbf.newDocumentBuilder();
 				Document doc = docb.parse(new File("dataVoiture.xml"));
 				NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-
+				
 				Element node = (Element) listeL.item(listeL.getLength()-1);
 				id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
 			}
@@ -234,13 +234,14 @@ public class GestionXML{
 		}
 		return id;
 	}
-
-
+	
+	
 	/**
-	 * Cette fonction va lire dans le fichier XML les informations sur les locations
-	 * @return Arraylist de locations
-	 */
-	public static ArrayList<Location> readXMLLocation(){
+	* Cette fonction va lire dans le fichier XML les informations sur les locations
+	* @param vehicule valeur qui va correspondre au type de véhicule loué
+	* @return Arraylist de locations
+	*/
+	public static ArrayList<Location> readXMLLocation(int vehicule){
 		ArrayList<Location>  location =new ArrayList<Location>();
 		try{
 			DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
@@ -251,79 +252,80 @@ public class GestionXML{
 				if(listeL.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeL.item(i);
 					for (Node child = node.getFirstChild(); child != null; child.getNextSibling()){
-						
-						if (child.getNodeName().equals("Voiture")){
+						System.out.println(child.getNodeName());
+						if (vehicule==0){
+							System.out.println("qsqs"+i);
 							location.add(new Location(
-									new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
-									new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
-									new Client(
-											node.getElementsByTagName("nom").item(0).getTextContent(),
-											Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-											Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-									new Voiture(
-											node.getElementsByTagName("marque").item(0).getTextContent(),
-											node.getElementsByTagName("modele").item(0).getTextContent(),
-											Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-											Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
-											Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-									Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-									Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-									Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
-
-						}else if(child.getNodeName().equals("Moto")){
+							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
+							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
+							new Client(
+							node.getElementsByTagName("nom").item(0).getTextContent(),
+							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+							new Voiture(
+							node.getElementsByTagName("marque").item(0).getTextContent(),
+							node.getElementsByTagName("modele").item(0).getTextContent(),
+							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
+							Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+							
+						}else if(vehicule==1){
 							location.add(new Location(
-									new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
-									new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
-									new Client(
-											node.getElementsByTagName("nom").item(0).getTextContent(),
-											Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-											Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-									new Moto(
-											node.getElementsByTagName("marque").item(0).getTextContent(),
-											node.getElementsByTagName("modele").item(0).getTextContent(),
-											Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-											Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
-											Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-									Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-									Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-									Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
-
-						}else if(child.getNodeName().equals("Avion")){
+							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
+							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
+							new Client(
+							node.getElementsByTagName("nom").item(0).getTextContent(),
+							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+							new Moto(
+							node.getElementsByTagName("marque").item(0).getTextContent(),
+							node.getElementsByTagName("modele").item(0).getTextContent(),
+							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
+							Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+							
+						}else if(vehicule==2){
 							location.add(new Location(
-									new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
-									new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
-									new Client(
-											node.getElementsByTagName("nom").item(0).getTextContent(),
-											Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-											Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-									new Avion(
-											node.getElementsByTagName("marque").item(0).getTextContent(),
-											node.getElementsByTagName("modele").item(0).getTextContent(),
-											Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-											Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
-											Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-									Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-									Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-									Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
+							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
+							new Client(
+							node.getElementsByTagName("nom").item(0).getTextContent(),
+							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+							new Avion(
+							node.getElementsByTagName("marque").item(0).getTextContent(),
+							node.getElementsByTagName("modele").item(0).getTextContent(),
+							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
+							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 						}
 					}
 					System.out.println(location.get(i));
@@ -331,7 +333,7 @@ public class GestionXML{
 			}
 		}catch(ParseException e){
 			e.printStackTrace();
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -341,33 +343,22 @@ public class GestionXML{
 		}
 		return location;
 	}
-
-
+	
+	
 	/**
-	 * Cette procédure va écrire dans le fichier XML les informations sur une location
-	 * @param l Location à ajouter dans le fichier
-	 */
+	* Cette procédure va écrire dans le fichier XML les informations sur une location
+	* @param l Location à ajouter dans le fichier
+	*/
 	public static void addLocation(Location l){
 		int last=getLastIDLoc();
-		Vehicule a = null;
-		if ( l.getVehicule() instanceof Moto){
-			a = (Moto) l.getVehicule();
-			// updateMoto(a); On passe le booleén de location de false a true
-		}else if ( l.getVehicule() instanceof Voiture){
-			a = (Voiture) l.getVehicule();
-			// updateVoiture(a); On passe le booleén de location de false a true
-		}else if ( l.getVehicule() instanceof Avion){
-			a = (Avion) l.getVehicule();
-			// updateAvion(a); On passe le booleén de location de false a true
-		}
-
+		
 		try{
 			DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataLocation.xml"));
 			Node racine = doc.getFirstChild(); //On récupère la racine
 			Element location = doc.createElement("element"); // On crée une nouvelle location
-
+			
 			Element dateDebut = doc.createElement("dateDebut");
 			DateFormat date= new SimpleDateFormat("dd/MM/yyyy");
 			String dateD = date.format(l.getDateDebut());
@@ -378,7 +369,7 @@ public class GestionXML{
 			dateFin.appendChild(doc.createTextNode(dateF));
 			location.appendChild(dateFin);
 			Element client = doc.createElement("Client");
-
+			
 			Element nom = doc.createElement("nom");
 			nom.appendChild(doc.createTextNode(l.getClient().getNom()));
 			client.appendChild(nom);
@@ -396,13 +387,98 @@ public class GestionXML{
 			client.appendChild(reduction);
 			location.appendChild(client);
 			Element vehicule = doc.createElement("Vehicule");
-			Element marque = doc.createElement("marque");
-			marque.appendChild(doc.createTextNode(a.getMarque()));
-			vehicule.appendChild(marque);
-			Element modele = doc.createElement("modele");
-			modele.appendChild(doc.createTextNode(a.getModele()));
-			vehicule.appendChild(modele);
-
+			if ( l.getVehicule() instanceof Moto){
+				Moto m = (Moto) l.getVehicule();
+				m.setEtat(true);
+				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
+				etat.appendChild(doc.createTextNode(Boolean.toString(m.getEtat()))); // On ajoute a la spec sa valeur
+				vehicule.appendChild(etat); //On ajoute chaque champ a l'avion
+				Element km = doc.createElement("km");
+				km.appendChild(doc.createTextNode(Integer.toString(m.getKm())));
+				vehicule.appendChild(km);
+				Element marque = doc.createElement("marque");
+				marque.appendChild(doc.createTextNode(m.getMarque()));
+				vehicule.appendChild(marque);
+				Element modele = doc.createElement("modele");
+				modele.appendChild(doc.createTextNode(m.getModele()));
+				vehicule.appendChild(modele);
+				Element prixLocation = doc.createElement("prixLocation");
+				prixLocation.appendChild(doc.createTextNode(Integer.toString(m.getPrixLocation())));
+				vehicule.appendChild(prixLocation);
+				Element puissance = doc.createElement("puissance");
+				puissance.appendChild(doc.createTextNode(Double.toString(m.getPuissance())));
+				vehicule.appendChild(puissance);
+				Element vitesseMax = doc.createElement("vitesseMax");
+				vitesseMax.appendChild(doc.createTextNode(Integer.toString(m.getVitesseMax())));
+				vehicule.appendChild(vitesseMax);
+				Element id = doc.createElement("id");
+				id.appendChild(doc.createTextNode(Integer.toString(m.getId())));
+				vehicule.appendChild(id);
+				deleteVehicule(m);
+				addMoto(m);
+			}else if ( l.getVehicule() instanceof Voiture){
+				Voiture v = (Voiture) l.getVehicule();
+				Element km = doc.createElement("km");
+				v.setEtat(true);
+				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
+				etat.appendChild(doc.createTextNode(Boolean.toString(v.getEtat()))); // On ajoute a la spec sa valeur
+				vehicule.appendChild(etat); //On ajoute chaque champ a l'avion
+				km.appendChild(doc.createTextNode(Integer.toString(v.getKm())));
+				vehicule.appendChild(km);
+				Element marque = doc.createElement("marque");
+				marque.appendChild(doc.createTextNode(v.getMarque()));
+				vehicule.appendChild(marque);
+				Element modele = doc.createElement("modele");
+				modele.appendChild(doc.createTextNode(v.getModele()));
+				vehicule.appendChild(modele);
+				Element nbPlace = doc.createElement("nbPlace");
+				nbPlace.appendChild(doc.createTextNode(Integer.toString(v.getNbPlace())));
+				vehicule.appendChild(nbPlace);
+				Element prixLocation = doc.createElement("prixLocation");
+				prixLocation.appendChild(doc.createTextNode(Integer.toString(v.getPrixLocation())));
+				vehicule.appendChild(prixLocation);
+				Element puissance = doc.createElement("puissance");
+				puissance.appendChild(doc.createTextNode(Double.toString(v.getPuissance())));
+				vehicule.appendChild(puissance);
+				Element vitesseMax = doc.createElement("vitesseMax");
+				vitesseMax.appendChild(doc.createTextNode(Integer.toString(v.getVitesseMax())));
+				vehicule.appendChild(vitesseMax);
+				Element id = doc.createElement("id");
+				id.appendChild(doc.createTextNode(Integer.toString(v.getId())));
+				vehicule.appendChild(id);
+				deleteVehicule(v);
+				addVoiture(v);
+			}else if ( l.getVehicule() instanceof Avion){
+				Avion a = (Avion) l.getVehicule();
+				a.setEtat(true);
+				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
+				etat.appendChild(doc.createTextNode(Boolean.toString(a.getEtat()))); // On ajoute a la spec sa valeur
+				vehicule.appendChild(etat); //On ajoute chaque champ a l'avion
+				Element nbMoteurs = doc.createElement("nbMoteurs");
+				nbMoteurs.appendChild(doc.createTextNode(Integer.toString(a.getNbMoteurs())));
+				vehicule.appendChild(nbMoteurs);
+				Element marque = doc.createElement("marque");
+				marque.appendChild(doc.createTextNode(a.getMarque()));
+				vehicule.appendChild(marque);
+				Element modele = doc.createElement("modele");
+				modele.appendChild(doc.createTextNode(a.getModele()));
+				vehicule.appendChild(modele);
+				Element nbHeures = doc.createElement("nbHeures");
+				nbHeures.appendChild(doc.createTextNode(Integer.toString(a.getNbHeures())));
+				vehicule.appendChild(nbHeures);
+				Element prixLocation = doc.createElement("prixLocation");
+				prixLocation.appendChild(doc.createTextNode(Integer.toString(a.getPrixLocation())));
+				vehicule.appendChild(prixLocation);
+				Element vitesseMax = doc.createElement("vitesseMax");
+				vitesseMax.appendChild(doc.createTextNode(Integer.toString(a.getVitesseMax())));
+				vehicule.appendChild(vitesseMax);
+				Element id = doc.createElement("id");
+				id.appendChild(doc.createTextNode(Integer.toString(a.getId())));
+				vehicule.appendChild(id);
+				deleteVehicule(a);
+				addAvion(a);
+			}
+			
 			location.appendChild(vehicule);
 			racine.appendChild(location); // On ajoute la voiture a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
@@ -410,12 +486,12 @@ public class GestionXML{
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
 			StreamResult gentil = new StreamResult("dataVoiture.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
 			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
-
+			
 		}catch (TransformerConfigurationException e){
 			e.printStackTrace();
 		}catch (TransformerException e){
 			e.printStackTrace();
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -424,11 +500,11 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
-	 * Cette fonction va écrire dans le fichier XML les informations sur une voiture
-	 * @param v Voiture à ajouter dans le fichier
-	 */
+	* Cette fonction va écrire dans le fichier XML les informations sur une voiture
+	* @param v Voiture à ajouter dans le fichier
+	*/
 	public static void addVoiture(Voiture v){
 		int last=getLastID(v);
 		try{
@@ -464,19 +540,19 @@ public class GestionXML{
 			Element id = doc.createElement("id");
 			id.appendChild(doc.createTextNode(Integer.toString(last)));
 			voiture.appendChild(id);
-
+			
 			racine.appendChild(voiture); // On ajoute la voiture a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
 			StreamResult gentil = new StreamResult("dataVoiture.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
 			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
-
+			
 		}catch (TransformerConfigurationException e){
 			e.printStackTrace();
 		}catch (TransformerException e){
 			e.printStackTrace();
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -485,11 +561,11 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
-	 * Cette procédure va écrire dans le fichier XML les informations sur une moto
-	 * @param m Moto à ajouter dans le fichier
-	 */
+	* Cette procédure va écrire dans le fichier XML les informations sur une moto
+	* @param m Moto à ajouter dans le fichier
+	*/
 	public static void addMoto(Moto m){
 		int last=getLastID(m);
 		try{
@@ -528,12 +604,12 @@ public class GestionXML{
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
 			StreamResult gentil = new StreamResult("dataMoto.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
 			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
-
+			
 		}catch (TransformerConfigurationException e){
 			e.printStackTrace();
 		}catch (TransformerException e){
 			e.printStackTrace();
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -542,11 +618,11 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
-	 * Cette procédure va écrire dans le fichier XML les informations sur un avion
-	 * @param a Avion à ajouter dans le fichier
-	 */
+	* Cette procédure va écrire dans le fichier XML les informations sur un avion
+	* @param a Avion à ajouter dans le fichier
+	*/
 	public static void addAvion(Avion a){
 		int last=getLastID(a);
 		try{
@@ -554,10 +630,10 @@ public class GestionXML{
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataAvion.xml"));
 			Node racine = doc.getFirstChild(); //On récupère la racine
-			Element avion = doc.createElement("element"); // On crée une nouvelle voiture
-			Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle voiture
+			Element avion = doc.createElement("element"); // On crée un nouvel avion
+			Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
 			etat.appendChild(doc.createTextNode(Boolean.toString(a.getEtat()))); // On ajoute a la spec sa valeur
-			avion.appendChild(etat); //On ajoute chaque champ a la voiture
+			avion.appendChild(etat); //On ajoute chaque champ a l'avion
 			Element nbMoteurs = doc.createElement("nbMoteurs");
 			nbMoteurs.appendChild(doc.createTextNode(Integer.toString(a.getNbMoteurs())));
 			avion.appendChild(nbMoteurs);
@@ -579,18 +655,18 @@ public class GestionXML{
 			Element id = doc.createElement("id");
 			id.appendChild(doc.createTextNode(Integer.toString(last)));
 			avion.appendChild(id);
-			racine.appendChild(avion); // On ajoute la voiture a la racine
+			racine.appendChild(avion); // On ajoute l' avion a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
 			StreamResult gentil = new StreamResult("dataAvion.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
 			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
-
+			
 		}catch (TransformerConfigurationException e){
 			e.printStackTrace();
 		}catch (TransformerException e){
 			e.printStackTrace();
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -599,11 +675,11 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
-	 * Cette procédure va écrire dans le fichier XML les informations sur un client
-	 * @param c Client à ajouter dans le fichier
-	 */
+	* Cette procédure va écrire dans le fichier XML les informations sur un client
+	* @param c Client à ajouter dans le fichier
+	*/
 	public static void addClient(Client c){
 		int last=getLastIDClient();
 		try{
@@ -636,12 +712,12 @@ public class GestionXML{
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
 			StreamResult gentil = new StreamResult("dataClient.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
 			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
-
+			
 		}catch (TransformerConfigurationException e){
 			e.printStackTrace();
 		}catch (TransformerException e){
 			e.printStackTrace();
-
+			
 		}catch(ParserConfigurationException e){
 			e.printStackTrace();
 		}catch(SAXException e){
@@ -650,11 +726,11 @@ public class GestionXML{
 			e.printStackTrace();
 		}
 	}
-
+	
 	/**
-	 * Cette fonction va lire dans le fichier XML les informations sur les voitures
-	 * @return Arraylist de voitures
-	 */
+	* Cette fonction va lire dans le fichier XML les informations sur les voitures
+	* @return Arraylist de voitures
+	*/
 	public static ArrayList<Voiture> readXMLVoiture(){
 		ArrayList<Voiture>  voitures=new ArrayList<Voiture>();
 		try{
@@ -666,15 +742,15 @@ public class GestionXML{
 				if(listeV.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeV.item(i);
 					voitures.add(new Voiture(
-							node.getElementsByTagName("marque").item(0).getTextContent(),
-							node.getElementsByTagName("modele").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
-							Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+					node.getElementsByTagName("marque").item(0).getTextContent(),
+					node.getElementsByTagName("modele").item(0).getTextContent(),
+					Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+					Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
+					Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					System.out.println(voitures.get(i));
 				}
 			}
@@ -688,9 +764,9 @@ public class GestionXML{
 		return voitures;
 	}
 	/**
-	 * Cette fonction va lire dans le fichier XML les informations sur les motos
-	 * @return Arraylist de motos
-	 */
+	* Cette fonction va lire dans le fichier XML les informations sur les motos
+	* @return Arraylist de motos
+	*/
 	public static ArrayList<Moto> readXMLMoto(){
 		ArrayList<Moto> motos=new ArrayList<Moto>();
 		try{
@@ -702,14 +778,14 @@ public class GestionXML{
 				if(listeM.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeM.item(i);
 					motos.add(new Moto(
-							node.getElementsByTagName("marque").item(0).getTextContent(),
-							node.getElementsByTagName("modele").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
-							Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+					node.getElementsByTagName("marque").item(0).getTextContent(),
+					node.getElementsByTagName("modele").item(0).getTextContent(),
+					Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+					Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
+					Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					System.out.println(motos.get(i));
 				}
 			}
@@ -723,9 +799,9 @@ public class GestionXML{
 		return motos;
 	}
 	/**
-	 * Cette fonction va lire dans le fichier XML les informations sur les avions
-	 * @return Arraylist de avions
-	 */
+	* Cette fonction va lire dans le fichier XML les informations sur les avions
+	* @return Arraylist de avions
+	*/
 	public static ArrayList<Avion> readXMLAvion(){
 		ArrayList<Avion>  avions=new ArrayList<Avion>();
 		try{
@@ -737,14 +813,14 @@ public class GestionXML{
 				if(listeA.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeA.item(i);
 					avions.add(new Avion(
-							node.getElementsByTagName("marque").item(0).getTextContent(),
-							node.getElementsByTagName("modele").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+					node.getElementsByTagName("marque").item(0).getTextContent(),
+					node.getElementsByTagName("modele").item(0).getTextContent(),
+					Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+					Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					System.out.println(avions.get(i));
 				}
 			}
@@ -757,11 +833,11 @@ public class GestionXML{
 		}
 		return avions;
 	}
-
+	
 	/**
-	 * Cette fonction va lire dans le fichier XML les informations sur les clients
-	 * @return Arraylist de clients
-	 */
+	* Cette fonction va lire dans le fichier XML les informations sur les clients
+	* @return Arraylist de clients
+	*/
 	public static ArrayList<Client> readXMLClient(){
 		ArrayList<Client>  clients=new ArrayList<Client>();
 		try{
@@ -773,12 +849,12 @@ public class GestionXML{
 				if(listeC.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeC.item(i);
 					clients.add(new Client(
-							node.getElementsByTagName("nom").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+					node.getElementsByTagName("nom").item(0).getTextContent(),
+					Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+					Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+					Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					System.out.println(clients.get(i));
 				}
 			}
