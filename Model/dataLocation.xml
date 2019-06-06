@@ -21,6 +21,7 @@
       <puissance>60</puissance>
       <vitesseMax>155</vitesseMax>
     </Voiture>
+    <kmPrev>0</kmPrev>
   </element>
   <element>
     <id>1</id>
@@ -43,5 +44,6 @@
       <puissance>60</puissance>
       <vitesseMax>155</vitesseMax>
     </Voiture>
+    <kmPrev>0</kmPrev>
   </element>
 </root>

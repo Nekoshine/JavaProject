@@ -246,15 +246,14 @@ public class GestionXML{
 		try{
 			DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
 			DocumentBuilder docb = docbf.newDocumentBuilder();
-			Document doc = docb.parse(new File("dataVoiture.xml"));
+			Document doc = docb.parse(new File("dataLocation.xml"));
 			NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
 			for (int i=0;i<listeL.getLength() ;i++ ) {
 				if(listeL.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeL.item(i);
 					for (Node child = node.getFirstChild(); child != null; child.getNextSibling()){
-						System.out.println(child.getNodeName());
-						if (vehicule==0){
-							System.out.println("qsqs"+i);
+						if (child.getNodeName().equals("Voiture")){
+							System.out.println("oucou");
 							location.add(new Location(
 							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
 							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
@@ -386,8 +385,8 @@ public class GestionXML{
 			reduction.appendChild(doc.createTextNode(Boolean.toString(l.getClient().getReduction())));
 			client.appendChild(reduction);
 			location.appendChild(client);
-			Element vehicule = doc.createElement("Vehicule");
 			if ( l.getVehicule() instanceof Moto){
+				Element vehicule = doc.createElement("Moto");
 				Moto m = (Moto) l.getVehicule();
 				m.setEtat(true);
 				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
@@ -416,7 +415,9 @@ public class GestionXML{
 				vehicule.appendChild(id);
 				deleteVehicule(m);
 				addMoto(m);
+				location.appendChild(vehicule);
 			}else if ( l.getVehicule() instanceof Voiture){
+				Element vehicule = doc.createElement("Voiture");
 				Voiture v = (Voiture) l.getVehicule();
 				Element km = doc.createElement("km");
 				v.setEtat(true);
@@ -448,7 +449,9 @@ public class GestionXML{
 				vehicule.appendChild(id);
 				deleteVehicule(v);
 				addVoiture(v);
+				location.appendChild(vehicule);
 			}else if ( l.getVehicule() instanceof Avion){
+				Element vehicule = doc.createElement("Avion");
 				Avion a = (Avion) l.getVehicule();
 				a.setEtat(true);
 				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
@@ -477,9 +480,9 @@ public class GestionXML{
 				vehicule.appendChild(id);
 				deleteVehicule(a);
 				addAvion(a);
+				location.appendChild(vehicule);
 			}
 			
-			location.appendChild(vehicule);
 			racine.appendChild(location); // On ajoute la voiture a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations

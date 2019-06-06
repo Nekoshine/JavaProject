@@ -12,7 +12,7 @@ public class Main{
     Date dateD= new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2019");
     Date dateF= new SimpleDateFormat("dd/MM/yyyy").parse("09/05/2019");*/
     Client c = new Client("Paul",684758125,50,0,false,15);
-    GestionXML.readXMLLocation();
+    GestionXML.readXMLLocation(0);
     /*}catch(ParseException e){
     e.printStackTrace();
   }*/
