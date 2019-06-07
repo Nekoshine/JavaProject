@@ -27,7 +27,7 @@ public class Location {
   * @param kmPrev    km previsionnels que le client effectuera
   * @param id        id de la location
   */
-  public Location(Date dateDebut, Date dateFin, Client client, Vehicule vehicule,int prixPrev, int kmPrev,int id) {
+  public Location(Date dateDebut, Date dateFin, Client client, Vehicule vehicule,float prixPrev, int kmPrev,int id) {
     super();
     this.dateDebut = dateDebut;
     this.dateFin = dateFin;

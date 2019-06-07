@@ -325,7 +325,7 @@ public class GestionXML{
 						Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
 						Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Float.parseFloat(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 						
@@ -347,7 +347,7 @@ public class GestionXML{
 						Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
 						Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Float.parseFloat(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 						
@@ -369,7 +369,7 @@ public class GestionXML{
 						Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Float.parseFloat(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					}

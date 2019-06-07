@@ -85,10 +85,10 @@ public class AddClient extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
-			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), Integer.parseInt(this.tnbKm.getText()), Integer.parseInt(this.tprixPrev.getText()), Boolean.parseBoolean(this.treduc.getText()),GestionXML.getLastIDClient());
+			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), Boolean.parseBoolean(this.treduc.getText()),GestionXML.getLastIDClient());
 			GestionXML.addClient(c);
 			this.setVisible(false);
-		}
+		} 
 		else if (source==retour) {
 			this.setVisible(false);
 		}

@@ -24,7 +24,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
 
-public class MenuLocation extends JFrame implements ActionListener/*, ListSelectionListener*/{
+public class MenuLocation extends JFrame implements ActionListener, ListSelectionListener{
 
 	private static final long serialVersionUID = 1L;
 	public JButton ok;
@@ -100,7 +100,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 			listv[i]=vtab.get(i);
 		}
 		vlist = new JList<Voiture>(listv);
-		//vlist.addListSelectionListener(this);
+		vlist.addListSelectionListener(this);
 		JScrollPane scrollv = new JScrollPane(vlist);
 		scrollvp = new JPanel();
 		scrollv.setPreferredSize(new Dimension(400, 400));
@@ -128,7 +128,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 			lista[i]=atab.get(i);
 		}
 		alist = new JList<Avion>(lista);
-		//vlist.addListSelectionListener(this);
+		vlist.addListSelectionListener(this);
 		JScrollPane scrolla = new JScrollPane(alist);
 		scrollap = new JPanel();
 		scrolla.setPreferredSize(new Dimension(400, 400));
@@ -151,7 +151,6 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		panf.add(tf);
 		panf.setBackground(Color.white);
 		this.add(panf,BorderLayout.CENTER);
-		//infos.add(panf);
 
 		JPanel fields = new JPanel();
 		fields.setLayout(new GridLayout(5,2));
@@ -187,8 +186,6 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		fieldsp.setBackground(Color.white);
 		fieldsp.add(fields);
 		this.add(fieldsp,BorderLayout.EAST);
-		//infos.add(fieldsp);
-		//this.add(infos,BorderLayout.CENTER);
 
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
@@ -211,7 +208,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		vehicule="";
+		vehicule="Voiture";
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -222,15 +219,15 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 			try {
 				loc.setDateDebut(new SimpleDateFormat("dd/MM/yyyy").parse(dateDebut.getText()));
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			try {
 				loc.setDateFin(new SimpleDateFormat("dd/MM/yyyy").parse(dateFin.getText()));
 			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			System.out.println("Bonjour");
+			System.out.println(GestionXML.getLastIDLoc());
 			loc.setId(GestionXML.getLastIDLoc());
 			loc.setKmPrev(Integer.parseInt(kmPrev.getText()));
 			loc.setPrixPrev(Float.parseFloat(tprixPrev.getText()));
@@ -271,6 +268,11 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 			vehicule="Avion";
 			this.setVisible(true); 
 		}
+	}
+
+	@Override
+	public void valueChanged(ListSelectionEvent arg0) {
+		
 	}
 
 }

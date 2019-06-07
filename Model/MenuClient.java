@@ -159,10 +159,8 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		if (source==ok) {
 			Client c = list.getSelectedValue();
 			GestionXML.deleteClient(c);
-			c.setNbKm(Integer.parseInt(tnbKm.getText()));
 			c.setNom(tnom.getText());
 			c.setNumTel(Integer.parseInt(tnumTel.getText()));
-			c.setPrixPrev(Integer.parseInt(tprixPrev.getText()));
 			c.setReduction(Boolean.parseBoolean(treduc.getText()));
 			GestionXML.addClient(c);
 			
@@ -191,8 +189,6 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 				if(list.getSelectedValue().equals(tab.get(i))) {
 					tnom.setText(tab.get(i).getNom());
 					tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
-					tnbKm.setText(Integer.toString(tab.get(i).getNbKm()));
-					tprixPrev.setText(Float.toString(tab.get(i).getPrixPrev()));
 					treduc.setText(Boolean.toString(tab.get(i).getReduction()));
 				}
 			}

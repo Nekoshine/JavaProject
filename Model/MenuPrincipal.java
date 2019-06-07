@@ -130,7 +130,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	* [main description]
 	* @param args [description]
 	*/
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		MenuPrincipal menu = new MenuPrincipal();
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -13,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -36,7 +38,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 
 	public MenuRest(){
 		super("VOITOVION");
-		
+
 		JPanel t = new JPanel();
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
@@ -48,14 +50,45 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		t.add(pan);
 		t.setBackground(Color.white);
 		this.add(t,BorderLayout.NORTH);
-		
+
 		tab= new ArrayList<Location>();
-		
-		Location[] listc= new Location[tab.size()];
-		for (int i = 0; i < tab.size(); i++) {
-			listc[i]=tab.get(i);
+		try { 
+			tab=GestionXML.readXMLLocation("Voiture");
+		} catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
 		}
-		list = new JList<Location>(listc);
+		finally {
+			
+		ArrayList<Location>tab2= new ArrayList<Location>();
+		try {
+			tab2=GestionXML.readXMLLocation("Moto");			
+		} catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		finally {
+			
+		ArrayList<Location>tab3= new ArrayList<Location>();
+		try {
+			tab3=GestionXML.readXMLLocation("Avion");		
+		} catch (IndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
+		finally {
+			
+		Location[] listv= new Location[tab.size()];
+		Location[] listm= new Location[tab2.size()];
+		Location[] lista= new Location[tab3.size()];
+		for (int i = 0; i < tab.size(); i++) {
+			listv[i]=tab.get(i);
+		}
+		for (int i = 0; i < tab2.size(); i++) {
+			listm[i]=tab2.get(i);
+		}
+		for (int i = 0; i < tab3.size(); i++) {
+			lista[i]=tab3.get(i);
+		}
+		listv=concat(listv, concat(listm, lista));
+		list = new JList<Location>(listv);
 		list.addListSelectionListener(this);
 		JScrollPane scroll = new JScrollPane(list);
 		JPanel scrollp = new JPanel();
@@ -66,7 +99,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		plist.add(scrollp);
 		plist.setBackground(Color.white);
 		this.add(plist,BorderLayout.WEST);
-		
+
 		JPanel km = new JPanel();
 		km.setLayout(new GridLayout(5,2));
 		JLabel lkm = new JLabel("Nombre de km:");
@@ -170,6 +203,9 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+		}
+		}
 	}
 
 	@Override
@@ -199,7 +235,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 			}
 			else {
 				if (kmparc>0) {
-				res=res+0.5f*kmparc;
+					res=res+0.5f*kmparc;
 				}
 			}
 			if (list.getSelectedValue().getClient().getReduction()) {
@@ -229,6 +265,15 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		Object source = e.getSource();
 		tprix.setText(Float.toString(list.getSelectedValue().getPrixPrev()));
 
+	}
+
+	Location[] concat(Location[] A, Location[] B) {
+		int aLen = A.length;
+		int bLen = B.length;
+		Location[] C= new Location[aLen+bLen];
+		System.arraycopy(A, 0, C, 0, aLen);
+		System.arraycopy(B, 0, C, aLen, bLen);
+		return C;
 	}
 
 }
