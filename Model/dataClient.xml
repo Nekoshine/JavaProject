@@ -4,68 +4,24 @@
     <id>0</id>
     <nom>Cormier</nom>
     <numTel>645954638</numTel>
-    <element>
-      
-      
-      <id>1</id>
-      <nom>Laumonnier</nom>
-      <numTel>698775462</numTel>
-    </element>
-    <element>
-      
-      
-      
-      
-      
-      
-      
-      <nom>Dupond</nom>
-      
-      
-      
-      
-      
-      
-      
-      <numTel>640186750</numTel>
-      
-      
-      
-      
-      
-      
-      
-      
-    </element>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <element>
-      
-      
-      <nom>Nouille</nom>
-      
-      
-      <numTel>911</numTel>
-      
-      
-      <id>4</id>
-      
-      
-    </element>
-    
-    
-    <element>
-      <nom>Michelle</nom>
-      <numTel>6161032</numTel>
-      <id>5</id>
-    </element>
-  </root>
-  
+  </element>
+  <element>
+    <id>1</id>
+    <nom>Laumonnier</nom>
+    <numTel>698775462</numTel>
+  </element>
+  <element>
+    <nom>Dupond</nom>
+    <numTel>640186750</numTel>
+  </element>
+  <element>
+    <nom>Nouille</nom>
+    <numTel>911</numTel>
+    <id>4</id>
+  </element>
+  <element>
+    <nom>Michelle</nom>
+    <numTel>6161032</numTel>
+    <id>5</id>
+  </element>
+</root>
