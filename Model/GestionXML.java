@@ -430,9 +430,9 @@ public class GestionXML{
 				Element vehicule = doc.createElement("Moto");
 				Moto m = (Moto) l.getVehicule();
 				m.setEtat(true);
-				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
+				Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle moto
 				etat.appendChild(doc.createTextNode(Boolean.toString(m.getEtat()))); // On ajoute a la spec sa valeur
-				vehicule.appendChild(etat); //On ajoute chaque champ a l'avion
+				vehicule.appendChild(etat); //On ajoute chaque champ a la moto
 				Element km = doc.createElement("km");
 				km.appendChild(doc.createTextNode(Integer.toString(m.getKm())));
 				vehicule.appendChild(km);
@@ -462,9 +462,9 @@ public class GestionXML{
 				Voiture v = (Voiture) l.getVehicule();
 				Element km = doc.createElement("km");
 				v.setEtat(true);
-				Element etat = doc.createElement("etat"); //On crée une spécification du nouvel avion
+				Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle voiture
 				etat.appendChild(doc.createTextNode(Boolean.toString(v.getEtat()))); // On ajoute a la spec sa valeur
-				vehicule.appendChild(etat); //On ajoute chaque champ a l'avion
+				vehicule.appendChild(etat); //On ajoute chaque champ a la voiture
 				km.appendChild(doc.createTextNode(Integer.toString(v.getKm())));
 				vehicule.appendChild(km);
 				Element marque = doc.createElement("marque");
@@ -533,7 +533,7 @@ public class GestionXML{
 			reduc.appendChild(doc.createTextNode(Boolean.toString(l.getReduction())));
 			location.appendChild(reduc);
 			
-			racine.appendChild(location); // On ajoute la voiture a la racine
+			racine.appendChild(location); // On ajoute la location a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
@@ -626,10 +626,10 @@ public class GestionXML{
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataMoto.xml"));
 			Node racine = doc.getFirstChild(); //On récupère la racine
-			Element moto = doc.createElement("element"); // On crée une nouvelle voiture
-			Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle voiture
+			Element moto = doc.createElement("element"); // On crée une nouvelle moto
+			Element etat = doc.createElement("etat"); //On crée une spécification de la nouvelle moto
 			etat.appendChild(doc.createTextNode(Boolean.toString(m.getEtat()))); // On ajoute a la spec sa valeur
-			moto.appendChild(etat); //On ajoute chaque champ a la voiture
+			moto.appendChild(etat); //On ajoute chaque champ a la moto
 			Element km = doc.createElement("km");
 			km.appendChild(doc.createTextNode(Integer.toString(m.getKm())));
 			moto.appendChild(km);
@@ -651,7 +651,7 @@ public class GestionXML{
 			Element id = doc.createElement("id");
 			id.appendChild(doc.createTextNode(Integer.toString(last)));
 			moto.appendChild(id);
-			racine.appendChild(moto); // On ajoute la voiture a la racine
+			racine.appendChild(moto); // On ajoute la moto a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
