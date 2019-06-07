@@ -25,6 +25,10 @@ import javax.swing.plaf.DimensionUIResource;
 */
 public class MenuGestion extends JFrame implements ActionListener, ListSelectionListener{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton ok;
 	private JButton retour;
 	private JTextField tmarqueMoto;
@@ -300,7 +304,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 				v.setNbPlace(Integer.parseInt(tnbPlace.getText()));
 				v.setPrixLocation(Integer.parseInt(tprixLocVoit.getText()));
 				v.setPuissance(Double.parseDouble(tpuissanceVoit.getText()));
-				v.setVitesseMax(Integer.parseInt(tpuissanceVoit.getText()));
+				v.setVitesseMax(Integer.parseInt(tvitesseMaxVoit.getText()));
 				GestionXML.addVoiture(v);
 				break;
 				case "class Moto":
