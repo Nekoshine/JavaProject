@@ -19,7 +19,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/**
+* Classe principale qui va contenir les différents menus, elle hérite d'une JFRAME et implémente un ActionListener
+*/
 public class MenuPrincipal extends JFrame implements ActionListener{
 	
 	private static final long serialVersionUID = 1L;
@@ -27,7 +29,9 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	private JButton bLoc;
 	private JButton bGestion;
 	private JButton bRes;
-	
+	/**
+	* Constructeur de la classe MenuPrincipal il permet de mettre en place les éléments du menu lors de l'instanciation
+	*/
 	public MenuPrincipal() {
 		super("VOITOVION");
 		
@@ -105,7 +109,10 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	
+	/**
+	* Procédure qui se déclenche lorsqu'un bouton est pressé
+	* @param e Action réalisée
+	*/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==bClient) {
@@ -127,10 +134,10 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 	}
 	
 	/**
-	* [main description]
-	* @param args [description]
+	* Procédure de lancement du programme principal
+	* @param args
 	*/
-	public static void main(String[] args) { 
+	public static void main(String[] args) {
 		MenuPrincipal menu = new MenuPrincipal();
 	}
 }

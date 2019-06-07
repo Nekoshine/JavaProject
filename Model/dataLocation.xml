@@ -55,6 +55,7 @@
     <Client>
       <nom>Cormier</nom>
       <numTel>645954638</numTel>
+      <id>2</id>
     </Client>
     <Voiture>
       <etat>true</etat>

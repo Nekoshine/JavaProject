@@ -2,6 +2,10 @@
 
 import java.util.ArrayList;
 import java.util.Date;
+
+/**
+* Classe qui définit une location et ses attributs
+*/
 public class Location {
 	
 	private Date dateDebut;

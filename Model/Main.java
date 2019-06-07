@@ -14,7 +14,7 @@ public class Main{
     /*try{
     Date dateD= new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2019");
     Date dateF= new SimpleDateFormat("dd/MM/yyyy").parse("09/05/2019");*/
-    Client c = new Client("Paul",684758125,false,15);
+    Client c = new Client("Paul",684758125,15);
     ArrayList<Location> wesh =  GestionXML.readXMLLocation("Voiture");
     System.out.println(GestionXML.getLastIDLoc());
     /*}catch(ParseException e){

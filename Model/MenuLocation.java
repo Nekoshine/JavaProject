@@ -23,38 +23,42 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
-
+/**
+* Classe qui hérite d'une JFRAME et qui implémente un ActionListener et un ListSelectionListener dans le but de créer un menu qui correspond au menu de location d'un véhicule
+*/
 public class MenuLocation extends JFrame implements ActionListener, ListSelectionListener{
-
+	
 	private static final long serialVersionUID = 1L;
-	public JButton ok;
-	public JButton retour;
-	public JComboBox<Client> cbclient ;
-	public JTextField dateDebut;
-	public JTextField dateFin;
-	public JTextField tprixPrev;
-	public JTextField kmPrev;
-	public JTextField treduc;
-	public JButton bvoit;
-	public JButton bmoto;
-	public JButton bavion;
-	public JList<Voiture> vlist;
-	public JList<Moto> mlist;
-	public JList<Avion> alist;
-	public ArrayList<Voiture> vtab;
-	public ArrayList<Moto> mtab;
-	public ArrayList<Avion> atab;
-	public JPanel list;
-	public JPanel scrollvp;
-	public JPanel scrollmp;
-	public JPanel scrollap;
-	public CardLayout cl;
-	public ArrayList<Client> tab;
-	public String vehicule;
-
+	private JButton ok;
+	private JButton retour;
+	private JComboBox<Client> cbclient ;
+	private JTextField dateDebut;
+	private JTextField dateFin;
+	private JTextField tprixPrev;
+	private JTextField kmPrev;
+	private JTextField treduc;
+	private JButton bvoit;
+	private JButton bmoto;
+	private JButton bavion;
+	private JList<Voiture> vlist;
+	private JList<Moto> mlist;
+	private JList<Avion> alist;
+	private ArrayList<Voiture> vtab;
+	private ArrayList<Moto> mtab;
+	private ArrayList<Avion> atab;
+	private JPanel list;
+	private JPanel scrollvp;
+	private JPanel scrollmp;
+	private JPanel scrollap;
+	private CardLayout cl;
+	private ArrayList<Client> tab;
+	private String vehicule;
+	/**
+	* Constructeur de la classe MenuLocation il permet de mettre en place les éléments au moment de l'appel de la classe
+	*/
 	public MenuLocation() {
 		super("VOITOVION");
-
+		
 		JPanel t = new JPanel();
 		t.setLayout(new GridLayout(2, 1));
 		Icon titre= new ImageIcon("VOITOVION.png");
@@ -90,7 +94,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		choix.add(avionp);
 		t.add(choix);
 		this.add(t,BorderLayout.NORTH);
-
+		
 		list = new JPanel();
 		cl = new CardLayout();
 		list.setLayout(cl);
@@ -107,7 +111,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		scrollv.setPreferredSize(new Dimension(400, 400));
 		scrollvp.add(scrollv);
 		scrollvp.setBackground(Color.white);
-
+		
 		mtab= new ArrayList<Moto>();
 		mtab=GestionXML.readXMLMoto();
 		Moto[] listm= new Moto[mtab.size()];
@@ -121,7 +125,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		scrollm.setPreferredSize(new Dimension(400, 400));
 		scrollmp.add(scrollm);
 		scrollmp.setBackground(Color.white);
-
+		
 		atab= new ArrayList<Avion>();
 		atab=GestionXML.readXMLAvion();
 		Avion[] lista= new Avion[atab.size()];
@@ -135,14 +139,14 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		scrolla.setPreferredSize(new Dimension(400, 400));
 		scrollap.add(scrolla);
 		scrollap.setBackground(Color.white);
-
+		
 		list.add("Voiture", scrollvp);
 		list.add("Moto", scrollmp);
 		list.add("Avion", scrollap);
 		list.setBackground(Color.white);
 		this.add(list,BorderLayout.WEST);
-
-
+		
+		
 		Icon fleche= new ImageIcon("fleche.png");
 		JPanel panf=new JPanel();
 		JLabel tf=new JLabel();
@@ -152,7 +156,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		panf.add(tf);
 		panf.setBackground(Color.white);
 		this.add(panf,BorderLayout.CENTER);
-
+		
 		JPanel fields = new JPanel();
 		fields.setLayout(new GridLayout(6,2));
 		JLabel nom = new JLabel("Client:");
@@ -192,7 +196,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		fieldsp.add(fields);
 		this.add(fieldsp,BorderLayout.EAST);
 		
-
+		
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
 		JPanel retp= new JPanel();
@@ -210,13 +214,16 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		okp.setBackground(Color.white);
 		retp.setBackground(Color.white);
 		this.add(boutret,BorderLayout.SOUTH);
-
+		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		vehicule="Voiture";
 	}
-
+	/**
+	* Procédure qui se déclenche lorsqu'un bouton est pressé
+	* @param e Action réalisée
+	*/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
@@ -236,19 +243,19 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 			loc.setKmPrev(Integer.parseInt(kmPrev.getText()));
 			loc.setPrixPrev(Float.parseFloat(tprixPrev.getText()));
 			switch (vehicule) {
-			case "Voiture":
+				case "Voiture":
 				loc.setVehicule(vlist.getSelectedValue());
 				vlist.getSelectedValue().setEtat(true);
 				break;
-			case "Moto":
+				case "Moto":
 				loc.setVehicule(mlist.getSelectedValue());
 				mlist.getSelectedValue().setEtat(true);
 				break;
-			case "Avion":
+				case "Avion":
 				loc.setVehicule(alist.getSelectedValue());
 				alist.getSelectedValue().setEtat(true);
 				break;
-			default:
+				default:
 				break;
 			}
 			GestionXML.addLocation(loc);
@@ -270,13 +277,13 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		else if (source==bavion) {
 			cl.show(list, "Avion");
 			vehicule="Avion";
-			this.setVisible(true); 
+			this.setVisible(true);
 		}
 	}
-
+	
 	@Override
 	public void valueChanged(ListSelectionEvent arg0) {
 		
 	}
-
+	
 }
