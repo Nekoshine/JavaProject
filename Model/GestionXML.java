@@ -235,13 +235,27 @@ public class GestionXML{
 		return id;
 	}
 	
+	/**
+	* Quand un noeud à plusieurs fils, permet de récupérer le fils <name> que l'on cherche.
+	* @param parent Noeud parent
+	* @param name	Nom du noeud qui nous intéresse
+	* @return un noeud si le nom est dans la liste des noms et retourne null sinon
+	*/
+	private static Node getChildName(Node parent, String name) {
+		for (Node child=parent.getFirstChild();child!=null;child=child.getNextSibling()){
+			if (name.equals(child.getNodeName()))			{
+				return child;
+			}
+		}
+		return null;
+	}
 	
 	/**
 	* Cette fonction va lire dans le fichier XML les informations sur les locations
 	* @param vehicule valeur qui va correspondre au type de véhicule loué
 	* @return Arraylist de locations
 	*/
-	public static ArrayList<Location> readXMLLocation(int vehicule){
+	public static ArrayList<Location> readXMLLocation(String vehicule){
 		ArrayList<Location>  location =new ArrayList<Location>();
 		try{
 			DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
@@ -251,82 +265,82 @@ public class GestionXML{
 			for (int i=0;i<listeL.getLength() ;i++ ) {
 				if(listeL.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
 					Element node = (Element) listeL.item(i);
-					for (Node child = node.getFirstChild(); child != null; child.getNextSibling()){
-						if (child.getNodeName().equals("Voiture")){
-							System.out.println("oucou");
-							location.add(new Location(
-							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
-							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
-							new Client(
-							node.getElementsByTagName("nom").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-							new Voiture(
-							node.getElementsByTagName("marque").item(0).getTextContent(),
-							node.getElementsByTagName("modele").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
-							Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
-							
-						}else if(vehicule==1){
-							location.add(new Location(
-							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
-							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
-							new Client(
-							node.getElementsByTagName("nom").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-							new Moto(
-							node.getElementsByTagName("marque").item(0).getTextContent(),
-							node.getElementsByTagName("modele").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
-							Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
-							
-						}else if(vehicule==2){
-							location.add(new Location(
-							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
-							new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
-							new Client(
-							node.getElementsByTagName("nom").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-							new Avion(
-							node.getElementsByTagName("marque").item(0).getTextContent(),
-							node.getElementsByTagName("modele").item(0).getTextContent(),
-							Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
-							Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
-							Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-							Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
-						}
+					Node child = getChildName(node,vehicule);
+					if (child!=null && vehicule.equals("Voiture")){
+						System.out.println("oucou");
+						location.add(new Location(
+						new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
+						new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
+						new Client(
+						node.getElementsByTagName("nom").item(0).getTextContent(),
+						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+						new Voiture(
+						node.getElementsByTagName("marque").item(0).getTextContent(),
+						node.getElementsByTagName("modele").item(0).getTextContent(),
+						Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("nbPlace").item(0).getTextContent()),
+						Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+						
+					}else if(child!=null && vehicule.equals("Moto")){
+						location.add(new Location(
+						new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
+						new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
+						new Client(
+						node.getElementsByTagName("nom").item(0).getTextContent(),
+						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+						new Moto(
+						node.getElementsByTagName("marque").item(0).getTextContent(),
+						node.getElementsByTagName("modele").item(0).getTextContent(),
+						Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("km").item(0).getTextContent()),
+						Double.parseDouble(node.getElementsByTagName("puissance").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+						
+					}else if(child!=null && vehicule.equals("Avion")){
+						location.add(new Location(
+						new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateDebut").item(0).getTextContent()),
+						new SimpleDateFormat("dd/MM/yyyy").parse(node.getElementsByTagName("dateFin").item(0).getTextContent()),
+						new Client(
+						node.getElementsByTagName("nom").item(0).getTextContent(),
+						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+						new Avion(
+						node.getElementsByTagName("marque").item(0).getTextContent(),
+						node.getElementsByTagName("modele").item(0).getTextContent(),
+						Integer.parseInt(node.getElementsByTagName("prixLocation").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("etat").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("vitesseMax").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("nbHeures").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("nbMoteurs").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
+						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					}
+					
 					System.out.println(location.get(i));
 				}
 			}
