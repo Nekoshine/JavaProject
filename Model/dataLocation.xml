@@ -70,29 +70,28 @@
     
     <reduction>false</reduction>
     
-    
-    <element>
-      <dateDebut>06/12/2109</dateDebut>
-      <dateFin>07/12/2109</dateFin>
-      <Client>
-        <nom>Cormier</nom>
-        <numTel>645954638</numTel>
-        <id>2</id>
-      </Client>
-      <Voiture>
-        <etat>true</etat>
-        <km>320000</km>
-        <marque>Opel</marque>
-        <modele>Vectra</modele>
-        <nbPlace>5</nbPlace>
-        <prixLocation>0</prixLocation>
-        <puissance>125.0</puissance>
-        <vitesseMax>170</vitesseMax>
-        <id>6</id>
-      </Voiture>
-      <kmPrev>500</kmPrev>
-      <prixPrev>500.0</prixPrev>
-      <reduction>false</reduction>
-    </element>
-  </root>
-  
+  </element>
+  <element>
+    <dateDebut>06/12/2109</dateDebut>
+    <dateFin>07/12/2109</dateFin>
+    <Client>
+      <nom>Cormier</nom>
+      <numTel>645954638</numTel>
+      <id>2</id>
+    </Client>
+    <Voiture>
+      <etat>true</etat>
+      <km>320000</km>
+      <marque>Opel</marque>
+      <modele>Vectra</modele>
+      <nbPlace>5</nbPlace>
+      <prixLocation>0</prixLocation>
+      <puissance>125.0</puissance>
+      <vitesseMax>170</vitesseMax>
+      <id>6</id>
+    </Voiture>
+    <kmPrev>500</kmPrev>
+    <prixPrev>500.0</prixPrev>
+    <reduction>false</reduction>
+  </element>
+</root>
