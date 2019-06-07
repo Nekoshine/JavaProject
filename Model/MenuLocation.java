@@ -235,6 +235,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 			loc.setId(GestionXML.getLastIDLoc());
 			loc.setKmPrev(Integer.parseInt(kmPrev.getText()));
 			loc.setPrixPrev(Float.parseFloat(tprixPrev.getText()));
+			loc.setReduc(Boolean.parseBoolean(treduc.getText()));
 			switch (vehicule) {
 			case "Voiture":
 				loc.setVehicule(vlist.getSelectedValue());

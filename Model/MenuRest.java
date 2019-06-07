@@ -238,7 +238,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 					res=res+0.5f*kmparc;
 				}
 			}
-			if (list.getSelectedValue().getClient().getReduction()) {
+			if (list.getSelectedValue().isReduc()) {
 				tprix.setText(Float.toString(res-(res*10)/100));
 			}
 			else {

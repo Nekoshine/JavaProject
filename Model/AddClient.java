@@ -19,7 +19,6 @@ public class AddClient extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JTextField tnom;
 	private JTextField tnumTel;
-	private JTextField treduc;
 	private JPanel infos;
 	public JButton ok;
 	public JButton retour;
@@ -28,7 +27,7 @@ public class AddClient extends JFrame implements ActionListener{
 		super("Ajouter");
 		infos = new JPanel();
 		JPanel fields = new JPanel();
-		fields.setLayout(new GridLayout(3,2));
+		fields.setLayout(new GridLayout(2,2));
 		JLabel nom = new JLabel("Nom:");
 		fields.add(nom);
 		tnom = new JTextField();
@@ -37,10 +36,6 @@ public class AddClient extends JFrame implements ActionListener{
 		fields.add(numTel);
 		tnumTel = new JTextField();
 		fields.add(tnumTel);
-		JLabel reduc = new JLabel("Réduction:");
-		fields.add(reduc);
-		treduc = new JTextField();
-		fields.add(treduc);
 		fields.setBackground(Color.white);
 		fields.setPreferredSize(new Dimension(400, 350));
 		JPanel fieldsp = new JPanel();
@@ -75,7 +70,7 @@ public class AddClient extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
-			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), Boolean.parseBoolean(this.treduc.getText()),GestionXML.getLastIDClient());
+			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), GestionXML.getLastIDClient());
 			GestionXML.addClient(c);
 			this.setVisible(false);
 		} 

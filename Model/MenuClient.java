@@ -25,14 +25,13 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 	public JButton ok;
 	public JButton retour;
 	public JTextField tnom ;
-	public JTextField tnumTel;
-	public JTextField treduc;
+	public JTextField tnumTel; 
 	public JButton badd;
 	public JButton bsupp;
 	public JButton bact;
 	public JList<Client> list;
 	public ArrayList<Client> tab;
- 
+
 	public MenuClient() {
 		super("VOITOVION");
 
@@ -100,7 +99,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		infos.add(panf);
 
 		JPanel fields = new JPanel();
-		fields.setLayout(new GridLayout(3,2));
+		fields.setLayout(new GridLayout(2,2));
 		JLabel nom = new JLabel("Nom:");
 		fields.add(nom);
 		tnom = new JTextField();
@@ -109,10 +108,6 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		fields.add(numTel);
 		tnumTel = new JTextField();
 		fields.add(tnumTel);
-		JLabel reduc = new JLabel("Réduction:");
-		fields.add(reduc);
-		treduc = new JTextField();
-		fields.add(treduc);
 		fields.setBackground(Color.white);
 		fields.setPreferredSize(new Dimension(400, 400));
 		JPanel fieldsp = new JPanel();
@@ -151,9 +146,8 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 			GestionXML.deleteClient(c);
 			c.setNom(tnom.getText());
 			c.setNumTel(Integer.parseInt(tnumTel.getText()));
-			c.setReduction(Boolean.parseBoolean(treduc.getText()));
 			GestionXML.addClient(c);
-			
+
 		}
 		else if (source==retour) {
 			this.setVisible(false);
@@ -175,13 +169,9 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 		if (source==list) {
-			for (int i = 0; i < tab.size(); i++) {
-				if(list.getSelectedValue().equals(tab.get(i))) {
-					tnom.setText(tab.get(i).getNom());
-					tnumTel.setText(Integer.toString(tab.get(i).getNumTel()));
-					treduc.setText(Boolean.toString(tab.get(i).getReduction()));
-				}
-			}
+
+			tnom.setText(list.getSelectedValue().getNom());
+			tnumTel.setText(Integer.toString(list.getSelectedValue().getNumTel()));
 		}
 	}
 }
