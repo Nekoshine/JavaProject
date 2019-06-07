@@ -21,8 +21,8 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 /**
-* Classe qui hérite d'une JFRAME et qui implémente un ActionListener et un ListSelectionListener dans le but de créer un menu qui correspond au menu de restitution
-*/
+ * Classe qui hérite d'une JFRAME et qui implémente un ActionListener et un ListSelectionListener dans le but de créer un menu qui correspond au menu de restitution
+ */
 public class MenuRest extends JFrame implements ActionListener, ListSelectionListener{
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Location> tab;
@@ -32,11 +32,11 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 	private JButton retour;
 	private JButton ok;
 	/**
-	* Constructeur de la classe MenuRest il permet de mettre en place les éléments au moment de l'instanciation de la classe
-	*/
+	 * Constructeur de la classe MenuRest il permet de mettre en place les éléments au moment de l'instanciation de la classe
+	 */
 	public MenuRest(){
 		super("VOITOVION");
-		
+
 		JPanel t = new JPanel();
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
@@ -48,7 +48,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		t.add(pan);
 		t.setBackground(Color.white);
 		this.add(t,BorderLayout.NORTH);
-		
+
 		tab= new ArrayList<Location>();
 		try {
 			tab=GestionXML.readXMLLocation("Voiture");
@@ -56,15 +56,15 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 			e.printStackTrace();
 		}
 		finally {
-			
+
 			ArrayList<Location>tab2= new ArrayList<Location>();
 			try {
 				tab2=GestionXML.readXMLLocation("Moto");
 			} catch (IndexOutOfBoundsException e) {
 				e.printStackTrace();
 			}
-			finally {
-				
+			finally { 
+
 				ArrayList<Location>tab3= new ArrayList<Location>();
 				try {
 					tab3=GestionXML.readXMLLocation("Avion");
@@ -72,7 +72,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 					e.printStackTrace();
 				}
 				finally {
-					
+
 					Location[] listv= new Location[tab.size()];
 					Location[] listm= new Location[tab2.size()];
 					Location[] lista= new Location[tab3.size()];
@@ -97,7 +97,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 					plist.add(scrollp);
 					plist.setBackground(Color.white);
 					this.add(plist,BorderLayout.WEST);
-					
+
 					JPanel km = new JPanel();
 					km.setLayout(new GridLayout(5,2));
 					JLabel lkm = new JLabel("Nombre de km:");
@@ -138,10 +138,10 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 					km.add(patk5);
 					km.setBackground(Color.white);
 					this.add(km,BorderLayout.CENTER);
-					
+
 					JPanel prix = new JPanel();
 					prix.setLayout(new GridLayout(5,2));
-					JLabel lprix = new JLabel("Prix � payer:");
+					JLabel lprix = new JLabel("Prix a payer:");
 					JPanel palp1 = new JPanel();
 					JPanel palp2 = new JPanel();
 					JPanel palp3 = new JPanel();
@@ -179,7 +179,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 					prix.add(patp5);
 					prix.setBackground(Color.white);
 					this.add(prix,BorderLayout.EAST);
-					
+
 					JPanel boutret = new JPanel();
 					boutret.setLayout(new GridLayout(1,2));
 					JPanel retp= new JPanel();
@@ -197,7 +197,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 					okp.setBackground(Color.white);
 					retp.setBackground(Color.white);
 					this.add(boutret,BorderLayout.SOUTH);
-					
+
 					this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 					this.setVisible(true);
 					this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -206,13 +206,16 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		}
 	}
 	/**
-	* Procédure qui se déclenche lorsqu'un bouton est pressé
-	* @param e Action réalisée
-	*/
+	 * Procédure qui se déclenche lorsqu'un bouton est pressé
+	 * @param e Action réalisée
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
+		boolean error=false;
 		if (source==ok) {
+			try {
+				
 			int kmparc = Integer.parseInt(tkm.getText())-50;
 			float res = list.getSelectedValue().getPrixPrev();
 			if (100-kmparc<0) {
@@ -245,39 +248,40 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 			else {
 				tprix.setText(Float.toString(res));
 			}
-			/*ArrayList<Location> lloc = GestionXML.readXMLLocation();
-			for (int i = 0; i < lloc.size(); i++) {
-			if (list.getSelectedValue().equals(lloc.get(i).getClient())) {
-			lloc.get(i).getVehicule().setEtat(false);
-			list.getSelectedValue().setPrixPrev(0);
-			//GestionXML.delete
+			list.getSelectedValue().getVehicule().setEtat(false);
+			GestionXML.deleteLocation(list.getSelectedValue());
+			} catch (NumberFormatException e2) {
+				JOptionPane.showMessageDialog(this, "Vous n'avez pas donn� la distance parcourue","ERROR",JOptionPane.ERROR_MESSAGE);
+				error=true;
+			}
+			if (!error) {
+				JOptionPane.showMessageDialog(this, "Restitution effectu�");
+			}
 		}
-	}*/
-}
-else if (source==retour) {
-	this.setVisible(false);
-	MenuPrincipal mp = new MenuPrincipal();
-}
+		else if (source==retour) {
+			this.setVisible(false);
+			MenuPrincipal mp = new MenuPrincipal();
+		}
 
-}
-/**
-* Procédure qui se déclenche quand un élément de la liste est sélectionne
-* @param e Action réalisée
-*/
-@Override
-public void valueChanged(ListSelectionEvent e) {
-	Object source = e.getSource();
-	tprix.setText(Float.toString(list.getSelectedValue().getPrixPrev()));
-	
-}
+	}
+	/**
+	 * Procédure qui se déclenche quand un élément de la liste est sélectionne
+	 * @param e Action réalisée
+	 */
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		Object source = e.getSource();
+		tprix.setText(Float.toString(list.getSelectedValue().getPrixPrev()));
 
-private Location[] concat(Location[] A, Location[] B) {
-	int aLen = A.length;
-	int bLen = B.length;
-	Location[] C= new Location[aLen+bLen];
-	System.arraycopy(A, 0, C, 0, aLen);
-	System.arraycopy(B, 0, C, aLen, bLen);
-	return C;
-}
+	}
+
+	private Location[] concat(Location[] A, Location[] B) {
+		int aLen = A.length;
+		int bLen = B.length;
+		Location[] C= new Location[aLen+bLen];
+		System.arraycopy(A, 0, C, 0, aLen);
+		System.arraycopy(B, 0, C, aLen, bLen);
+		return C;
+	}
 
 }

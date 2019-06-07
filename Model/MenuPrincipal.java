@@ -5,12 +5,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -131,13 +125,5 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 			this.setVisible(false);
 			MenuRest mg = new MenuRest();
 		}
-	}
-	
-	/**
-	* Procédure de lancement du programme principal
-	* @param args
-	*/
-	public static void main(String[] args) {
-		MenuPrincipal menu = new MenuPrincipal();
 	}
 }

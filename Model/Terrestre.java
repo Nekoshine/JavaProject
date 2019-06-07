@@ -16,7 +16,7 @@ public abstract class Terrestre extends Vehicule {
   /**
   * Constructeur par défaut
   */
-  public Terrestre() {
+  public Terrestre() { 
     super();
   }
   /**
