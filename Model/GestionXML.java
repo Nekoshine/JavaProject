@@ -24,6 +24,48 @@ import java.util.Date;
 * Cette classe permet de gérer les fichiers XML, que cela soit en écriture ou en lecture.
 */
 public class GestionXML{
+	
+	
+	
+	
+	
+	/**
+	* Cette procédure permet de supprimer une location en lui donnant cette derniere en parametre
+	* @param l location qui doit etre supprimée
+	*/
+	public static void deleteLocation(Location l){
+		int id=l.getId();
+		try{
+			DocumentBuilderFactory docbf = DocumentBuilderFactory.newInstance();
+			DocumentBuilder docb = docbf.newDocumentBuilder();
+			Document doc = docb.parse(new File("dataLocation.xml"));
+			NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
+			for (int i=0;i<listeL.getLength() ;i++ ) {
+				if(listeL.item(i).getNodeType()==Node.ELEMENT_NODE){ //On récupère les noeuds qui sont des éléments
+					Element location = (Element)listeL.item(i);
+					if(id==Integer.parseInt(location.getElementsByTagName("id").item(0).getTextContent())){
+						location.getParentNode().removeChild(location);
+					}
+				}
+			}
+			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
+			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
+			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
+			StreamResult gentil = new StreamResult("dataLocation.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
+		}catch (TransformerConfigurationException e){
+			e.printStackTrace();
+		}catch (TransformerException e){
+			e.printStackTrace();
+		}catch(ParserConfigurationException e){
+			e.printStackTrace();
+		}catch(SAXException e){
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	* Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
 	* @param c Client qui doit etre supprimé
