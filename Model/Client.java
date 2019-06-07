@@ -5,7 +5,6 @@ import java.util.Date;
 public class Client {
 	private String nom;
 	private int numTel;
-	private Boolean reduction;
 	private int id;
 	
 	/**
@@ -21,11 +20,10 @@ public class Client {
 	* @param reduction réduction qui s'applique au client
 	* @param id        id du client
 	*/
-	public Client(String nom, int numTel,  Boolean reduction, int id) {
+	public Client(String nom, int numTel,  int id) {
 		super();
 		this.nom = nom;
 		this.numTel = numTel;
-		this.reduction = reduction;
 		this.id=id;
 	}
 	public int getId(){
@@ -51,18 +49,11 @@ public class Client {
 	}
 	
 	
-	public Boolean getReduction() {
-		return reduction;
-	}
-	
-	public void setReduction(Boolean reduction) {
-		this.reduction = reduction;
-	}
 	
 	
 	@Override
 	public String toString() {
-		return "Client [nom=" + nom + ", numTel=" + numTel +", reduction=" + reduction + "]";
+		return "Client [nom=" + nom + ", numTel=" + numTel + "]";
 	}
 	
 	

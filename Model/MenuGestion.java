@@ -20,48 +20,52 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
-
+/**
+* Classe qui hérite d'une JFRAME et qui implémente un ActionListener et un ListSelectionListener dans le but de créer un menu qui correspond au menu de gestion des véhicule
+*/
 public class MenuGestion extends JFrame implements ActionListener, ListSelectionListener{
-
-	public JButton ok;
-	public JButton retour;
-	public JTextField tmarqueMoto;
-	public JTextField tmarqueAvion;
-	public JTextField tmarqueVoit;
-	public JTextField tmodeleVoit;
-	public JTextField tmodeleMoto;
-	public JTextField tmodeleAvion;
-	public JTextField tprixLocVoit;
-	public JTextField tprixLocMoto;
-	public JTextField tprixLocAvion;
-	public JTextField tetatVoit;
-	public JTextField tetatMoto;
-	public JTextField tetatAvion;
-	public JTextField tvitesseMaxVoit;
-	public JTextField tvitesseMaxMoto;
-	public JTextField tvitesseMaxAvion;
-	public JTextField tKmVoit;
-	public JTextField tKmMoto;
-	public JTextField tpuissanceVoit;
-	public JTextField tpuissanceMoto;
-	public JTextField tnbPlace;
-	public JTextField tnbHeures;
-	public JTextField tnbMoteurs;
-	public JButton badd;
-	public JButton bsupp;
-	public JList<Vehicule> vlist;
-	public ArrayList<Voiture> vtab;
-	public ArrayList<Moto> mtab;
-	public ArrayList<Avion> atab;
-	public JPanel list;
-	public JPanel scrollvp;
-	public CardLayout cl;
-	public JPanel infos;
+	
+	private JButton ok;
+	private JButton retour;
+	private JTextField tmarqueMoto;
+	private JTextField tmarqueAvion;
+	private JTextField tmarqueVoit;
+	private JTextField tmodeleVoit;
+	private JTextField tmodeleMoto;
+	private JTextField tmodeleAvion;
+	private JTextField tprixLocVoit;
+	private JTextField tprixLocMoto;
+	private JTextField tprixLocAvion;
+	private JTextField tetatVoit;
+	private JTextField tetatMoto;
+	private JTextField tetatAvion;
+	private JTextField tvitesseMaxVoit;
+	private JTextField tvitesseMaxMoto;
+	private JTextField tvitesseMaxAvion;
+	private JTextField tKmVoit;
+	private JTextField tKmMoto;
+	private JTextField tpuissanceVoit;
+	private JTextField tpuissanceMoto;
+	private JTextField tnbPlace;
+	private JTextField tnbHeures;
+	private JTextField tnbMoteurs;
+	private JButton badd;
+	private JButton bsupp;
+	private JList<Vehicule> vlist;
+	private ArrayList<Voiture> vtab;
+	private ArrayList<Moto> mtab;
+	private ArrayList<Avion> atab;
+	private JPanel list;
+	private JPanel scrollvp;
+	private CardLayout cl;
+	private JPanel infos;
 	private JButton bact;
-
+	
+	/**
+	* Constructeur du menu de gestion il va permettre de mettre en place les éléments graphiques de la fenetre
+	*/
 	public MenuGestion() {
 		super("VOITOVION");
-
 		JPanel t = new JPanel();
 		t.setLayout(new GridLayout(2, 1));
 		Icon titre= new ImageIcon("VOITOVION.png");
@@ -97,7 +101,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		addsupp.add(suppp);
 		t.add(addsupp);
 		this.add(t,BorderLayout.NORTH);
-
+		
 		list = new JPanel();
 		vtab= new ArrayList<Voiture>();
 		mtab= new ArrayList<Moto>();
@@ -108,7 +112,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		int taille = vtab.size()+mtab.size()+atab.size();
 		Vehicule[] listv= new Vehicule[taille];
 		for (int i = 0; i < vtab.size(); i++) {
-			listv[i]=vtab.get(i);	
+			listv[i]=vtab.get(i);
 		}
 		for (int i = 0; i < mtab.size(); i++) {
 			listv[i+vtab.size()]=mtab.get(i);
@@ -123,13 +127,13 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		scrollv.setPreferredSize(new Dimension(400, 400));
 		scrollvp.add(scrollv);
 		scrollvp.setBackground(Color.white);
-
-
+		
+		
 		list.add(scrollvp);
 		list.setBackground(Color.white);
 		this.add(list,BorderLayout.WEST);
-
-
+		
+		
 		Icon fleche= new ImageIcon("fleche.png");
 		JPanel panf=new JPanel();
 		JLabel tf=new JLabel();
@@ -139,9 +143,9 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		panf.add(tf);
 		panf.setBackground(Color.white);
 		this.add(panf,BorderLayout.CENTER);
-
-
-
+		
+		
+		
 		infos = new JPanel();
 		cl= new CardLayout();
 		infos.setLayout(cl);
@@ -151,7 +155,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsvoit.add(marqueVoit);
 		tmarqueVoit = new JTextField();
 		fieldsvoit.add(tmarqueVoit);
-		JLabel modeleVoit = new JLabel("Mod�le:");
+		JLabel modeleVoit = new JLabel("Mod�le:");
 		fieldsvoit.add(modeleVoit);
 		tmodeleVoit = new JTextField();
 		fieldsvoit.add(tmodeleVoit);
@@ -167,7 +171,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsvoit.add(vitesseMaxVoit);
 		tvitesseMaxVoit = new JTextField();
 		fieldsvoit.add(tvitesseMaxVoit);
-		JLabel kmVoit = new JLabel("Kilom�tres:");
+		JLabel kmVoit = new JLabel("Kilom�tres:");
 		fieldsvoit.add(kmVoit);
 		tKmVoit = new JTextField();
 		fieldsvoit.add(tKmVoit);
@@ -182,14 +186,14 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsvoit.setBackground(Color.white);
 		fieldsvoit.setPreferredSize(new Dimension(400, 400));
 		infos.add("Voiture",fieldsvoit);
-
+		
 		JPanel fieldsmoto = new JPanel();
 		fieldsmoto.setLayout(new GridLayout(7,2));
 		JLabel marqueMoto = new JLabel("Marque:");
 		fieldsmoto.add(marqueMoto);
-		tmarqueMoto = new JTextField();  
+		tmarqueMoto = new JTextField();
 		fieldsmoto.add(tmarqueMoto);
-		JLabel modeleMoto = new JLabel("Mod�le:");
+		JLabel modeleMoto = new JLabel("Mod�le:");
 		fieldsmoto.add(modeleMoto);
 		tmodeleMoto = new JTextField();
 		fieldsmoto.add(tmodeleMoto);
@@ -205,7 +209,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsmoto.add(vitesseMaxMoto);
 		tvitesseMaxMoto = new JTextField();
 		fieldsmoto.add(tvitesseMaxMoto);
-		JLabel kmMoto = new JLabel("Kilom�tres:");
+		JLabel kmMoto = new JLabel("Kilom�tres:");
 		fieldsmoto.add(kmMoto);
 		tKmMoto = new JTextField();
 		fieldsmoto.add(tKmMoto);
@@ -216,14 +220,14 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsmoto.setBackground(Color.white);
 		fieldsmoto.setPreferredSize(new Dimension(400, 400));
 		infos.add("Moto",fieldsmoto);
-
+		
 		JPanel fieldsavion = new JPanel();
 		fieldsavion.setLayout(new GridLayout(7,2));
 		JLabel marqueAvion = new JLabel("Marque:");
 		fieldsavion.add(marqueAvion);
 		tmarqueAvion = new JTextField();
 		fieldsavion.add(tmarqueAvion);
-		JLabel modeleAvion = new JLabel("Mod�le:");
+		JLabel modeleAvion = new JLabel("Mod�le:");
 		fieldsavion.add(modeleAvion);
 		tmodeleAvion = new JTextField();
 		fieldsavion.add(tmodeleAvion);
@@ -250,10 +254,10 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsavion.setBackground(Color.white);
 		fieldsavion.setPreferredSize(new Dimension(400, 400));
 		infos.add("Avion",fieldsavion);
-
+		
 		this.add(infos,BorderLayout.EAST);
-
-
+		
+		
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
 		JPanel retp= new JPanel();
@@ -271,18 +275,21 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		okp.setBackground(Color.white);
 		retp.setBackground(Color.white);
 		this.add(boutret,BorderLayout.SOUTH);
-
+		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	/**
+	* Procédure qui se déclenche lorsqu'un bouton est pressé
+	* @param e Action réalisée
+	*/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
 			System.out.println(vlist.getSelectedValue().getClass().toString());
 			switch (vlist.getSelectedValue().getClass().toString()) {
-			case "class Voiture":
+				case "class Voiture":
 				Voiture v = (Voiture)vlist.getSelectedValue();
 				GestionXML.deleteVehicule(v);
 				v.setEtat(Boolean.parseBoolean(tetatVoit.getText()));
@@ -296,7 +303,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 				v.setVitesseMax(Integer.parseInt(tpuissanceVoit.getText()));
 				GestionXML.addVoiture(v);
 				break;
-			case "class Moto":
+				case "class Moto":
 				Moto m = (Moto)vlist.getSelectedValue();
 				GestionXML.deleteVehicule(m);
 				m.setEtat(Boolean.parseBoolean(tetatMoto.getText()));
@@ -309,7 +316,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 				m.setVitesseMax(Integer.parseInt(tvitesseMaxMoto.getText()));
 				GestionXML.addMoto(m);
 				break;
-			case "class Avion":
+				case "class Avion":
 				Avion a = (Avion)vlist.getSelectedValue();
 				GestionXML.deleteVehicule(a);
 				a.setEtat(Boolean.parseBoolean(tetatAvion.getText()));
@@ -322,8 +329,8 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 				a.setVitesseMax(Integer.parseInt(tvitesseMaxAvion.getText()));
 				GestionXML.addAvion(a);
 				break;
-
-			default:
+				
+				default:
 				break;
 			}
 		}
@@ -342,10 +349,13 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 			MenuGestion mg = new MenuGestion();
 		}
 	}
-
+	/**
+	* Procédure qui se déclenche lorsqu'un élément de la liste est sélectionné
+	* @param e Action réalisée
+	*/
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
-		Object source = e.getSource(); 
+		Object source = e.getSource();
 		if (source==vlist) {
 			if (vlist.getSelectedValue().getClass().getName().equals("Voiture")) {
 				cl.show(infos, "Voiture");

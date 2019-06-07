@@ -1,6 +1,9 @@
-import java.util.Date;
 import java.text.SimpleDateFormat;
+
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 public class Main{
   
   
@@ -12,7 +15,8 @@ public class Main{
     Date dateD= new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2019");
     Date dateF= new SimpleDateFormat("dd/MM/yyyy").parse("09/05/2019");*/
     Client c = new Client("Paul",684758125,false,15);
-    GestionXML.readXMLLocation("Voiture");
+    ArrayList<Location> wesh =  GestionXML.readXMLLocation("Voiture");
+    System.out.println(GestionXML.getLastIDLoc());
     /*}catch(ParseException e){
     e.printStackTrace();
   }*/

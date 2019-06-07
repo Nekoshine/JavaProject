@@ -313,7 +313,7 @@ public class GestionXML{
 						new Client(
 						node.getElementsByTagName("nom").item(0).getTextContent(),
 						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+						
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						new Voiture(
 						node.getElementsByTagName("marque").item(0).getTextContent(),
@@ -327,7 +327,8 @@ public class GestionXML{
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						Float.parseFloat(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent())));
 						
 					}else if(child!=null && vehicule.equals("Moto")){
 						location.add(new Location(
@@ -336,7 +337,7 @@ public class GestionXML{
 						new Client(
 						node.getElementsByTagName("nom").item(0).getTextContent(),
 						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
+						
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						new Moto(
 						node.getElementsByTagName("marque").item(0).getTextContent(),
@@ -349,7 +350,8 @@ public class GestionXML{
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						Float.parseFloat(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent())));
 						
 					}else if(child!=null && vehicule.equals("Avion")){
 						location.add(new Location(
@@ -358,7 +360,6 @@ public class GestionXML{
 						new Client(
 						node.getElementsByTagName("nom").item(0).getTextContent(),
 						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						new Avion(
 						node.getElementsByTagName("marque").item(0).getTextContent(),
@@ -371,7 +372,8 @@ public class GestionXML{
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						Float.parseFloat(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("kmPrev").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
+						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent()),
+						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent())));
 					}
 					
 					System.out.println(location.get(i));
@@ -422,9 +424,6 @@ public class GestionXML{
 			Element numTel = doc.createElement("numTel");
 			numTel.appendChild(doc.createTextNode(Integer.toString(l.getClient().getNumTel())));
 			client.appendChild(numTel);
-			Element reduction = doc.createElement("reduction");
-			reduction.appendChild(doc.createTextNode(Boolean.toString(l.getClient().getReduction())));
-			client.appendChild(reduction);
 			location.appendChild(client);
 			
 			if ( l.getVehicule() instanceof Moto){
@@ -745,10 +744,6 @@ public class GestionXML{
 			Element numTel = doc.createElement("numTel");
 			numTel.appendChild(doc.createTextNode(Integer.toString(c.getNumTel())));
 			client.appendChild(numTel);
-			
-			Element reduction = doc.createElement("reduction");
-			reduction.appendChild(doc.createTextNode(Boolean.toString(c.getReduction())));
-			client.appendChild(reduction);
 			Element id = doc.createElement("id");
 			id.appendChild(doc.createTextNode(Integer.toString(last)));
 			client.appendChild(id);
@@ -897,7 +892,6 @@ public class GestionXML{
 					clients.add(new Client(
 					node.getElementsByTagName("nom").item(0).getTextContent(),
 					Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-					Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
 					Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					System.out.println(clients.get(i));
 				}

@@ -14,45 +14,41 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+/**
+* Classe qui hérite d'une JFRAME et qui implémente un ActionListener dans le but de créer un menu qui correspond au menu d'ajout d'un véhicule
+*/
 public class AddVehicule extends JFrame implements ActionListener{
-
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	public JTextField tmarqueMoto;
-	public JTextField tmarqueAvion;
-	public JTextField tmarqueVoit;
-	public JTextField tmodeleVoit;
-	public JTextField tmodeleMoto;
-	public JTextField tmodeleAvion;
-	public JTextField tprixLocVoit;
-	public JTextField tprixLocMoto;
-	public JTextField tprixLocAvion;
-	public JTextField tetatVoit;
-	public JTextField tetatMoto;
-	public JTextField tetatAvion;
-	public JTextField tvitesseMaxVoit;
-	public JTextField tvitesseMaxMoto;
-	public JTextField tvitesseMaxAvion;
-	public JTextField tKmVoit;
-	public JTextField tKmMoto;
-	public JTextField tpuissanceVoit;
-	public JTextField tpuissanceMoto;
-	public JTextField tnbPlace;
-	public JTextField tnbHeures;
-	public JTextField tnbMoteurs;
+	private JTextField tMarqueMoto;
+	private JTextField tMarqueAvion;
+	private JTextField tMarqueVoit;
+	private JTextField tModeleVoit;
+	private JTextField tModeleMoto;
+	private JTextField tModeleAvion;
+	private JTextField tPrixLocVoit;
+	private JTextField tPrixLocMoto;
+	private JTextField tPrixLocAvion;
+	private JTextField tEtatVoit;
+	private JTextField tetatMoto;
+	private JTextField tEtatAvion;
+	private JTextField tVitesseMaxVoit;
+	private JTextField tVitesseMaxMoto;
+	private JTextField tVitesseMaxAvion;
+	private JTextField tKmVoit;
+	private JTextField tKmMoto;
+	private JTextField tPuissanceVoit;
+	private JTextField tPuissanceMoto;
+	private JTextField tNbPlace;
+	private JTextField tNbHeures;
+	private JTextField tNbMoteurs;
 	private JPanel infos;
-	public JButton ok;
-	public JButton retour;
-	public CardLayout cl;
-	public JButton bvoit;
-	public JButton bmoto;
-	public JButton bavion;
-	public JComboBox<String> cbchoix;
-
+	private JButton ok;
+	private JButton retour;
+	private CardLayout cl;
+	private JComboBox<String> cbchoix;
+	/**
+	* Constructeur de la classe AddVehicule il permet de mettre en place les éléments au démarrage de la fenetre et donc lors de l'instanciation de la classe
+	*/
 	public AddVehicule() {
 		super("Ajouter");
 		infos = new JPanel();
@@ -62,110 +58,110 @@ public class AddVehicule extends JFrame implements ActionListener{
 		fieldsvoit.setLayout(new GridLayout(8,2));
 		JLabel marqueVoit = new JLabel("Marque:");
 		fieldsvoit.add(marqueVoit);
-		tmarqueVoit = new JTextField();
-		fieldsvoit.add(tmarqueVoit);
-		JLabel modeleVoit = new JLabel("Mod�le:");
+		tMarqueVoit = new JTextField();
+		fieldsvoit.add(tMarqueVoit);
+		JLabel modeleVoit = new JLabel("Mod�le:");
 		fieldsvoit.add(modeleVoit);
-		tmodeleVoit = new JTextField();
-		fieldsvoit.add(tmodeleVoit);
+		tModeleVoit = new JTextField();
+		fieldsvoit.add(tModeleVoit);
 		JLabel prixLocVoit = new JLabel("Prix de Location:");
 		fieldsvoit.add(prixLocVoit);
-		tprixLocVoit = new JTextField();
-		fieldsvoit.add(tprixLocVoit);
+		tPrixLocVoit = new JTextField();
+		fieldsvoit.add(tPrixLocVoit);
 		JLabel etatVoit = new JLabel("Etat:");
 		fieldsvoit.add(etatVoit);
-		tetatVoit = new JTextField();
-		fieldsvoit.add(tetatVoit);
+		tEtatVoit = new JTextField();
+		fieldsvoit.add(tEtatVoit);
 		JLabel vitesseMaxVoit = new JLabel("Vitesse Max:");
 		fieldsvoit.add(vitesseMaxVoit);
-		tvitesseMaxVoit = new JTextField();
-		fieldsvoit.add(tvitesseMaxVoit);
-		JLabel kmVoit = new JLabel("Kilom�tres:");
+		tVitesseMaxVoit = new JTextField();
+		fieldsvoit.add(tVitesseMaxVoit);
+		JLabel kmVoit = new JLabel("Kilom�tres:");
 		fieldsvoit.add(kmVoit);
 		tKmVoit = new JTextField();
 		fieldsvoit.add(tKmVoit);
 		JLabel puissanceVoit = new JLabel("Puissance:");
 		fieldsvoit.add(puissanceVoit);
-		tpuissanceVoit = new JTextField();
-		fieldsvoit.add(tpuissanceVoit);
+		tPuissanceVoit = new JTextField();
+		fieldsvoit.add(tPuissanceVoit);
 		JLabel nbPlaces = new JLabel("Nombre de places:");
 		fieldsvoit.add(nbPlaces);
-		tnbPlace = new JTextField();
-		fieldsvoit.add(tnbPlace);
+		tNbPlace = new JTextField();
+		fieldsvoit.add(tNbPlace);
 		fieldsvoit.setBackground(Color.white);
 		fieldsvoit.setPreferredSize(new Dimension(400, 400));
 		infos.add("Voiture",fieldsvoit);
-
+		
 		JPanel fieldsmoto = new JPanel();
 		fieldsmoto.setLayout(new GridLayout(7,2));
 		JLabel marqueMoto = new JLabel("Marque:");
 		fieldsmoto.add(marqueMoto);
-		tmarqueMoto = new JTextField();
-		fieldsmoto.add(tmarqueMoto);
-		JLabel modeleMoto = new JLabel("Mod�le:");
+		tMarqueMoto = new JTextField();
+		fieldsmoto.add(tMarqueMoto);
+		JLabel modeleMoto = new JLabel("Mod�le:");
 		fieldsmoto.add(modeleMoto);
-		tmodeleMoto = new JTextField();
-		fieldsmoto.add(tmodeleMoto);
+		tModeleMoto = new JTextField();
+		fieldsmoto.add(tModeleMoto);
 		JLabel prixLocMoto = new JLabel("Prix de Location:");
 		fieldsmoto.add(prixLocMoto);
-		tprixLocMoto = new JTextField();
-		fieldsmoto.add(tprixLocMoto);
+		tPrixLocMoto = new JTextField();
+		fieldsmoto.add(tPrixLocMoto);
 		JLabel etatMoto = new JLabel("Etat:");
 		fieldsmoto.add(etatMoto);
 		tetatMoto = new JTextField();
 		fieldsmoto.add(tetatMoto);
 		JLabel vitesseMaxMoto = new JLabel("Vitesse Max:");
 		fieldsmoto.add(vitesseMaxMoto);
-		tvitesseMaxMoto = new JTextField();
-		fieldsmoto.add(tvitesseMaxMoto);
-		JLabel kmMoto = new JLabel("Kilom�tres:");
+		tVitesseMaxMoto = new JTextField();
+		fieldsmoto.add(tVitesseMaxMoto);
+		JLabel kmMoto = new JLabel("Kilom�tres:");
 		fieldsmoto.add(kmMoto);
 		tKmMoto = new JTextField();
 		fieldsmoto.add(tKmMoto);
 		JLabel puissanceMoto = new JLabel("Puissance:");
 		fieldsmoto.add(puissanceMoto);
-		tpuissanceMoto= new JTextField();
-		fieldsmoto.add(tpuissanceMoto);
+		tPuissanceMoto= new JTextField();
+		fieldsmoto.add(tPuissanceMoto);
 		fieldsmoto.setBackground(Color.white);
 		fieldsmoto.setPreferredSize(new Dimension(400, 400));
 		infos.add("Moto",fieldsmoto);
-
+		
 		JPanel fieldsavion = new JPanel();
 		fieldsavion.setLayout(new GridLayout(7,2));
 		JLabel marqueAvion = new JLabel("Marque:");
 		fieldsavion.add(marqueAvion);
-		tmarqueAvion = new JTextField();
-		fieldsavion.add(tmarqueAvion);
-		JLabel modeleAvion = new JLabel("Mod�le:");
+		tMarqueAvion = new JTextField();
+		fieldsavion.add(tMarqueAvion);
+		JLabel modeleAvion = new JLabel("Mod�le:");
 		fieldsavion.add(modeleAvion);
-		tmodeleAvion = new JTextField();
-		fieldsavion.add(tmodeleAvion);
+		tModeleAvion = new JTextField();
+		fieldsavion.add(tModeleAvion);
 		JLabel prixLocAvion = new JLabel("Prix de Location:");
 		fieldsavion.add(prixLocAvion);
-		tprixLocAvion = new JTextField();
-		fieldsavion.add(tprixLocAvion);
+		tPrixLocAvion = new JTextField();
+		fieldsavion.add(tPrixLocAvion);
 		JLabel etatAvion = new JLabel("Etat:");
 		fieldsavion.add(etatAvion);
-		tetatAvion = new JTextField();
-		fieldsavion.add(tetatAvion);
+		tEtatAvion = new JTextField();
+		fieldsavion.add(tEtatAvion);
 		JLabel vitesseMaxAvion = new JLabel("Vitesse Max:");
 		fieldsavion.add(vitesseMaxAvion);
-		tvitesseMaxAvion = new JTextField();
-		fieldsavion.add(tvitesseMaxAvion);
+		tVitesseMaxAvion = new JTextField();
+		fieldsavion.add(tVitesseMaxAvion);
 		JLabel nbHeures = new JLabel("Nombre d'heures:");
 		fieldsavion.add(nbHeures);
-		tnbHeures = new JTextField();
-		fieldsavion.add(tnbHeures);
+		tNbHeures = new JTextField();
+		fieldsavion.add(tNbHeures);
 		JLabel nbMoteurs = new JLabel("Nombre de moteurs:");
 		fieldsavion.add(nbMoteurs);
-		tnbMoteurs = new JTextField();
-		fieldsavion.add(tnbMoteurs);
+		tNbMoteurs = new JTextField();
+		fieldsavion.add(tNbMoteurs);
 		fieldsavion.setBackground(Color.white);
 		fieldsavion.setPreferredSize(new Dimension(400, 400));
 		infos.add("Avion",fieldsavion);
-
+		
 		this.add(infos,BorderLayout.CENTER);
-
+		
 		JPanel boutons = new JPanel();
 		boutons.setLayout(new GridLayout(1,2));
 		ok = new JButton("Sauvegarder");
@@ -183,7 +179,7 @@ public class AddVehicule extends JFrame implements ActionListener{
 		pretour.setBackground(Color.white);
 		pok.setBackground(Color.white);
 		this.add(boutons,BorderLayout.SOUTH);
-
+		
 		JPanel choix = new JPanel();
 		String[] listc =  {"Voiture","Moto","Avion"};
 		cbchoix = new JComboBox<String>(listc);
@@ -196,16 +192,19 @@ public class AddVehicule extends JFrame implements ActionListener{
 		choix.setBackground(Color.white);
 		choix.add(cbchoix);
 		this.add(choix,BorderLayout.NORTH);
-
+		
 		this.setBounds(100, 100, 500, 500);
 		this.setVisible(true);
 	}
-
+	/**
+	* Procédure qui se déclenche lorsqu'un bouton est pressé
+	* @param e Action réalisée
+	*/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
 			switch (cbchoix.getSelectedItem().toString()) {
-			case "Voiture":
+				case "Voiture":
 				Voiture v = new Voiture();
 				try {
 					v.setEtat(false);
@@ -214,43 +213,43 @@ public class AddVehicule extends JFrame implements ActionListener{
 				} catch (NumberFormatException e2) {
 					JOptionPane.showMessageDialog(tKmVoit,"Vous avez mal remplie les champs!","ERROR",JOptionPane.ERROR_MESSAGE);
 				}
-				v.setMarque(tmarqueVoit.getText());
-				v.setModele(tmodeleVoit.getText());
-				v.setNbPlace(Integer.parseInt(tnbPlace.getText()));
-				v.setPrixLocation(Integer.parseInt(tprixLocVoit.getText()));
-				v.setPuissance(Double.parseDouble(tpuissanceVoit.getText()));
-				v.setVitesseMax(Integer.parseInt(tpuissanceVoit.getText()));
+				v.setMarque(tMarqueVoit.getText());
+				v.setModele(tModeleVoit.getText());
+				v.setNbPlace(Integer.parseInt(tNbPlace.getText()));
+				v.setPrixLocation(Integer.parseInt(tPrixLocVoit.getText()));
+				v.setPuissance(Double.parseDouble(tPuissanceVoit.getText()));
+				v.setVitesseMax(Integer.parseInt(tPuissanceVoit.getText()));
 				GestionXML.addVoiture(v);
 				break;
-			case "Moto":
+				case "Moto":
 				Moto m = new Moto();
 				m.setEtat(false);
 				m.setId(GestionXML.getLastID(m));
 				m.setKm(Integer.parseInt(tKmMoto.getText()));
-				m.setMarque(tmarqueMoto.getText());
-				m.setModele(tmodeleMoto.getText());
-				m.setPrixLocation(Integer.parseInt(tprixLocMoto.getText()));
-				m.setPuissance(Double.parseDouble(tpuissanceMoto.getText()));
-				m.setVitesseMax(Integer.parseInt(tvitesseMaxMoto.getText()));
+				m.setMarque(tMarqueMoto.getText());
+				m.setModele(tModeleMoto.getText());
+				m.setPrixLocation(Integer.parseInt(tPrixLocMoto.getText()));
+				m.setPuissance(Double.parseDouble(tPuissanceMoto.getText()));
+				m.setVitesseMax(Integer.parseInt(tVitesseMaxMoto.getText()));
 				GestionXML.addMoto(m);
 				break;
-			case "Avion":
+				case "Avion":
 				Avion a = new Avion();
 				a.setEtat(false);
 				a.setId(GestionXML.getLastID(a));
-				a.setMarque(tmarqueAvion.getText());
-				a.setModele(tmodeleAvion.getText());
-				a.setNbHeures(Integer.parseInt(tnbHeures.getText()));
-				a.setNbMoteurs(Integer.parseInt(tnbMoteurs.getText()));
-				a.setPrixLocation(Integer.parseInt(tprixLocAvion.getText()));
-				a.setVitesseMax(Integer.parseInt(tvitesseMaxAvion.getText()));
+				a.setMarque(tMarqueAvion.getText());
+				a.setModele(tModeleAvion.getText());
+				a.setNbHeures(Integer.parseInt(tNbHeures.getText()));
+				a.setNbMoteurs(Integer.parseInt(tNbMoteurs.getText()));
+				a.setPrixLocation(Integer.parseInt(tPrixLocAvion.getText()));
+				a.setVitesseMax(Integer.parseInt(tVitesseMaxAvion.getText()));
 				GestionXML.addAvion(a);
 				break;
-
-			default:
+				
+				default:
 				break;
 			}
-
+			
 			this.setVisible(false);
 		}
 		else if (source==retour) {
@@ -258,21 +257,19 @@ public class AddVehicule extends JFrame implements ActionListener{
 		}
 		else if (source==cbchoix) {
 			switch (cbchoix.getSelectedItem().toString()) {
-			case "Voiture":
+				case "Voiture":
 				cl.show(infos, "Voiture");
 				break;
-			case "Moto":
+				case "Moto":
 				cl.show(infos, "Moto");
 				break;
-			case "Avion":
+				case "Avion":
 				cl.show(infos, "Avion");
 				break;
-
-			default:
+				
+				default:
 				break;
 			}
 		}
 	}
 }
-
-
