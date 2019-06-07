@@ -11,7 +11,7 @@ public class Main{
     /*try{
     Date dateD= new SimpleDateFormat("dd/MM/yyyy").parse("02/05/2019");
     Date dateF= new SimpleDateFormat("dd/MM/yyyy").parse("09/05/2019");*/
-    Client c = new Client("Paul",684758125,50,0,false,15);
+    Client c = new Client("Paul",684758125,false,15);
     GestionXML.readXMLLocation("Voiture");
     /*}catch(ParseException e){
     e.printStackTrace();

@@ -5,8 +5,6 @@ import java.util.Date;
 public class Client {
 	private String nom;
 	private int numTel;
-	private int nbKm;
-	private float prixPrev;
 	private Boolean reduction;
 	private int id;
 	
@@ -64,7 +62,7 @@ public class Client {
 	
 	@Override
 	public String toString() {
-		return "Client [nom=" + nom + ", numTel=" + numTel + ", nbKm=" + nbKm + ", prixPrev=" + prixPrev + ", reduction=" + reduction + "]";
+		return "Client [nom=" + nom + ", numTel=" + numTel +", reduction=" + reduction + "]";
 	}
 	
 	

@@ -21,16 +21,16 @@ import javax.swing.JTextField;
 
 
 public class MenuPrincipal extends JFrame implements ActionListener{
-
+	
 	private static final long serialVersionUID = 1L;
-	public JButton bclient;
-	public JButton bloc;
-	public JButton bgestion;
-	public JButton bres;
-
+	private JButton bClient;
+	private JButton bLoc;
+	private JButton bGestion;
+	private JButton bRes;
+	
 	public MenuPrincipal() {
 		super("VOITOVION");
-	
+		
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
 		JLabel t=new JLabel();
@@ -38,49 +38,48 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		t.setHorizontalAlignment(JTextField.CENTER);
 		pan.add(t);
 		pan.setBackground(Color.white);
-
+		
 		this.add(pan,BorderLayout.NORTH);
-
+		
 		JPanel boutons = new JPanel(new GridLayout(4, 1));
-
+		
 		Font f = new Font("Bernard MT Condensed",Font.PLAIN,20);
-
-		bclient = new JButton("Client");
-		bclient.setFont(f);
-		bclient.addActionListener(this);
-		bclient.setPreferredSize(new Dimension(150,100));
+		
+		bClient = new JButton("Client");
+		bClient.setFont(f);
+		bClient.addActionListener(this);
+		bClient.setPreferredSize(new Dimension(150,100));
 		JPanel tc = new JPanel();
-		tc.add(bclient);
-		bloc = new JButton("Locations");
-		bloc.addActionListener(this);
-		bloc.setFont(f);
-		bloc.setPreferredSize(new Dimension(150,100));
+		tc.add(bClient);
+		bLoc = new JButton("Locations");
+		bLoc.addActionListener(this);
+		bLoc.setFont(f);
+		bLoc.setPreferredSize(new Dimension(150,100));
 		JPanel tl = new JPanel();
-		tl.add(bloc);
-		bres = new JButton("Restitutions");
-		bres.addActionListener(this);
-		bres.setFont(f);
-		bres.setPreferredSize(new Dimension(150,100));
+		tl.add(bLoc);
+		bRes = new JButton("Restitutions");
+		bRes.addActionListener(this);
+		bRes.setFont(f);
+		bRes.setPreferredSize(new Dimension(150,100));
 		JPanel tr = new JPanel();
-		tr.add(bres);
-		bgestion = new JButton("Gestion");
-		bgestion.addActionListener(this);
-		bgestion.setFont(f);
-		bgestion.setPreferredSize(new Dimension(150,100));
+		tr.add(bRes);
+		bGestion = new JButton("Gestion");
+		bGestion.addActionListener(this);
+		bGestion.setFont(f);
+		bGestion.setPreferredSize(new Dimension(150,100));
 		JPanel tg = new JPanel();
 		tg.setBackground(Color.white);
 		tc.setBackground(Color.white);
 		tl.setBackground(Color.white);
 		tr.setBackground(Color.white);
-		tg.add(bgestion);
+		tg.add(bGestion);
 		boutons.add(tc);
 		boutons.add(tl);
 		boutons.add(tr);
 		boutons.add(tg);
 		this.add(boutons,BorderLayout.CENTER);
-
-
-
+		
+		
 		Icon icon1 = new ImageIcon("giphy.gif");
 		JLabel label1 = new JLabel(icon1);
 		label1.setPreferredSize(new Dimension(550,550));
@@ -93,48 +92,6 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		JPanel pani2 = new JPanel();
 		pani2.add(label2);
 		pani2.setBackground(Color.white);
-		/*pani2.addMouseListener(new MouseListener() {
-			Sound sound = new Sound("dejavu.WAV");
-			InputStream stream = new ByteArrayInputStream(sound.getSamples()); 
-
-
-			
-			
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				try {
-					stream.close();
-				} catch (IOException e2) {
-					e2.printStackTrace();
-				}
-
-			}
-
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				System.out.println("Bonjour");
-				//sound.play(stream);	
-				
-			}
-
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-		});*/
 		this.add(pani2,BorderLayout.SOUTH);
 		Icon icon3 = new ImageIcon("moto.gif");
 		JLabel label3 = new JLabel(icon3);
@@ -143,35 +100,37 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 		pani3.add(label3);
 		pani3.setBackground(Color.white);
 		this.add(pani3,BorderLayout.WEST);
-
+		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
-		if (source==bclient) {
+		if (source==bClient) {
 			this.setVisible(false);
 			MenuClient mc = new MenuClient();
 		}
-		else if (source==bloc) {
+		else if (source==bLoc) {
 			this.setVisible(false);
 			MenuLocation ml = new MenuLocation();
 		}
-		else if (source==bgestion) {
+		else if (source==bGestion) {
 			this.setVisible(false);
 			MenuGestion mg = new MenuGestion();
 		}
-		else if (source==bres) {
+		else if (source==bRes) {
 			this.setVisible(false);
 			MenuRest mg = new MenuRest();
 		}
 	}
-
 	
+	/**
+	* [main description]
+	* @param args [description]
+	*/
 	public static void main(String[] args) {
-		//MenuRest m = new MenuRest(); 
-		MenuPrincipal menu = new MenuPrincipal(); 
+		MenuPrincipal menu = new MenuPrincipal();
 	}
 }

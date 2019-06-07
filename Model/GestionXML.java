@@ -63,6 +63,7 @@ public class GestionXML{
 		}
 	}
 	
+	
 	/**
 	* Cette procédure permet de supprimer un client en lui donnant ce dernier en parametre
 	* @param c Client qui doit etre supprimé
@@ -413,19 +414,19 @@ public class GestionXML{
 			String dateF = date.format(l.getDateFin());
 			dateFin.appendChild(doc.createTextNode(dateF));
 			location.appendChild(dateFin);
-			Element client = doc.createElement("Client");
 			
+			Element client = doc.createElement("Client");
 			Element nom = doc.createElement("nom");
 			nom.appendChild(doc.createTextNode(l.getClient().getNom()));
 			client.appendChild(nom);
 			Element numTel = doc.createElement("numTel");
 			numTel.appendChild(doc.createTextNode(Integer.toString(l.getClient().getNumTel())));
 			client.appendChild(numTel);
-			
 			Element reduction = doc.createElement("reduction");
 			reduction.appendChild(doc.createTextNode(Boolean.toString(l.getClient().getReduction())));
 			client.appendChild(reduction);
 			location.appendChild(client);
+			
 			if ( l.getVehicule() instanceof Moto){
 				Element vehicule = doc.createElement("Moto");
 				Moto m = (Moto) l.getVehicule();
@@ -523,12 +524,18 @@ public class GestionXML{
 				addAvion(a);
 				location.appendChild(vehicule);
 			}
+			Element kmPrev = doc.createElement("kmPrev");
+			kmPrev.appendChild(doc.createTextNode(Integer.toString(l.getKmPrev())));
+			location.appendChild(kmPrev);
+			Element prixPrev = doc.createElement("prixPrev");
+			prixPrev.appendChild(doc.createTextNode(Float.toString(l.getPrixPrev())));
+			location.appendChild(prixPrev);
 			
 			racine.appendChild(location); // On ajoute la voiture a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée
-			StreamResult gentil = new StreamResult("dataVoiture.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
+			StreamResult gentil = new StreamResult("dataLocation.xml"); // On donne le fichier qui servira a recevoir la transformation réalisée
 			optimus.transform(robot, gentil);// On transforme la source avec les informations données.
 			
 		}catch (TransformerConfigurationException e){

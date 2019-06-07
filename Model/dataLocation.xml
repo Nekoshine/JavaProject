@@ -5,13 +5,13 @@
     <dateDebut>02/08/2019</dateDebut>
     <dateFin>10/08/2019</dateFin>
     <Client>
-      <nbKm>50</nbKm>
       <nom>Poiro</nom>
       <numTel>675874128</numTel>
-      <prixPrev>0</prixPrev>
       <reduction>false</reduction>
+      <id>10</id>
     </Client>
     <Voiture>
+      <id>2</id>
       <etat>true</etat>
       <km>100000</km>
       <marque>Peugoet</marque>
@@ -22,28 +22,6 @@
       <vitesseMax>155</vitesseMax>
     </Voiture>
     <kmPrev>0</kmPrev>
-  </element>
-  <element>
-    <id>1</id>
-    <dateDebut>02/08/2019</dateDebut>
-    <dateFin>10/08/2019</dateFin>
-    <Client>
-      <nbKm>50</nbKm>
-      <nom>Poiro</nom>
-      <numTel>675874128</numTel>
-      <prixPrev>0</prixPrev>
-      <reduction>false</reduction>
-    </Client>
-    <Voiture>
-      <etat>true</etat>
-      <km>100000</km>
-      <marque>Peugoet</marque>
-      <modele>206</modele>
-      <nbPlace>5</nbPlace>
-      <prixLocation>0</prixLocation>
-      <puissance>60</puissance>
-      <vitesseMax>155</vitesseMax>
-    </Voiture>
-    <kmPrev>0</kmPrev>
+    <prixPrev>0</prixPrev>
   </element>
 </root>
