@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collection;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -49,10 +50,8 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 		this.add(t,BorderLayout.NORTH);
 		
 		tab= new ArrayList<Location>();
-		System.out.println("bite2");
-		tab=GestionXML.readXMLLocation();
-		this.setVisible(true); 
-		/*Location[] listc= new Location[tab.size()];
+		
+		Location[] listc= new Location[tab.size()];
 		for (int i = 0; i < tab.size(); i++) {
 			listc[i]=tab.get(i);
 		}
@@ -170,7 +169,7 @@ public class MenuRest extends JFrame implements ActionListener, ListSelectionLis
 
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);*/
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	@Override

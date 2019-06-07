@@ -269,7 +269,7 @@ public class MenuLocation extends JFrame implements ActionListener/*, ListSelect
 		else if (source==bavion) {
 			cl.show(list, "Avion");
 			vehicule="Avion";
-			this.setVisible(true);
+			this.setVisible(true); 
 		}
 	}
 

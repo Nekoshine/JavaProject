@@ -171,7 +171,7 @@ public class MenuPrincipal extends JFrame implements ActionListener{
 
 	
 	public static void main(String[] args) {
-		MenuRest m = new MenuRest(); 
-		//MenuPrincipal menu = new MenuPrincipal(); 
+		//MenuRest m = new MenuRest(); 
+		MenuPrincipal menu = new MenuPrincipal(); 
 	}
 }

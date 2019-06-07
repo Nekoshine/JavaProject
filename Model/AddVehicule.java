@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -206,9 +207,13 @@ public class AddVehicule extends JFrame implements ActionListener{
 			switch (cbchoix.getSelectedItem().toString()) {
 			case "Voiture":
 				Voiture v = new Voiture();
-				v.setEtat(false);
-				v.setId(GestionXML.getLastID(v));
-				v.setKm(Integer.parseInt(tKmVoit.getText()));
+				try {
+					v.setEtat(false);
+					v.setId(GestionXML.getLastID(v));
+					v.setKm(Integer.parseInt(tKmVoit.getText()));
+				} catch (NumberFormatException e2) {
+					JOptionPane.showMessageDialog(tKmVoit,"Vous avez mal remplie les champs!","ERROR",JOptionPane.ERROR_MESSAGE);
+				}
 				v.setMarque(tmarqueVoit.getText());
 				v.setModele(tmodeleVoit.getText());
 				v.setNbPlace(Integer.parseInt(tnbPlace.getText()));
@@ -270,4 +275,4 @@ public class AddVehicule extends JFrame implements ActionListener{
 	}
 }
 
-	
+
