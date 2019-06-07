@@ -24,14 +24,14 @@ public abstract class Aerien extends Vehicule {
   
   /**
   * Constructeur d'un véhicule aérien qui va initialiser les champs et appeler le Constructeur de l'objet véhicule
-  * @param marque       marque d'un avion
-  * @param modele       modele de l'avion
-  * @param prixLocation prix de location de l'avion
-  * @param etat         etat de l'avion
-  * @param vitesseMax  vitesse maximale de l'avion
-  * @param nbHeures   nombre d'heures de vol de l'avion
-  * @param nbMoteurs    nombre de moteurs de vol de l'avion
-  * @param id           id de l'avion
+  * @param marque       marque d'un véhicule aérien
+  * @param modele       modele du  véhicule aérien
+  * @param prixLocation prix de location du  véhicule aérien
+  * @param etat         etat du  véhicule aérien
+  * @param vitesseMax  vitesse maximale du  véhicule aérien
+  * @param nbHeures   nombre d'heures de vol du  véhicule aérien
+  * @param nbMoteurs    nombre de moteurs de vol du  véhicule aérien
+  * @param id           id du  véhicule aérien
   */
   public Aerien(String marque, String modele, int prixLocation, Boolean etat, int vitesseMax,int nbHeures, int nbMoteurs,int id) {
     super(marque,  modele,  prixLocation,  etat,  vitesseMax,id);
