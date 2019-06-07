@@ -19,8 +19,6 @@ public class AddClient extends JFrame implements ActionListener{
 	private static final long serialVersionUID = 1L;
 	private JTextField tnom;
 	private JTextField tnumTel;
-	private JTextField tnbKm;
-	private JTextField tprixPrev;
 	private JTextField treduc;
 	private JPanel infos;
 	public JButton ok;
@@ -30,7 +28,7 @@ public class AddClient extends JFrame implements ActionListener{
 		super("Ajouter");
 		infos = new JPanel();
 		JPanel fields = new JPanel();
-		fields.setLayout(new GridLayout(5,2));
+		fields.setLayout(new GridLayout(3,2));
 		JLabel nom = new JLabel("Nom:");
 		fields.add(nom);
 		tnom = new JTextField();
@@ -39,14 +37,6 @@ public class AddClient extends JFrame implements ActionListener{
 		fields.add(numTel);
 		tnumTel = new JTextField();
 		fields.add(tnumTel);
-		JLabel nbKm = new JLabel("Nombre de Km:");
-		fields.add(nbKm);
-		tnbKm = new JTextField();
-		fields.add(tnbKm);
-		JLabel prixPrev = new JLabel("Prix prévisonnel:");
-		fields.add(prixPrev);
-		tprixPrev = new JTextField();
-		fields.add(tprixPrev);
 		JLabel reduc = new JLabel("Réduction:");
 		fields.add(reduc);
 		treduc = new JTextField();

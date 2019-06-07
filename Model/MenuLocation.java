@@ -34,6 +34,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 	public JTextField dateFin;
 	public JTextField tprixPrev;
 	public JTextField kmPrev;
+	public JTextField treduc;
 	public JButton bvoit;
 	public JButton bmoto;
 	public JButton bavion;
@@ -153,7 +154,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		this.add(panf,BorderLayout.CENTER);
 
 		JPanel fields = new JPanel();
-		fields.setLayout(new GridLayout(5,2));
+		fields.setLayout(new GridLayout(6,2));
 		JLabel nom = new JLabel("Client:");
 		fields.add(nom);
 		tab= new ArrayList<Client>();
@@ -164,7 +165,7 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		}
 		cbclient = new JComboBox<Client>(listc);
 		fields.add(cbclient);
-		JLabel dateDeb = new JLabel("Date de d�but");
+		JLabel dateDeb = new JLabel("Date de debut");
 		fields.add(dateDeb);
 		dateDebut = new JTextField();
 		fields.add(dateDebut);
@@ -172,20 +173,25 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 		fields.add(dateF);
 		dateFin = new JTextField();
 		fields.add(dateFin);
-		JLabel prixPrev = new JLabel("Prix pr�visonnel:");
+		JLabel prixPrev = new JLabel("Prix previsonnel:");
 		fields.add(prixPrev);
 		tprixPrev = new JTextField();
 		fields.add(tprixPrev);
-		JLabel kmP = new JLabel("Kilom�tres pr�visionnels:");
+		JLabel kmP = new JLabel("Kilometres previsionnels:");
 		fields.add(kmP);
 		kmPrev = new JTextField();
 		fields.add(kmPrev);
+		JLabel reduc= new JLabel("Reduction");
+		fields.add(reduc);
+		treduc=new JTextField();
+		fields.add(treduc);
 		fields.setBackground(Color.white);
 		fields.setPreferredSize(new Dimension(400, 400));
 		JPanel fieldsp = new JPanel();
 		fieldsp.setBackground(Color.white);
 		fieldsp.add(fields);
 		this.add(fieldsp,BorderLayout.EAST);
+		
 
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
@@ -226,8 +232,6 @@ public class MenuLocation extends JFrame implements ActionListener, ListSelectio
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
-			System.out.println("Bonjour");
-			System.out.println(GestionXML.getLastIDLoc());
 			loc.setId(GestionXML.getLastIDLoc());
 			loc.setKmPrev(Integer.parseInt(kmPrev.getText()));
 			loc.setPrixPrev(Float.parseFloat(tprixPrev.getText()));
