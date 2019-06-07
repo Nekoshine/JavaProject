@@ -155,7 +155,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsvoit.add(marqueVoit);
 		tmarqueVoit = new JTextField();
 		fieldsvoit.add(tmarqueVoit);
-		JLabel modeleVoit = new JLabel("Mod�le:");
+		JLabel modeleVoit = new JLabel("Modele:");
 		fieldsvoit.add(modeleVoit);
 		tmodeleVoit = new JTextField();
 		fieldsvoit.add(tmodeleVoit);
@@ -171,7 +171,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsvoit.add(vitesseMaxVoit);
 		tvitesseMaxVoit = new JTextField();
 		fieldsvoit.add(tvitesseMaxVoit);
-		JLabel kmVoit = new JLabel("Kilom�tres:");
+		JLabel kmVoit = new JLabel("Kilometres:");
 		fieldsvoit.add(kmVoit);
 		tKmVoit = new JTextField();
 		fieldsvoit.add(tKmVoit);
@@ -193,7 +193,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsmoto.add(marqueMoto);
 		tmarqueMoto = new JTextField();
 		fieldsmoto.add(tmarqueMoto);
-		JLabel modeleMoto = new JLabel("Mod�le:");
+		JLabel modeleMoto = new JLabel("Modele:");
 		fieldsmoto.add(modeleMoto);
 		tmodeleMoto = new JTextField();
 		fieldsmoto.add(tmodeleMoto);
@@ -209,7 +209,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsmoto.add(vitesseMaxMoto);
 		tvitesseMaxMoto = new JTextField();
 		fieldsmoto.add(tvitesseMaxMoto);
-		JLabel kmMoto = new JLabel("Kilom�tres:");
+		JLabel kmMoto = new JLabel("Kilometres:");
 		fieldsmoto.add(kmMoto);
 		tKmMoto = new JTextField();
 		fieldsmoto.add(tKmMoto);
@@ -227,7 +227,7 @@ public class MenuGestion extends JFrame implements ActionListener, ListSelection
 		fieldsavion.add(marqueAvion);
 		tmarqueAvion = new JTextField();
 		fieldsavion.add(tmarqueAvion);
-		JLabel modeleAvion = new JLabel("Mod�le:");
+		JLabel modeleAvion = new JLabel("Modele:");
 		fieldsavion.add(modeleAvion);
 		tmodeleAvion = new JTextField();
 		fieldsavion.add(tmodeleAvion);

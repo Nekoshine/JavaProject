@@ -32,7 +32,7 @@ public class AddClient extends JFrame implements ActionListener{
 		fields.add(nom);
 		tnom = new JTextField();
 		fields.add(tnom);
-		JLabel numTel = new JLabel("Num�ro de t�l�phone:");
+		JLabel numTel = new JLabel("Numero de telephone:");
 		fields.add(numTel);
 		tnumTel = new JTextField();
 		fields.add(tnumTel);

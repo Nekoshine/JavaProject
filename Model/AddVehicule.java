@@ -60,7 +60,7 @@ public class AddVehicule extends JFrame implements ActionListener{
 		fieldsvoit.add(marqueVoit);
 		tMarqueVoit = new JTextField();
 		fieldsvoit.add(tMarqueVoit);
-		JLabel modeleVoit = new JLabel("Mod�le:");
+		JLabel modeleVoit = new JLabel("Modele:");
 		fieldsvoit.add(modeleVoit);
 		tModeleVoit = new JTextField();
 		fieldsvoit.add(tModeleVoit);
@@ -76,7 +76,7 @@ public class AddVehicule extends JFrame implements ActionListener{
 		fieldsvoit.add(vitesseMaxVoit);
 		tVitesseMaxVoit = new JTextField();
 		fieldsvoit.add(tVitesseMaxVoit);
-		JLabel kmVoit = new JLabel("Kilom�tres:");
+		JLabel kmVoit = new JLabel("Kilometres:");
 		fieldsvoit.add(kmVoit);
 		tKmVoit = new JTextField();
 		fieldsvoit.add(tKmVoit);
@@ -98,7 +98,7 @@ public class AddVehicule extends JFrame implements ActionListener{
 		fieldsmoto.add(marqueMoto);
 		tMarqueMoto = new JTextField();
 		fieldsmoto.add(tMarqueMoto);
-		JLabel modeleMoto = new JLabel("Mod�le:");
+		JLabel modeleMoto = new JLabel("Modele:");
 		fieldsmoto.add(modeleMoto);
 		tModeleMoto = new JTextField();
 		fieldsmoto.add(tModeleMoto);
@@ -114,7 +114,7 @@ public class AddVehicule extends JFrame implements ActionListener{
 		fieldsmoto.add(vitesseMaxMoto);
 		tVitesseMaxMoto = new JTextField();
 		fieldsmoto.add(tVitesseMaxMoto);
-		JLabel kmMoto = new JLabel("Kilom�tres:");
+		JLabel kmMoto = new JLabel("Kilometres:");
 		fieldsmoto.add(kmMoto);
 		tKmMoto = new JTextField();
 		fieldsmoto.add(tKmMoto);
@@ -132,7 +132,7 @@ public class AddVehicule extends JFrame implements ActionListener{
 		fieldsavion.add(marqueAvion);
 		tMarqueAvion = new JTextField();
 		fieldsavion.add(tMarqueAvion);
-		JLabel modeleAvion = new JLabel("Mod�le:");
+		JLabel modeleAvion = new JLabel("Modele:");
 		fieldsavion.add(modeleAvion);
 		tModeleAvion = new JTextField();
 		fieldsavion.add(tModeleAvion);
