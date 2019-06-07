@@ -529,6 +529,9 @@ public class GestionXML{
 			Element prixPrev = doc.createElement("prixPrev");
 			prixPrev.appendChild(doc.createTextNode(Float.toString(l.getPrixPrev())));
 			location.appendChild(prixPrev);
+			Element reduc = doc.createElement("reduction");
+			reduc.appendChild(doc.createTextNode(Boolean.toString(l.getReduction())));
+			location.appendChild(reduc);
 			
 			racine.appendChild(location); // On ajoute la voiture a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations

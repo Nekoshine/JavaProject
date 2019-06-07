@@ -103,7 +103,13 @@ public class Location {
 	public void setVehicule(Vehicule vehicule) {
 		this.vehicule = vehicule;
 	}
+	public Boolean getReduction() {
+		return reduc;
+	}
 	
+	public void setReduction(Boolean reduc) {
+		this.reduc = reduc;
+	}
 	@Override
 	public String toString() {
 		return "Location [dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", client=" + client + ", vehicule="
