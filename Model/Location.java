@@ -11,10 +11,22 @@ public class Location {
   private float prixPrev;
   private int kmPrev;
   private int id;
+  /**
+  * Constructeur par défaut
+  */
   public Location() {
     super();
   }
-  
+  /**
+  * [Location description]
+  * @param dateDebut date de début de la location
+  * @param dateFin   date de début de la location
+  * @param client    client concerné par la location
+  * @param vehicule  véhicule concerné par la location
+  * @param prixPrev  prix previsionnel que paiera le client
+  * @param kmPrev    km previsionnels que le client effectuera
+  * @param id        id de la location
+  */
   public Location(Date dateDebut, Date dateFin, Client client, Vehicule vehicule,int prixPrev, int kmPrev,int id) {
     super();
     this.dateDebut = dateDebut;

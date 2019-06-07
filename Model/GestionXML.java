@@ -26,9 +26,6 @@ import java.util.Date;
 public class GestionXML{
 	
 	
-	
-	
-	
 	/**
 	* Cette procédure permet de supprimer une location en lui donnant cette derniere en parametre
 	* @param l location qui doit etre supprimée
@@ -219,7 +216,6 @@ public class GestionXML{
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataLocation.xml"));
 			NodeList listeL = doc.getElementsByTagName("element"); //On récupère chaque noeud
-			
 			Element node = (Element) listeL.item(listeL.getLength()-1);
 			id=Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())+1;
 		}catch(ParserConfigurationException e){
@@ -316,8 +312,6 @@ public class GestionXML{
 						new Client(
 						node.getElementsByTagName("nom").item(0).getTextContent(),
 						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						new Voiture(
@@ -341,8 +335,6 @@ public class GestionXML{
 						new Client(
 						node.getElementsByTagName("nom").item(0).getTextContent(),
 						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						new Moto(
@@ -365,8 +357,6 @@ public class GestionXML{
 						new Client(
 						node.getElementsByTagName("nom").item(0).getTextContent(),
 						Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-						Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 						Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
 						Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())),
 						new Avion(
@@ -431,12 +421,7 @@ public class GestionXML{
 			Element numTel = doc.createElement("numTel");
 			numTel.appendChild(doc.createTextNode(Integer.toString(l.getClient().getNumTel())));
 			client.appendChild(numTel);
-			Element nbKm = doc.createElement("nbKm");
-			nbKm.appendChild(doc.createTextNode(Integer.toString(l.getClient().getNbKm())));
-			client.appendChild(nbKm);
-			Element prixPrev = doc.createElement("prixPrev");
-			prixPrev.appendChild(doc.createTextNode(Float.toString(l.getClient().getPrixPrev())));
-			client.appendChild(prixPrev);
+			
 			Element reduction = doc.createElement("reduction");
 			reduction.appendChild(doc.createTextNode(Boolean.toString(l.getClient().getReduction())));
 			client.appendChild(reduction);
@@ -753,12 +738,7 @@ public class GestionXML{
 			Element numTel = doc.createElement("numTel");
 			numTel.appendChild(doc.createTextNode(Integer.toString(c.getNumTel())));
 			client.appendChild(numTel);
-			Element nbKm = doc.createElement("nbKm");
-			nbKm.appendChild(doc.createTextNode(Integer.toString(c.getNbKm())));
-			client.appendChild(nbKm);
-			Element prixPrev = doc.createElement("prixPrev");
-			prixPrev.appendChild(doc.createTextNode(Float.toString(c.getPrixPrev())));
-			client.appendChild(prixPrev);
+			
 			Element reduction = doc.createElement("reduction");
 			reduction.appendChild(doc.createTextNode(Boolean.toString(c.getReduction())));
 			client.appendChild(reduction);
@@ -910,8 +890,6 @@ public class GestionXML{
 					clients.add(new Client(
 					node.getElementsByTagName("nom").item(0).getTextContent(),
 					Integer.parseInt(node.getElementsByTagName("numTel").item(0).getTextContent()),
-					Integer.parseInt(node.getElementsByTagName("nbKm").item(0).getTextContent()),
-					Integer.parseInt(node.getElementsByTagName("prixPrev").item(0).getTextContent()),
 					Boolean.parseBoolean(node.getElementsByTagName("reduction").item(0).getTextContent()),
 					Integer.parseInt(node.getElementsByTagName("id").item(0).getTextContent())));
 					System.out.println(clients.get(i));
