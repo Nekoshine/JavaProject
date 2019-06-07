@@ -24,10 +24,6 @@ import javax.swing.plaf.DimensionUIResource;
 * Classe qui hérite d'une JFRAME et qui implémente un ActionListener et un ListSelectionListener dans le but de créer un menu qui correspond au menu de gestion des véhicule
 */
 public class MenuGestion extends JFrame implements ActionListener, ListSelectionListener{
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JButton ok;
 	private JButton retour;

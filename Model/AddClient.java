@@ -10,19 +10,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+/**
+* Classe qui hérite d'une JFRAME et qui implémente un ActionListener dans le but de créer un menu qui correspond au menu d'ajout d'un client
+*/
 public class AddClient extends JFrame implements ActionListener{
-
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField tnom;
 	private JTextField tnumTel;
 	private JPanel infos;
 	public JButton ok;
 	public JButton retour;
-
+	/**
+	* Constructeur de la classe AddClient il permet de mettre en place les éléments au démarrage de la fenetre et donc lors de l'instanciation de la classe
+	*/
 	public AddClient() {
 		super("Ajouter");
 		infos = new JPanel();
@@ -32,7 +32,7 @@ public class AddClient extends JFrame implements ActionListener{
 		fields.add(nom);
 		tnom = new JTextField();
 		fields.add(tnom);
-		JLabel numTel = new JLabel("Num�ro de t�l�phone:");
+		JLabel numTel = new JLabel("Num�ro de t�l�phone:");
 		fields.add(numTel);
 		tnumTel = new JTextField();
 		fields.add(tnumTel);
@@ -62,18 +62,22 @@ public class AddClient extends JFrame implements ActionListener{
 		pok.setBackground(Color.white);
 		this.add(boutons,BorderLayout.SOUTH);
 		
-		this.add(infos); 
+		this.add(infos);
 		this.setBounds(100, 100, 500, 500);
 		this.setVisible(true);
 	}
 	
+	/**
+	* Procédure qui se déclenche lorsqu'un bouton est pressé
+	* @param e Action réalisée
+	*/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
 			Client c = new Client(this.tnom.getText(), Integer.parseInt(this.tnumTel.getText()), GestionXML.getLastIDClient());
 			GestionXML.addClient(c);
 			this.setVisible(false);
-		} 
+		}
 		else if (source==retour) {
 			this.setVisible(false);
 		}

@@ -17,7 +17,6 @@ public class Client {
 	* Constructeur qui initialiser les champs du client
 	* @param nom       nom du client
 	* @param numTel    numéro de téléphone du client
-	* @param reduction réduction qui s'applique au client
 	* @param id        id du client
 	*/
 	public Client(String nom, int numTel,  int id) {

@@ -18,25 +18,29 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.plaf.DimensionUIResource;
-
+/**
+* Classe qui hérite d'une JFRAME et qui implémente un ActionListener et un ListSelectionListener dans le but de créer un menu qui correspond au menu de gestion des clients
+*/
 public class MenuClient extends JFrame implements ActionListener, ListSelectionListener{
-
+	
 	private static final long serialVersionUID = 1L;
-	public JButton ok;
-	public JButton retour;
-	public JTextField tnom ;
-	public JTextField tnumTel; 
-	public JButton badd;
-	public JButton bsupp;
-	public JButton bact;
-	public JList<Client> list;
-	public ArrayList<Client> tab;
-
+	private JButton ok;
+	private JButton retour;
+	private JTextField tnom ;
+	private JTextField tnumTel;
+	private JButton badd;
+	private JButton bsupp;
+	private JButton bact;
+	private JList<Client> list;
+	private ArrayList<Client> tab;
+	/**
+	* Constructeur du menu de client il va permettre de mettre en place les éléments graphiques de la fenetre
+	*/
 	public MenuClient() {
 		super("VOITOVION");
-
+		
 		JPanel t = new JPanel();
-		t.setLayout(new GridLayout(2, 1)); 
+		t.setLayout(new GridLayout(2, 1));
 		Icon titre= new ImageIcon("VOITOVION.png");
 		JPanel pan=new JPanel();
 		JLabel tl=new JLabel();
@@ -70,7 +74,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		addsupp.add(suppp);
 		t.add(addsupp);
 		this.add(t,BorderLayout.NORTH);
-
+		
 		JPanel infos = new JPanel();
 		infos.setLayout(new GridLayout(1,3));
 		tab= new ArrayList<Client>();
@@ -87,7 +91,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		scrollp.add(scroll);
 		scrollp.setBackground(Color.white);
 		infos.add(scrollp);
-
+		
 		Icon fleche= new ImageIcon("fleche.png");
 		JPanel panf=new JPanel();
 		JLabel tf=new JLabel();
@@ -97,14 +101,14 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		panf.add(tf);
 		panf.setBackground(Color.white);
 		infos.add(panf);
-
+		
 		JPanel fields = new JPanel();
 		fields.setLayout(new GridLayout(2,2));
 		JLabel nom = new JLabel("Nom:");
 		fields.add(nom);
 		tnom = new JTextField();
 		fields.add(tnom);
-		JLabel numTel = new JLabel("Num�ro de t�l�phone:");
+		JLabel numTel = new JLabel("Num�ro de t�l�phone:");
 		fields.add(numTel);
 		tnumTel = new JTextField();
 		fields.add(tnumTel);
@@ -115,7 +119,7 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		fieldsp.add(fields);
 		infos.add(fieldsp);
 		this.add(infos,BorderLayout.CENTER);
-
+		
 		JPanel boutret = new JPanel();
 		boutret.setLayout(new GridLayout(1,2));
 		JPanel retp= new JPanel();
@@ -133,12 +137,15 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 		okp.setBackground(Color.white);
 		retp.setBackground(Color.white);
 		this.add(boutret,BorderLayout.SOUTH);
-
+		
 		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.setVisible(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	/**
+	* Procédure qui se déclenche lorsqu'un bouton est pressé
+	* @param e Action réalisée
+	*/
 	public void actionPerformed(ActionEvent e) {
 		Object source = e.getSource();
 		if (source==ok) {
@@ -147,14 +154,14 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 			c.setNom(tnom.getText());
 			c.setNumTel(Integer.parseInt(tnumTel.getText()));
 			GestionXML.addClient(c);
-
+			
 		}
 		else if (source==retour) {
 			this.setVisible(false);
 			MenuPrincipal mp = new MenuPrincipal();
 		}
 		else if (source==badd) {
-			AddClient addc = new AddClient(); 
+			AddClient addc = new AddClient();
 		}
 		else if (source==bsupp) {
 			GestionXML.deleteClient(list.getSelectedValue());
@@ -164,12 +171,15 @@ public class MenuClient extends JFrame implements ActionListener, ListSelectionL
 			MenuClient mc = new MenuClient();
 		}
 	}
-
+	/**
+	* Procédure qui se déclenche lorsqu'un élément de la liste est sélectionné
+	* @param e Action réalisée
+	*/
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
 		Object source = e.getSource();
 		if (source==list) {
-
+			
 			tnom.setText(list.getSelectedValue().getNom());
 			tnumTel.setText(Integer.toString(list.getSelectedValue().getNumTel()));
 		}

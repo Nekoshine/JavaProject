@@ -740,17 +740,17 @@ public class GestionXML{
 			DocumentBuilder docb = docbf.newDocumentBuilder();
 			Document doc = docb.parse(new File("dataClient.xml"));
 			Node racine = doc.getFirstChild(); //On récupère la racine
-			Element client = doc.createElement("element"); // On crée une nouvelle voiture
-			Element nom = doc.createElement("nom"); //On crée une spécification de la nouvelle voiture
+			Element client = doc.createElement("element"); // On crée un nouveau client
+			Element nom = doc.createElement("nom"); //On crée une spécification du nouveau client
 			nom.appendChild(doc.createTextNode(c.getNom())); // On ajoute a la spec sa valeur
-			client.appendChild(nom); //On ajoute chaque champ a la voiture
+			client.appendChild(nom); //On ajoute chaque champ au client
 			Element numTel = doc.createElement("numTel");
 			numTel.appendChild(doc.createTextNode(Integer.toString(c.getNumTel())));
 			client.appendChild(numTel);
 			Element id = doc.createElement("id");
 			id.appendChild(doc.createTextNode(Integer.toString(last)));
 			client.appendChild(id);
-			racine.appendChild(client); // On ajoute la voiture a la racine
+			racine.appendChild(client); // On ajoute le client a la racine
 			DOMSource robot = new DOMSource(doc); // On donne le document xml comme source pour garder les anciennes informations
 			Transformer optimus = TransformerFactory.newInstance().newTransformer(); // On crée un transformer pour pouvoir passer du fichier avec les informations de base a un fichier avec de nouvelles informations
 			optimus.setOutputProperty(OutputKeys.INDENT,"yes"); //On spécifie que la modification sera indentée

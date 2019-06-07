@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <root>
-                              
+  <element>
+    <id>0</id>
+    <nom>Cormier</nom>
+    <numTel>645954638</numTel>
+  </element>
+  <element>
     
     
-    
-    
-    
-    
+    <id>1</id>
+    <nom>Laumonnier</nom>
+    <numTel>698775462</numTel>
     <element>
-                                                          
-        
-        
-        
-        
-        
-        
-        <id>0</id>
-                                                          
-        
-        
-        
-        
-        
-        
-        <nom>Cormier</nom>
-                                                          
-        
-        
-        
-        
-        
-        
-        <numTel>645954638</numTel>
-                                                        
-    
-    
-    
-    
-    
-    
+      
+      
+      
+      
+      
+      
+      
+      <nom>Dupond</nom>
+      
+      
+      
+      
+      
+      
+      
+      <numTel>640186750</numTel>
+      
+      
+      
+      
+      
+      
+      
+      
     </element>
-                            
+    
+    
+    
+    
     
     
     
@@ -48,112 +48,24 @@
     
     
     <element>
-                                                          
+      
+      
+      <nom>Nouille</nom>
+      
+      
+      <numTel>911</numTel>
+      
+      
+      <id>4</id>
+      
+      
+    </element>
+    
+    
+    <element>
+      <nom>Michelle</nom>
+      <numTel>6161032</numTel>
+      <id>5</id>
+    </element>
+  </root>
   
-        
-        
-        
-        
-        
-        
-        <id>1</id>
-                                                          
-  
-        
-        
-        
-        
-        
-        
-        <nom>Laumonnier</nom>
-                                                          
-  
-        
-        
-        
-        
-        
-        
-        <numTel>698775462</numTel>
-                                                          
-  
-
-    
-    
-    
-    
-    
-    
-    </element>
-                            
-    
-    
-    
-    
-    
-    
-    <element>
-                                                          
-        
-        
-        
-        
-        
-        
-        <id>2</id>
-                                                          
-        
-        
-        
-        
-        
-        
-        <nom>Dupond</nom>
-                                                          
-        
-        
-        
-        
-        
-        
-        <numTel>640186750</numTel>
-                                                          
-
-    
-    
-    
-    
-    
-    
-    </element>
-                            
-
-    
-
-
-    
-    
-    
-    
-    
-    <element>
-                        
-        
-        <nom>Nouille</nom>
-                        
-        
-        <numTel>911</numTel>
-                        
-        
-        <id>4</id>
-                    
-    
-    </element>
-        
-
-    <element>
-        <nom>Michelle</nom>
-        <numTel>6161032</numTel>
-        <id>5</id>
-    </element>
-</root>
